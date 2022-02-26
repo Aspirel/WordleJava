@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.company.GUI.WordleView">
+  <grid id="27dc6" binding="worldlePanel" layout-manager="GridLayoutManager" row-count="6" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="5" vgap="5">
+    <margin top="5" left="5" bottom="5" right="5"/>
+    <constraints>
+      <xy x="20" y="20" width="796" height="650"/>
+    </constraints>
+    <properties>
+      <background color="-1"/>
+      <maximumSize width="550" height="700"/>
+      <minimumSize width="550" height="600"/>
+      <preferredSize width="550" height="640"/>
+    </properties>
+    <clientProperties>
+      <html.disable class="java.lang.Boolean" value="false"/>
+    </clientProperties>
+    <border type="line">
+      <color color="-9671572"/>
+    </border>
+    <children>
+      <component id="c529a" class="javax.swing.JTextField" binding="word1Line4">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="88fdc" class="javax.swing.JTextField" binding="word2Line4">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="92f4" class="javax.swing.JTextField" binding="word3Line4">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="6a607" class="javax.swing.JTextField" binding="word4Line4">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="18dc6" class="javax.swing.JTextField" binding="word5Line4">
+        <constraints>
+          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="99dd7" class="javax.swing.JTextField" binding="word2Line3">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="fe6d" class="javax.swing.JTextField" binding="word3Line3">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="c7e3e" class="javax.swing.JTextField" binding="word4Line3">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="74a2f" class="javax.swing.JTextField" binding="word5Line3">
+        <constraints>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="e3315" class="javax.swing.JTextField" binding="word1Line3">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="ef793" class="javax.swing.JTextField" binding="word1Line2">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="d109" class="javax.swing.JTextField" binding="word2Line2">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="cf695" class="javax.swing.JTextField" binding="word3Line2">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="bdad8" class="javax.swing.JTextField" binding="word4Line2">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="8bafc" class="javax.swing.JTextField" binding="word5Line2">
+        <constraints>
+          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="49c34" class="javax.swing.JTextField" binding="word1Line1">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="100" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <font size="36" style="1"/>
+          <horizontalAlignment value="0"/>
+          <margin top="2" left="6" bottom="2" right="6"/>
+        </properties>
+      </component>
+      <component id="b7ada" class="javax.swing.JTextField" binding="word2Line1">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="987d1" class="javax.swing.JTextField" binding="word3Line1">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="2b470" class="javax.swing.JTextField" binding="word5Line1">
+        <constraints>
+          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="35c63" class="javax.swing.JTextField" binding="word4Line1">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="64f2f" class="javax.swing.JTextField" binding="word1Line5">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="b3bf6" class="javax.swing.JTextField" binding="word2Line5">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="4ef29" class="javax.swing.JTextField" binding="word4Line5">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="7adc9" class="javax.swing.JTextField" binding="word5Line5">
+        <constraints>
+          <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="f5d56" class="javax.swing.JTextField" binding="word3Line5">
+        <constraints>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="ebd83" class="javax.swing.JTextField" binding="word1Line6">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="174bb" class="javax.swing.JTextField" binding="word2Line6">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="a7aaa" class="javax.swing.JTextField" binding="word3Line6">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="a155c" class="javax.swing.JTextField" binding="word4Line6">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+      <component id="9c0c0" class="javax.swing.JTextField" binding="word5Line6">
+        <constraints>
+          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="100" height="100"/>
+            <preferred-size width="150" height="50"/>
+            <maximum-size width="100" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+          <horizontalAlignment value="0"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
