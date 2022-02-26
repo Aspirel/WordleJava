@@ -3,7 +3,7 @@ package com.company.GUI;
 import javax.swing.*;
 import java.awt.event.KeyListener;
 
-public class WordleView extends JFrame{
+public class WordleView extends JFrame {
     private JTextField word1Line4;
     private JTextField word2Line4;
     private JTextField word1Line1;
@@ -35,12 +35,14 @@ public class WordleView extends JFrame{
     private JTextField word4Line6;
     private JTextField word5Line6;
     private JPanel worldlePanel;
+    private JButton startOverButton;
 
     public WordleView() {
         this.setTitle("Wordle");
         this.setSize(550,700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(worldlePanel);
+        this.fieldsSetup();
     }
 
     void wordCheckListener(KeyListener keyListener) {
@@ -49,8 +51,47 @@ public class WordleView extends JFrame{
         word2Line1.addKeyListener(keyListener);
     }
 
+    private void fieldsSetup(){
+        //line1
+        word1Line1.setDocument(new TextFieldFormatter());
+        word2Line1.setDocument(new TextFieldFormatter());
+        word3Line1.setDocument(new TextFieldFormatter());
+        word4Line1.setDocument(new TextFieldFormatter());
+        word5Line1.setDocument(new TextFieldFormatter());
+        //line2
+        word1Line2.setEditable(false);
+        word2Line2.setEditable(false);
+        word3Line2.setEditable(false);
+        word4Line2.setEditable(false);
+        word5Line2.setEditable(false);
+        //line3
+        word1Line3.setEditable(false);
+        word2Line3.setEditable(false);
+        word3Line3.setEditable(false);
+        word4Line3.setEditable(false);
+        word5Line3.setEditable(false);
+        //line4
+        word1Line4.setEditable(false);
+        word2Line4.setEditable(false);
+        word3Line4.setEditable(false);
+        word4Line4.setEditable(false);
+        word5Line4.setEditable(false);
+        //line5
+        word1Line5.setEditable(false);
+        word2Line5.setEditable(false);
+        word3Line5.setEditable(false);
+        word4Line5.setEditable(false);
+        word5Line5.setEditable(false);
+        //line6
+        word1Line6.setEditable(false);
+        word2Line6.setEditable(false);
+        word3Line6.setEditable(false);
+        word4Line6.setEditable(false);
+        word5Line6.setEditable(false);
+    }
+
     public String getWord1Line1() {
-        return word1Line1.getText();
+        return word1Line1.getText().toUpperCase();
     }
 
     public void setWord1Line1(JTextField word1Line1) {

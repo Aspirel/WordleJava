@@ -1,7 +1,5 @@
 package com.company.GUI;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -19,7 +17,6 @@ public class WordleController {
 
         @Override
         public void keyTyped(KeyEvent e) {
-
         }
 
         @Override
@@ -41,7 +38,8 @@ public class WordleController {
 
         @Override
         public void keyReleased(KeyEvent e) {
-
+            Character letter = e.getKeyChar();
+            System.out.println(letter);
         }
     }
 }
