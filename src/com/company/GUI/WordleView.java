@@ -40,11 +40,12 @@ public class WordleView extends JFrame {
     private JTextField word5Line6;
     private JPanel worldlePanel;
     private JButton startOverButton;
+    private JButton qButton;
     private LineEnums currentLine = LineEnums.Line1;
 
     public WordleView() {
         this.setTitle("Wordle");
-        this.setSize(550,700);
+        this.setSize(900,900);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(worldlePanel);
         this.fieldsSetup();
