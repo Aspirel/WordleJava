@@ -3,45 +3,29 @@ package com.company.GUI;
 import com.company.Utils.LineEnums;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.stream.Stream;
 
 public class WordleView extends JFrame {
-    private JTextField word1Line1;
-    private JTextField word2Line1;
-    private JTextField word3Line1;
-    private JTextField word4Line1;
-    private JTextField word5Line1;
-    private JTextField word1Line2;
-    private JTextField word2Line2;
-    private JTextField word3Line2;
-    private JTextField word4Line2;
-    private JTextField word5Line2;
-    private JTextField word1Line3;
-    private JTextField word2Line3;
-    private JTextField word3Line3;
-    private JTextField word4Line3;
-    private JTextField word5Line3;
-    private JTextField word1Line4;
-    private JTextField word2Line4;
-    private JTextField word3Line4;
-    private JTextField word4Line4;
-    private JTextField word5Line4;
-    private JTextField word1Line5;
-    private JTextField word2Line5;
-    private JTextField word3Line5;
-    private JTextField word4Line5;
-    private JTextField word5Line5;
-    private JTextField word1Line6;
-    private JTextField word2Line6;
-    private JTextField word3Line6;
-    private JTextField word4Line6;
-    private JTextField word5Line6;
+    private JTextField word1Line1, word2Line1, word3Line1, word4Line1, word5Line1, word1Line2, word2Line2,
+            word3Line2, word4Line2, word5Line2, word1Line3, word2Line3, word3Line3, word4Line3, word5Line3,
+            word1Line4, word2Line4, word3Line4, word4Line4, word5Line4, word1Line5, word2Line5, word3Line5,
+            word4Line5, word5Line5, word1Line6, word2Line6, word3Line6, word4Line6, word5Line6;
     private JPanel worldlePanel;
     private JButton startOverButton;
-    private JButton qButton;
+    private JButton qButton, wButton, eButton, rButton, tButton, yButton, uButton, iButton, oButton, pButton,
+    aButton, sButton, dButton, fButton, gButton, hButton, jButton, kButton, lButton, zButton, xButton,
+            cButton, vButton, bButton, nButton, mButton, enterButton, delButton;
+    private JPanel textFieldsPanel;
+    private JPanel keysLine2;
+    private JPanel keysLine3;
+    private JPanel keysLine1;
     private LineEnums currentLine = LineEnums.Line1;
+    private JTextField focusedField;
 
     public WordleView() {
         this.setTitle("Wordle");
@@ -53,13 +37,32 @@ public class WordleView extends JFrame {
             @Override
             public void windowOpened(WindowEvent e) {
                 super.windowOpened(e);
-                word1Line1.requestFocus();
+                worldlePanel.requestFocus();
             }
         });
     }
 
+    public void restart(){
+        this.fieldsSetup();
+        getWord1Line1().requestFocus();
+        focusedField = word1Line1;
+    }
+
+    public void getFields(){
+        Container container = textFieldsPanel;
+        Stream.of(container.getComponents())
+                .filter(c -> c instanceof JTextField)
+                .map(c -> ((JTextField) c).getText())
+                .forEach(System.out::println);
+    }
+
     public void wordCheckListener(KeyListener keyListener) {
         assert word5Line1 != null;
+        worldlePanel.addKeyListener(keyListener);
+        word1Line1.addKeyListener(keyListener);
+        word3Line1.addKeyListener(keyListener);
+        word3Line1.addKeyListener(keyListener);
+        word4Line1.addKeyListener(keyListener);
         word5Line1.addKeyListener(keyListener);
         assert word5Line2 != null;
         word5Line2.addKeyListener(keyListener);
@@ -73,97 +76,75 @@ public class WordleView extends JFrame {
         word5Line6.addKeyListener(keyListener);
     }
 
+    public void keyboardListener(ActionListener actionListener) {
+        startOverButton.addActionListener(actionListener);
+        qButton.addActionListener(actionListener);
+        wButton.addActionListener(actionListener);
+        eButton.addActionListener(actionListener);
+        rButton.addActionListener(actionListener);
+        tButton.addActionListener(actionListener);
+        yButton.addActionListener(actionListener);
+        uButton.addActionListener(actionListener);
+        iButton.addActionListener(actionListener);
+        oButton.addActionListener(actionListener);
+        pButton.addActionListener(actionListener);
+        aButton.addActionListener(actionListener);
+        sButton.addActionListener(actionListener);
+        dButton.addActionListener(actionListener);
+        fButton.addActionListener(actionListener);
+        gButton.addActionListener(actionListener);
+        hButton.addActionListener(actionListener);
+        jButton.addActionListener(actionListener);
+        kButton.addActionListener(actionListener);
+        lButton.addActionListener(actionListener);
+        enterButton.addActionListener(actionListener);
+        zButton.addActionListener(actionListener);
+        xButton.addActionListener(actionListener);
+        cButton.addActionListener(actionListener);
+        vButton.addActionListener(actionListener);
+        bButton.addActionListener(actionListener);
+        nButton.addActionListener(actionListener);
+        mButton.addActionListener(actionListener);
+        delButton.addActionListener(actionListener);
+    }
+
     private void fieldsSetup(){
-        this.enableLineOne(true);
-        this.enableLineTwo(false);
-        this.enableLineThree(false);
-        this.enableLineFour(false);
-        this.enableLineFive(false);
-        this.enableLineSix(false);
         //line1
-        word1Line1.setDocument(new TextFieldHandler(word1Line1, false));
-        word2Line1.setDocument(new TextFieldHandler(word2Line1, false));
-        word3Line1.setDocument(new TextFieldHandler(word3Line1, false));
-        word4Line1.setDocument(new TextFieldHandler(word4Line1, false));
-        word5Line1.setDocument(new TextFieldHandler(word5Line1, true));
+        word1Line1.setDocument(new TextFieldHandler());
+        word2Line1.setDocument(new TextFieldHandler());
+        word3Line1.setDocument(new TextFieldHandler());
+        word4Line1.setDocument(new TextFieldHandler());
+        word5Line1.setDocument(new TextFieldHandler());
         //line2
-        word1Line2.setDocument(new TextFieldHandler(word1Line2, false));
-        word2Line2.setDocument(new TextFieldHandler(word2Line2, false));
-        word3Line2.setDocument(new TextFieldHandler(word3Line2, false));
-        word4Line2.setDocument(new TextFieldHandler(word4Line2, false));
-        word5Line2.setDocument(new TextFieldHandler(word5Line2, true));
+        word1Line2.setDocument(new TextFieldHandler());
+        word2Line2.setDocument(new TextFieldHandler());
+        word3Line2.setDocument(new TextFieldHandler());
+        word4Line2.setDocument(new TextFieldHandler());
+        word5Line2.setDocument(new TextFieldHandler());
         //line3
-        word1Line3.setDocument(new TextFieldHandler(word1Line3, false));
-        word2Line3.setDocument(new TextFieldHandler(word2Line3, false));
-        word3Line3.setDocument(new TextFieldHandler(word3Line3, false));
-        word4Line3.setDocument(new TextFieldHandler(word4Line3, false));
-        word5Line3.setDocument(new TextFieldHandler(word5Line3, true));
+        word1Line3.setDocument(new TextFieldHandler());
+        word2Line3.setDocument(new TextFieldHandler());
+        word3Line3.setDocument(new TextFieldHandler());
+        word4Line3.setDocument(new TextFieldHandler());
+        word5Line3.setDocument(new TextFieldHandler());
         //line4
-        word1Line4.setDocument(new TextFieldHandler(word1Line4, false));
-        word2Line4.setDocument(new TextFieldHandler(word2Line4, false));
-        word3Line4.setDocument(new TextFieldHandler(word3Line4, false));
-        word4Line4.setDocument(new TextFieldHandler(word4Line4, false));
-        word5Line4.setDocument(new TextFieldHandler(word5Line4, true));
+        word1Line4.setDocument(new TextFieldHandler());
+        word2Line4.setDocument(new TextFieldHandler());
+        word3Line4.setDocument(new TextFieldHandler());
+        word4Line4.setDocument(new TextFieldHandler());
+        word5Line4.setDocument(new TextFieldHandler());
         //line 5
-        word1Line5.setDocument(new TextFieldHandler(word1Line5, false));
-        word2Line5.setDocument(new TextFieldHandler(word2Line5, false));
-        word3Line5.setDocument(new TextFieldHandler(word3Line5, false));
-        word4Line5.setDocument(new TextFieldHandler(word4Line5, false));
-        word5Line5.setDocument(new TextFieldHandler(word5Line5, true));
+        word1Line5.setDocument(new TextFieldHandler());
+        word2Line5.setDocument(new TextFieldHandler());
+        word3Line5.setDocument(new TextFieldHandler());
+        word4Line5.setDocument(new TextFieldHandler());
+        word5Line5.setDocument(new TextFieldHandler());
         //line 6
-        word1Line6.setDocument(new TextFieldHandler(word1Line6, false));
-        word2Line6.setDocument(new TextFieldHandler(word2Line6, false));
-        word3Line6.setDocument(new TextFieldHandler(word3Line6, false));
-        word4Line6.setDocument(new TextFieldHandler(word4Line6, false));
-        word5Line6.setDocument(new TextFieldHandler(word5Line6, true));
-    }
-
-    public void enableLineOne(boolean enabled){
-        word1Line1.setEditable(enabled);
-        word2Line1.setEditable(enabled);
-        word3Line1.setEditable(enabled);
-        word4Line1.setEditable(enabled);
-        word5Line1.setEditable(enabled);
-    }
-
-    public void enableLineTwo(boolean enabled){
-        word1Line2.setEditable(enabled);
-        word2Line2.setEditable(enabled);
-        word3Line2.setEditable(enabled);
-        word4Line2.setEditable(enabled);
-        word5Line2.setEditable(enabled);
-    }
-
-    public void enableLineThree(boolean enabled){
-        word1Line3.setEditable(enabled);
-        word2Line3.setEditable(enabled);
-        word3Line3.setEditable(enabled);
-        word4Line3.setEditable(enabled);
-        word5Line3.setEditable(enabled);
-    }
-
-    public void enableLineFour(boolean enabled){
-        word1Line4.setEditable(enabled);
-        word2Line4.setEditable(enabled);
-        word3Line4.setEditable(enabled);
-        word4Line4.setEditable(enabled);
-        word5Line4.setEditable(enabled);
-    }
-
-    public void enableLineFive(boolean enabled){
-        word1Line5.setEditable(enabled);
-        word2Line5.setEditable(enabled);
-        word3Line5.setEditable(enabled);
-        word4Line5.setEditable(enabled);
-        word5Line5.setEditable(enabled);
-    }
-
-    public void enableLineSix(boolean enabled){
-        word1Line6.setEditable(enabled);
-        word2Line6.setEditable(enabled);
-        word3Line6.setEditable(enabled);
-        word4Line6.setEditable(enabled);
-        word5Line6.setEditable(enabled);
+        word1Line6.setDocument(new TextFieldHandler());
+        word2Line6.setDocument(new TextFieldHandler());
+        word3Line6.setDocument(new TextFieldHandler());
+        word4Line6.setDocument(new TextFieldHandler());
+        word5Line6.setDocument(new TextFieldHandler());
     }
 
     public LineEnums getCurrentLine() {
@@ -292,5 +273,17 @@ public class WordleView extends JFrame {
 
     public JTextField getWord5Line6() {
         return word5Line6;
+    }
+
+    public JTextField getFocusedField() {
+        return focusedField;
+    }
+
+    public void setFocusedField(JTextField focusedField) {
+        this.focusedField = focusedField;
+    }
+
+    public JPanel getWorldlePanel() {
+        return worldlePanel;
     }
 }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.company.GUI.WordleView">
-  <grid id="27dc6" binding="worldlePanel" layout-manager="GridLayoutManager" row-count="3" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+  <grid id="27dc6" binding="worldlePanel" layout-manager="GridLayoutManager" row-count="4" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
     <margin top="5" left="5" bottom="5" right="5"/>
     <constraints>
       <xy x="20" y="20" width="976" height="1111"/>
     </constraints>
     <properties>
       <background color="-1"/>
+      <focusCycleRoot value="false"/>
       <foreground color="-1"/>
       <maximumSize width="900" height="800"/>
       <minimumSize width="900" height="800"/>
@@ -21,7 +22,7 @@
     <children>
       <component id="550" class="javax.swing.JButton" binding="startOverButton" default-binding="true">
         <constraints>
-          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="150" height="-1"/>
             <preferred-size width="150" height="-1"/>
             <maximum-size width="150" height="-1"/>
@@ -42,7 +43,7 @@
       <grid id="690e5" layout-manager="GridLayoutManager" row-count="3" column-count="10" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false">
+          <grid row="3" column="0" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false">
             <minimum-size width="550" height="200"/>
             <preferred-size width="900" height="200"/>
             <maximum-size width="900" height="200"/>
@@ -50,10 +51,11 @@
         </constraints>
         <properties>
           <background color="-1"/>
+          <focusable value="false"/>
         </properties>
         <border type="none"/>
         <children>
-          <grid id="9bd65" layout-manager="GridLayoutManager" row-count="1" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="9bd65" binding="keysLine2" layout-manager="GridLayoutManager" row-count="1" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="10" right="0"/>
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="8" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -64,10 +66,11 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <focusable value="false"/>
             </properties>
             <border type="none"/>
             <children>
-              <component id="8a9a4" class="javax.swing.JButton" default-binding="true">
+              <component id="8a9a4" class="javax.swing.JButton" binding="aButton">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -79,13 +82,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="A"/>
                 </properties>
               </component>
-              <component id="9389e" class="javax.swing.JButton" default-binding="true">
+              <component id="9389e" class="javax.swing.JButton" binding="sButton">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -97,13 +101,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="S"/>
                 </properties>
               </component>
-              <component id="caeb3" class="javax.swing.JButton" default-binding="true">
+              <component id="caeb3" class="javax.swing.JButton" binding="dButton">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -115,13 +120,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="D"/>
                 </properties>
               </component>
-              <component id="f3637" class="javax.swing.JButton" default-binding="true">
+              <component id="f3637" class="javax.swing.JButton" binding="fButton">
                 <constraints>
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -133,13 +139,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="F"/>
                 </properties>
               </component>
-              <component id="b3e32" class="javax.swing.JButton" default-binding="true">
+              <component id="b3e32" class="javax.swing.JButton" binding="gButton">
                 <constraints>
                   <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -151,13 +158,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="G"/>
                 </properties>
               </component>
-              <component id="e1f42" class="javax.swing.JButton" default-binding="true">
+              <component id="e1f42" class="javax.swing.JButton" binding="lButton">
                 <constraints>
                   <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -169,13 +177,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="L"/>
                 </properties>
               </component>
-              <component id="8263d" class="javax.swing.JButton" default-binding="true">
+              <component id="8263d" class="javax.swing.JButton" binding="hButton">
                 <constraints>
                   <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -187,13 +196,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="H"/>
                 </properties>
               </component>
-              <component id="1947" class="javax.swing.JButton" default-binding="true">
+              <component id="1947" class="javax.swing.JButton" binding="jButton">
                 <constraints>
                   <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -205,13 +215,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="J"/>
                 </properties>
               </component>
-              <component id="ac5b2" class="javax.swing.JButton" default-binding="true">
+              <component id="ac5b2" class="javax.swing.JButton" binding="kButton">
                 <constraints>
                   <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -223,6 +234,7 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
@@ -231,7 +243,7 @@
               </component>
             </children>
           </grid>
-          <grid id="d16ae" layout-manager="GridLayoutManager" row-count="1" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="d16ae" binding="keysLine3" layout-manager="GridLayoutManager" row-count="1" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="10" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -242,10 +254,11 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <focusable value="false"/>
             </properties>
             <border type="none"/>
             <children>
-              <component id="60028" class="javax.swing.JButton" default-binding="true">
+              <component id="60028" class="javax.swing.JButton" binding="enterButton">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="90" height="60"/>
@@ -257,13 +270,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="ENTER"/>
                 </properties>
               </component>
-              <component id="7ac5a" class="javax.swing.JButton" default-binding="true">
+              <component id="7ac5a" class="javax.swing.JButton" binding="zButton">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -275,13 +289,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="Z"/>
                 </properties>
               </component>
-              <component id="58d77" class="javax.swing.JButton" default-binding="true">
+              <component id="58d77" class="javax.swing.JButton" binding="xButton">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -293,13 +308,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="X"/>
                 </properties>
               </component>
-              <component id="83cc2" class="javax.swing.JButton" default-binding="true">
+              <component id="83cc2" class="javax.swing.JButton" binding="cButton">
                 <constraints>
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -311,13 +327,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="C"/>
                 </properties>
               </component>
-              <component id="1c93b" class="javax.swing.JButton" default-binding="true">
+              <component id="1c93b" class="javax.swing.JButton" binding="vButton">
                 <constraints>
                   <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -329,13 +346,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="V"/>
                 </properties>
               </component>
-              <component id="73277" class="javax.swing.JButton" default-binding="true">
+              <component id="73277" class="javax.swing.JButton" binding="delButton">
                 <constraints>
                   <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="80" height="60"/>
@@ -347,13 +365,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="DEL"/>
                 </properties>
               </component>
-              <component id="80ae0" class="javax.swing.JButton" default-binding="true">
+              <component id="80ae0" class="javax.swing.JButton" binding="bButton">
                 <constraints>
                   <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -365,13 +384,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="B"/>
                 </properties>
               </component>
-              <component id="c379f" class="javax.swing.JButton" default-binding="true">
+              <component id="c379f" class="javax.swing.JButton" binding="nButton">
                 <constraints>
                   <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -383,13 +403,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="N"/>
                 </properties>
               </component>
-              <component id="a1a7c" class="javax.swing.JButton" default-binding="true">
+              <component id="a1a7c" class="javax.swing.JButton" binding="mButton">
                 <constraints>
                   <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -401,6 +422,7 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
@@ -409,7 +431,7 @@
               </component>
             </children>
           </grid>
-          <grid id="18b5b" layout-manager="GridLayoutManager" row-count="1" column-count="10" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+          <grid id="18b5b" binding="keysLine1" layout-manager="GridLayoutManager" row-count="1" column-count="10" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
             <margin top="0" left="0" bottom="10" right="0"/>
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="10" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -422,6 +444,7 @@
               <alignmentX value="0.0"/>
               <alignmentY value="0.0"/>
               <background color="-1"/>
+              <focusable value="false"/>
             </properties>
             <border type="none"/>
             <children>
@@ -437,6 +460,7 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
@@ -444,7 +468,7 @@
                   <text value="Q"/>
                 </properties>
               </component>
-              <component id="166c3" class="javax.swing.JButton" default-binding="true">
+              <component id="166c3" class="javax.swing.JButton" binding="eButton">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -456,13 +480,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="E"/>
                 </properties>
               </component>
-              <component id="aa0e9" class="javax.swing.JButton" default-binding="true">
+              <component id="aa0e9" class="javax.swing.JButton" binding="wButton">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -474,13 +499,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="W"/>
                 </properties>
               </component>
-              <component id="cd8e7" class="javax.swing.JButton" default-binding="true">
+              <component id="cd8e7" class="javax.swing.JButton" binding="rButton">
                 <constraints>
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -492,13 +518,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="R"/>
                 </properties>
               </component>
-              <component id="f4a41" class="javax.swing.JButton" default-binding="true">
+              <component id="f4a41" class="javax.swing.JButton" binding="tButton">
                 <constraints>
                   <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -510,13 +537,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="T"/>
                 </properties>
               </component>
-              <component id="4c242" class="javax.swing.JButton" default-binding="true">
+              <component id="4c242" class="javax.swing.JButton" binding="yButton">
                 <constraints>
                   <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -528,13 +556,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="Y"/>
                 </properties>
               </component>
-              <component id="c08cc" class="javax.swing.JButton" default-binding="true">
+              <component id="c08cc" class="javax.swing.JButton" binding="uButton">
                 <constraints>
                   <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -546,13 +575,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="U"/>
                 </properties>
               </component>
-              <component id="33d8f" class="javax.swing.JButton" default-binding="true">
+              <component id="33d8f" class="javax.swing.JButton" binding="iButton">
                 <constraints>
                   <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -564,13 +594,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="I"/>
                 </properties>
               </component>
-              <component id="e1678" class="javax.swing.JButton" default-binding="true">
+              <component id="e1678" class="javax.swing.JButton" binding="oButton">
                 <constraints>
                   <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -582,13 +613,14 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
                   <text value="O"/>
                 </properties>
               </component>
-              <component id="153be" class="javax.swing.JButton" default-binding="true">
+              <component id="153be" class="javax.swing.JButton" binding="pButton">
                 <constraints>
                   <grid row="0" column="9" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="55" height="60"/>
@@ -600,6 +632,7 @@
                   <background color="-1842205"/>
                   <borderPainted value="false"/>
                   <focusPainted value="false"/>
+                  <focusable value="false"/>
                   <font size="16" style="1"/>
                   <hideActionText value="false"/>
                   <horizontalTextPosition value="0"/>
@@ -610,10 +643,10 @@
           </grid>
         </children>
       </grid>
-      <grid id="94765" layout-manager="GridLayoutManager" row-count="6" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="94765" binding="textFieldsPanel" layout-manager="GridLayoutManager" row-count="6" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="2" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="1" column="2" row-span="2" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <minimum-size width="420" height="520"/>
             <preferred-size width="420" height="520"/>
             <maximum-size width="420" height="520"/>
@@ -621,6 +654,7 @@
         </constraints>
         <properties>
           <background color="-1"/>
+          <focusable value="false"/>
         </properties>
         <border type="none"/>
         <children>
@@ -635,6 +669,9 @@
             <properties>
               <background color="-1"/>
               <dropMode value="USE_SELECTION"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
               <margin top="2" left="6" bottom="2" right="6"/>
@@ -656,6 +693,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
               <nextFocusableComponent value="987d1"/>
@@ -671,6 +711,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
               <nextFocusableComponent value="35c63"/>
@@ -686,6 +729,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
               <inheritsPopupMenu value="false"/>
@@ -702,6 +748,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -716,6 +765,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -730,6 +782,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -744,6 +799,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -758,6 +816,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -772,6 +833,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -786,6 +850,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -800,6 +867,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -814,6 +884,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -828,6 +901,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -842,6 +918,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -856,6 +935,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -870,6 +952,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -884,6 +969,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -898,6 +986,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -912,6 +1003,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -926,6 +1020,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -940,6 +1037,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -954,6 +1054,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -968,6 +1071,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -982,6 +1088,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -996,6 +1105,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -1010,6 +1122,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -1024,6 +1139,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -1038,6 +1156,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
@@ -1052,6 +1173,9 @@
             </constraints>
             <properties>
               <background color="-1"/>
+              <editable value="true"/>
+              <enabled value="false"/>
+              <focusable value="false"/>
               <font size="36" style="1"/>
               <horizontalAlignment value="0"/>
             </properties>
