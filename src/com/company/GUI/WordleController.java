@@ -26,7 +26,6 @@ public class WordleController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String acceptableLetters = "qwertyuiopasdfghjklzxcvbnm";
             if (Objects.equals(e.getActionCommand(), "Start Over")) {
                 wordleView.restart();
             } else if (e.getActionCommand().equals("ENTER")) {
@@ -34,7 +33,6 @@ public class WordleController {
             } else if (e.getActionCommand().equals("DEL")) {
                 wordleModel.deleteLetter();
             } else {
-                if (acceptableLetters.contains(e.getActionCommand())) {
                     if (wordleView.getCurrentLine() == LineEnums.Line1) {
                         if (wordleView.getWord1Line1().getText().length() < 1) {
                             wordleView.getWord1Line1().setEnabled(true);
@@ -206,7 +204,6 @@ public class WordleController {
                             wordleView.getWorldlePanel().requestFocus();
                         }
                     }
-                }
             }
         }
     }

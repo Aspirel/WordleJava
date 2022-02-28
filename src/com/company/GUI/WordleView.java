@@ -59,21 +59,6 @@ public class WordleView extends JFrame {
     public void wordCheckListener(KeyListener keyListener) {
         assert word5Line1 != null;
         worldlePanel.addKeyListener(keyListener);
-        word1Line1.addKeyListener(keyListener);
-        word3Line1.addKeyListener(keyListener);
-        word3Line1.addKeyListener(keyListener);
-        word4Line1.addKeyListener(keyListener);
-        word5Line1.addKeyListener(keyListener);
-        assert word5Line2 != null;
-        word5Line2.addKeyListener(keyListener);
-        assert word5Line3 != null;
-        word5Line3.addKeyListener(keyListener);
-        assert word5Line4 != null;
-        word5Line4.addKeyListener(keyListener);
-        assert word5Line5 != null;
-        word5Line5.addKeyListener(keyListener);
-        assert word5Line6 != null;
-        word5Line6.addKeyListener(keyListener);
     }
 
     public void keyboardListener(ActionListener actionListener) {
