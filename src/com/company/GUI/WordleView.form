@@ -31,6 +31,7 @@
         <properties>
           <background color="-1"/>
           <focusPainted value="false"/>
+          <focusable value="false"/>
           <foreground color="-16777216"/>
           <hideActionText value="false"/>
           <horizontalTextPosition value="0"/>

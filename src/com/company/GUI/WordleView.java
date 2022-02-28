@@ -4,10 +4,7 @@ import com.company.Utils.LineEnums;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.util.stream.Stream;
 
 public class WordleView extends JFrame {
@@ -18,18 +15,17 @@ public class WordleView extends JFrame {
     private JPanel worldlePanel;
     private JButton startOverButton;
     private JButton qButton, wButton, eButton, rButton, tButton, yButton, uButton, iButton, oButton, pButton,
-    aButton, sButton, dButton, fButton, gButton, hButton, jButton, kButton, lButton, zButton, xButton,
+            aButton, sButton, dButton, fButton, gButton, hButton, jButton, kButton, lButton, zButton, xButton,
             cButton, vButton, bButton, nButton, mButton, enterButton, delButton;
     private JPanel textFieldsPanel;
     private JPanel keysLine2;
     private JPanel keysLine3;
     private JPanel keysLine1;
     private LineEnums currentLine = LineEnums.Line1;
-    private JTextField focusedField;
 
     public WordleView() {
         this.setTitle("Wordle");
-        this.setSize(900,900);
+        this.setSize(900, 900);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(worldlePanel);
         this.fieldsSetup();
@@ -42,13 +38,7 @@ public class WordleView extends JFrame {
         });
     }
 
-    public void restart(){
-        this.fieldsSetup();
-        getWord1Line1().requestFocus();
-        focusedField = word1Line1;
-    }
-
-    public void getFields(){
+    public void getFields() {
         Container container = textFieldsPanel;
         Stream.of(container.getComponents())
                 .filter(c -> c instanceof JTextField)
@@ -57,12 +47,20 @@ public class WordleView extends JFrame {
     }
 
     public void wordCheckListener(KeyListener keyListener) {
-        assert word5Line1 != null;
+        assert worldlePanel != null;
         worldlePanel.addKeyListener(keyListener);
     }
 
     public void keyboardListener(ActionListener actionListener) {
-        startOverButton.addActionListener(actionListener);
+        startOverButton.addActionListener(e -> {
+            if (currentLine != LineEnums.Line1) {
+                dispose();
+                WordleView wordleView = new WordleView();
+                WordleModel wordleModel = new WordleModel(wordleView);
+                WordleController wordleController = new WordleController(wordleModel, wordleView);
+                wordleView.setVisible(true);
+            }
+        });
         qButton.addActionListener(actionListener);
         wButton.addActionListener(actionListener);
         eButton.addActionListener(actionListener);
@@ -93,7 +91,7 @@ public class WordleView extends JFrame {
         delButton.addActionListener(actionListener);
     }
 
-    private void fieldsSetup(){
+    private void fieldsSetup() {
         //line1
         word1Line1.setDocument(new TextFieldHandler());
         word2Line1.setDocument(new TextFieldHandler());
@@ -258,14 +256,6 @@ public class WordleView extends JFrame {
 
     public JTextField getWord5Line6() {
         return word5Line6;
-    }
-
-    public JTextField getFocusedField() {
-        return focusedField;
-    }
-
-    public void setFocusedField(JTextField focusedField) {
-        this.focusedField = focusedField;
     }
 
     public JPanel getWorldlePanel() {
