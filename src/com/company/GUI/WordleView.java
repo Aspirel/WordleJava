@@ -69,7 +69,9 @@ public class WordleView extends JFrame {
         this.setLayout(null);
         worldlePanel.setBackground(Color.white);
 
+        this.keyboardSetup();
         this.textFieldsSetup();
+
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -163,8 +165,17 @@ public class WordleView extends JFrame {
     }
 
     private void keyboardSetup() {
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setBounds(0, 515, 900, 350);
+        bottomPanel.setBackground(Color.white);
         JPanel keyboardPanel = new JPanel();
+        keyboardPanel.setBounds(0, 515, 750, 300);
+        keyboardPanel.setLayout(new GridLayout(3, 10, 10, 10));
 
+        //adds the buttons here
+
+        bottomPanel.add(keyboardPanel);
+        worldlePanel.add(bottomPanel);
     }
 
     public ArrayList<JTextField> getTextArray() {
