@@ -31,21 +31,21 @@ public class WordleController {
                 wordleModel.deleteLetter();
             } else {
                 if (wordleView.getCurrentLine() == LineEnums.Line1) {
-                    if (wordleView.getWord1Line1().getText().length() < 1) {
-                        wordleView.getWord1Line1().setEnabled(true);
-                        wordleView.getWord1Line1().setText(String.valueOf(e.getActionCommand()));
+                    if (wordleView.getTextArray().get(0).getText().length() < 1) {
+                        wordleView.getTextArray().get(0).setEnabled(true);
+                        wordleView.getTextArray().get(0).setText(String.valueOf(e.getActionCommand()));
                         wordleView.getWorldlePanel().requestFocus();
-                    } else if (wordleView.getWord1Line1().getText().length() >= 1 &&
-                            wordleView.getWord2Line1().getText().length() < 1) {
-                        wordleView.getWord2Line1().setEnabled(true);
-                        wordleView.getWord2Line1().setText(String.valueOf(e.getActionCommand()));
+                    } else if (wordleView.getTextArray().get(0).getText().length() >= 1 &&
+                            wordleView.getTextArray().get(1).getText().length() < 1) {
+                        wordleView.getTextArray().get(1).setEnabled(true);
+                        wordleView.getTextArray().get(1).setText(String.valueOf(e.getActionCommand()));
                         wordleView.getWorldlePanel().requestFocus();
-                    } else if (wordleView.getWord2Line1().getText().length() >= 1 &&
-                            wordleView.getWord3Line1().getText().length() < 1) {
-                        wordleView.getWord3Line1().setEnabled(true);
-                        wordleView.getWord3Line1().setText(String.valueOf(e.getActionCommand()));
+                    } else if (wordleView.getTextArray().get(1).getText().length() >= 1 &&
+                            wordleView.getTextArray().get(2).getText().length() < 1) {
+                        wordleView.getTextArray().get(2).setEnabled(true);
+                        wordleView.getTextArray().get(2).setText(String.valueOf(e.getActionCommand()));
                         wordleView.getWorldlePanel().requestFocus();
-                    } else if (wordleView.getWord3Line1().getText().length() >= 1 &&
+                    } else if (wordleView.getTextArray().get(2).getText().length() >= 1 &&
                             wordleView.getWord4Line1().getText().length() < 1) {
                         wordleView.getWord4Line1().setEnabled(true);
                         wordleView.getWord4Line1().setText(String.valueOf(e.getActionCommand()));
@@ -227,38 +227,38 @@ public class WordleController {
                 if (acceptableLetters.contains(String.valueOf(e.getKeyChar()))) {
                     //line1
                     if (wordleView.getCurrentLine() == LineEnums.Line1) {
-                        if (wordleView.getWord1Line1().getText().length() < 1) {
-                            wordleView.getWord1Line1().setEnabled(true);
-                            wordleView.getWord1Line1().setText(String.valueOf(e.getKeyChar()));
+                        if (wordleView.getTextArray().get(0).getText().length() < 1) {
+                            wordleView.getTextArray().get(0).setEnabled(true);
+                            wordleView.getTextArray().get(0).setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
-                        } else if (wordleView.getWord1Line1().getText().length() >= 1 &&
-                                wordleView.getWord2Line1().getText().length() < 1) {
-                            wordleView.getWord2Line1().setEnabled(true);
-                            wordleView.getWord2Line1().setText(String.valueOf(e.getKeyChar()));
+                        } else if (wordleView.getTextArray().get(0).getText().length() >= 1 &&
+                                wordleView.getTextArray().get(1).getText().length() < 1) {
+                            wordleView.getTextArray().get(1).setEnabled(true);
+                            wordleView.getTextArray().get(1).setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
-                        } else if (wordleView.getWord2Line1().getText().length() >= 1 &&
-                                wordleView.getWord3Line1().getText().length() < 1) {
-                            wordleView.getWord3Line1().setEnabled(true);
-                            wordleView.getWord3Line1().setText(String.valueOf(e.getKeyChar()));
+                        } else if (wordleView.getTextArray().get(1).getText().length() >= 1 &&
+                                wordleView.getTextArray().get(2).getText().length() < 1) {
+                            wordleView.getTextArray().get(2).setEnabled(true);
+                            wordleView.getTextArray().get(2).setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
-                        } else if (wordleView.getWord3Line1().getText().length() >= 1 &&
-                                wordleView.getWord4Line1().getText().length() < 1) {
-                            wordleView.getWord4Line1().setEnabled(true);
-                            wordleView.getWord4Line1().setText(String.valueOf(e.getKeyChar()));
+                        } else if (wordleView.getTextArray().get(2).getText().length() >= 1 &&
+                                wordleView.getTextArray().get(3).getText().length() < 1) {
+                            wordleView.getTextArray().get(3).setEnabled(true);
+                            wordleView.getTextArray().get(3).setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
-                        } else if (wordleView.getWord4Line1().getText().length() >= 1 &&
-                                wordleView.getWord5Line1().getText().length() < 1) {
-                            wordleView.getWord5Line1().setEnabled(true);
-                            wordleView.getWord5Line1().setText(String.valueOf(e.getKeyChar()));
+                        } else if (wordleView.getTextArray().get(3).getText().length() >= 1 &&
+                                wordleView.getTextArray().get(4).getText().length() < 1) {
+                            wordleView.getTextArray().get(4).setEnabled(true);
+                            wordleView.getTextArray().get(4).setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         }
                     }
 
                     //line2
                     if (wordleView.getCurrentLine() == LineEnums.Line2) {
-                        if (wordleView.getWord1Line2().getText().length() < 1) {
-                            wordleView.getWord1Line2().setEnabled(true);
-                            wordleView.getWord1Line2().setText(String.valueOf(e.getKeyChar()));
+                        if (wordleView.getTextArray().get(4).getText().length() < 1) {
+                            wordleView.getTextArray().get(5).setEnabled(true);
+                            wordleView.getTextArray().get(5).setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord1Line2().getText().length() >= 1 &&
                                 wordleView.getWord2Line2().getText().length() < 1) {

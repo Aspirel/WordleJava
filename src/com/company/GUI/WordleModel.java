@@ -21,7 +21,7 @@ public class WordleModel {
 
     public void checkWord() {
         LineEnums line = wordleView.getCurrentLine();
-        if (line == LineEnums.Line1 && wordleView.getWord5Line1().getText().length() >= 1) {
+        if (line == LineEnums.Line1 && wordleView.getTextArray().get(4).getText().length() >= 1) {
             colorBlocks(line, false);
             wordleView.setCurrentLine(LineEnums.Line2);
         } else if (line == LineEnums.Line2 && wordleView.getWord5Line2().getText().length() >= 1) {
@@ -37,16 +37,16 @@ public class WordleModel {
 
     public void colorBlocks(LineEnums line, boolean restart) {
         if (line == LineEnums.Line1) {
-            wordleView.getWord1Line1().setBackground(restart ? Color.white : Color.GRAY);
-            wordleView.getWord1Line1().setBorder(new LineBorder(restart ? null : Color.GRAY));
-            wordleView.getWord2Line1().setBackground(restart ? Color.white : Color.GRAY);
-            wordleView.getWord2Line1().setBorder(new LineBorder(restart ? null : Color.GRAY));
-            wordleView.getWord3Line1().setBackground(restart ? Color.white : Color.GRAY);
-            wordleView.getWord3Line1().setBorder(new LineBorder(restart ? null : Color.GRAY));
-            wordleView.getWord4Line1().setBackground(restart ? Color.white : Color.GRAY);
-            wordleView.getWord4Line1().setBorder(new LineBorder(restart ? null : Color.GRAY));
-            wordleView.getWord5Line1().setBackground(restart ? Color.white : Color.GRAY);
-            wordleView.getWord5Line1().setBorder(new LineBorder(restart ? null : Color.GRAY));
+            wordleView.getTextArray().get(0).setBackground(restart ? Color.white : Color.GRAY);
+            wordleView.getTextArray().get(0).setBorder(new LineBorder(restart ? null : Color.GRAY));
+            wordleView.getTextArray().get(1).setBackground(restart ? Color.white : Color.GRAY);
+            wordleView.getTextArray().get(1).setBorder(new LineBorder(restart ? null : Color.GRAY));
+            wordleView.getTextArray().get(2).setBackground(restart ? Color.white : Color.GRAY);
+            wordleView.getTextArray().get(2).setBorder(new LineBorder(restart ? null : Color.GRAY));
+            wordleView.getTextArray().get(3).setBackground(restart ? Color.white : Color.GRAY);
+            wordleView.getTextArray().get(3).setBorder(new LineBorder(restart ? null : Color.GRAY));
+            wordleView.getTextArray().get(4).setBackground(restart ? Color.white : Color.GRAY);
+            wordleView.getTextArray().get(4).setBorder(new LineBorder(restart ? null : Color.GRAY));
         }
     }
 
