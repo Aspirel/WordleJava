@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.stream.Stream;
 
 public class WordleView extends JFrame {
     private JTextField  word4Line1, word5Line1, word1Line2, word2Line2, word3Line2,
@@ -70,7 +69,7 @@ public class WordleView extends JFrame {
         this.setLayout(null);
         worldlePanel.setBackground(Color.white);
 
-        this.fieldsSetup();
+        this.textFieldsSetup();
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -88,7 +87,7 @@ public class WordleView extends JFrame {
 
     public void keyboardListener(ActionListener actionListener) {
         startOverButton.addActionListener(e -> {
-            if (currentLine != LineEnums.Line1) {
+            if (currentLine != LineEnums.Line1 || textArray.get(0).getText().length() > 0) {
                 dispose();
                 WordleView wordleView = new WordleView();
                 WordleModel wordleModel = new WordleModel(wordleView);
@@ -128,12 +127,12 @@ public class WordleView extends JFrame {
 //        delButton.addActionListener(actionListener);
     }
 
-    private void fieldsSetup() {
+    private void textFieldsSetup() {
         JPanel textFieldsPanel = new JPanel();
         JPanel gridPanel = new JPanel();
         JPanel buttonPanel = new JPanel();
 
-        buttonPanel.setBounds(0, 0,900,50);
+        buttonPanel.setBounds(0, 0,900,30);
         buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonPanel.setBackground(Color.white);
         startOverButton.setSize(new Dimension(200, 30));
@@ -147,86 +146,25 @@ public class WordleView extends JFrame {
             field.setPreferredSize(new Dimension(80, 80));
             field.setDocument(new TextFieldHandler());
             field.setEditable(false);
+            field.setEnabled(false);
             field.setBackground(Color.white);
+            field.setDisabledTextColor(Color.black);
             field.setHorizontalAlignment(JTextField.CENTER);
             textFieldsPanel.add(field);
         });
 
-        gridPanel.setBounds(0, 50,900,850);
+        gridPanel.setBounds(0, 30,900,515);
         gridPanel.setBackground(Color.white);
         textFieldsPanel.setBounds(0, 0, 400, 500);
         textFieldsPanel.setLayout(new GridLayout(6, 5, 5, 5));
         textFieldsPanel.setBackground(Color.white);
         gridPanel.add(textFieldsPanel);
         worldlePanel.add(gridPanel);
+    }
 
-//        worldlePanel.add(word1Line1);
-//        worldlePanel.add(word2Line1);
-//        worldlePanel.add(word3Line1);
-//        worldlePanel.add(word4Line1);
-//        worldlePanel.add(word5Line1);
-//        worldlePanel.add(word1Line2);
-//        worldlePanel.add(word2Line2);
-//        worldlePanel.add(word3Line2);
-//        worldlePanel.add(word4Line2);
-//        worldlePanel.add(word5Line2);
-//        worldlePanel.add(word1Line3);
-//        worldlePanel.add(word2Line3);
-//        worldlePanel.add(word3Line3);
-//        worldlePanel.add(word4Line3);
-//        worldlePanel.add(word5Line3);
-//        worldlePanel.add(word1Line4);
-//        worldlePanel.add(word2Line4);
-//        worldlePanel.add(word3Line4);
-//        worldlePanel.add(word4Line4);
-//        worldlePanel.add(word5Line4);
-//        worldlePanel.add(word1Line5);
-//        worldlePanel.add(word2Line5);
-//        worldlePanel.add(word3Line5);
-//        worldlePanel.add(word4Line5);
-//        worldlePanel.add(word5Line5);
-//        worldlePanel.add(word1Line6);
-//        worldlePanel.add(word2Line6);
-//        worldlePanel.add(word3Line6);
-//        worldlePanel.add(word4Line6);
-//        worldlePanel.add(word5Line6);
+    private void keyboardSetup() {
+        JPanel keyboardPanel = new JPanel();
 
-//        //line1
-//        word1Line1.setDocument(new TextFieldHandler());
-//        word2Line1.setDocument(new TextFieldHandler());
-//        word3Line1.setDocument(new TextFieldHandler());
-//        word4Line1.setDocument(new TextFieldHandler());
-//        word5Line1.setDocument(new TextFieldHandler());
-//        //line2
-//        word1Line2.setDocument(new TextFieldHandler());
-//        word2Line2.setDocument(new TextFieldHandler());
-//        word3Line2.setDocument(new TextFieldHandler());
-//        word4Line2.setDocument(new TextFieldHandler());
-//        word5Line2.setDocument(new TextFieldHandler());
-//        //line3
-//        word1Line3.setDocument(new TextFieldHandler());
-//        word2Line3.setDocument(new TextFieldHandler());
-//        word3Line3.setDocument(new TextFieldHandler());
-//        word4Line3.setDocument(new TextFieldHandler());
-//        word5Line3.setDocument(new TextFieldHandler());
-//        //line4
-//        word1Line4.setDocument(new TextFieldHandler());
-//        word2Line4.setDocument(new TextFieldHandler());
-//        word3Line4.setDocument(new TextFieldHandler());
-//        word4Line4.setDocument(new TextFieldHandler());
-//        word5Line4.setDocument(new TextFieldHandler());
-//        //line 5
-//        word1Line5.setDocument(new TextFieldHandler());
-//        word2Line5.setDocument(new TextFieldHandler());
-//        word3Line5.setDocument(new TextFieldHandler());
-//        word4Line5.setDocument(new TextFieldHandler());
-//        word5Line5.setDocument(new TextFieldHandler());
-//        //line 6
-//        word1Line6.setDocument(new TextFieldHandler());
-//        word2Line6.setDocument(new TextFieldHandler());
-//        word3Line6.setDocument(new TextFieldHandler());
-//        word4Line6.setDocument(new TextFieldHandler());
-//        word5Line6.setDocument(new TextFieldHandler());
     }
 
     public ArrayList<JTextField> getTextArray() {
