@@ -33,57 +33,57 @@ public class WordleController {
                 wordleModel.deleteLetter();
             } else {
                 if (wordleView.getCurrentLine() == LineEnums.Line1) {
-                    if (wordleView.getTextArray().get(0).getText().length() < 1) {
-                        wordleView.getTextArray().get(0).setEnabled(true);
-                        wordleView.getTextArray().get(0).setText(String.valueOf(e.getActionCommand()));
+                    if (wordleView.getTextFieldsArray().get(0).getText().length() < 1) {
+                        wordleView.getTextFieldsArray().get(0).setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(0).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
-                    } else if (wordleView.getTextArray().get(0).getText().length() >= 1 &&
-                            wordleView.getTextArray().get(1).getText().length() < 1) {
-                        wordleView.getTextArray().get(1).setEnabled(true);
-                        wordleView.getTextArray().get(1).setText(String.valueOf(e.getActionCommand()));
+                    } else if (wordleView.getTextFieldsArray().get(0).getText().length() >= 1 &&
+                            wordleView.getTextFieldsArray().get(1).getText().length() < 1) {
+                        wordleView.getTextFieldsArray().get(1).setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(1).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
-                    } else if (wordleView.getTextArray().get(1).getText().length() >= 1 &&
-                            wordleView.getTextArray().get(2).getText().length() < 1) {
-                        wordleView.getTextArray().get(2).setEnabled(true);
-                        wordleView.getTextArray().get(2).setText(String.valueOf(e.getActionCommand()));
+                    } else if (wordleView.getTextFieldsArray().get(1).getText().length() >= 1 &&
+                            wordleView.getTextFieldsArray().get(2).getText().length() < 1) {
+                        wordleView.getTextFieldsArray().get(2).setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
-                    } else if (wordleView.getTextArray().get(2).getText().length() >= 1 &&
+                    } else if (wordleView.getTextFieldsArray().get(2).getText().length() >= 1 &&
                             wordleView.getWord4Line1().getText().length() < 1) {
-                        wordleView.getWord4Line1().setEnabled(true);
                         wordleView.getWord4Line1().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord4Line1().getText().length() >= 1 &&
                             wordleView.getWord5Line1().getText().length() < 1) {
-                        wordleView.getWord5Line1().setEnabled(true);
                         wordleView.getWord5Line1().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     }
                 }
                 //line2
                 if (wordleView.getCurrentLine() == LineEnums.Line2) {
                     if (wordleView.getWord1Line2().getText().length() < 1) {
-                        wordleView.getWord1Line2().setEnabled(true);
                         wordleView.getWord1Line2().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord1Line2().getText().length() >= 1 &&
                             wordleView.getWord2Line2().getText().length() < 1) {
-                        wordleView.getWord2Line2().setEnabled(true);
                         wordleView.getWord2Line2().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord2Line2().getText().length() >= 1 &&
                             wordleView.getWord3Line2().getText().length() < 1) {
-                        wordleView.getWord3Line2().setEnabled(true);
                         wordleView.getWord3Line2().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord3Line2().getText().length() >= 1 &&
                             wordleView.getWord4Line2().getText().length() < 1) {
-                        wordleView.getWord4Line2().setEnabled(true);
                         wordleView.getWord4Line2().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord4Line2().getText().length() >= 1 &&
                             wordleView.getWord5Line2().getText().length() < 1) {
-                        wordleView.getWord5Line2().setEnabled(true);
                         wordleView.getWord5Line2().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     }
                 }
@@ -91,28 +91,28 @@ public class WordleController {
                 //line3
                 if (wordleView.getCurrentLine() == LineEnums.Line3) {
                     if (wordleView.getWord1Line3().getText().length() < 1) {
-                        wordleView.getWord1Line3().setEnabled(true);
                         wordleView.getWord1Line3().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord1Line3().getText().length() >= 1 &&
                             wordleView.getWord2Line3().getText().length() < 1) {
-                        wordleView.getWord2Line3().setEnabled(true);
                         wordleView.getWord2Line3().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord2Line3().getText().length() >= 1 &&
                             wordleView.getWord3Line3().getText().length() < 1) {
-                        wordleView.getWord3Line3().setEnabled(true);
                         wordleView.getWord3Line3().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord3Line3().getText().length() >= 1 &&
                             wordleView.getWord4Line3().getText().length() < 1) {
-                        wordleView.getWord4Line3().setEnabled(true);
                         wordleView.getWord4Line3().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord4Line3().getText().length() >= 1 &&
                             wordleView.getWord5Line3().getText().length() < 1) {
-                        wordleView.getWord5Line3().setEnabled(true);
                         wordleView.getWord5Line3().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     }
                 }
@@ -120,28 +120,28 @@ public class WordleController {
                 //line4
                 if (wordleView.getCurrentLine() == LineEnums.Line4) {
                     if (wordleView.getWord1Line4().getText().length() < 1) {
-                        wordleView.getWord1Line4().setEnabled(true);
                         wordleView.getWord1Line4().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord1Line4().getText().length() >= 1 &&
                             wordleView.getWord2Line4().getText().length() < 1) {
-                        wordleView.getWord2Line4().setEnabled(true);
                         wordleView.getWord2Line4().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord2Line4().getText().length() >= 1 &&
                             wordleView.getWord3Line4().getText().length() < 1) {
-                        wordleView.getWord3Line4().setEnabled(true);
                         wordleView.getWord3Line4().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord3Line4().getText().length() >= 1 &&
                             wordleView.getWord4Line4().getText().length() < 1) {
-                        wordleView.getWord4Line4().setEnabled(true);
                         wordleView.getWord4Line4().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord4Line4().getText().length() >= 1 &&
                             wordleView.getWord5Line4().getText().length() < 1) {
-                        wordleView.getWord5Line4().setEnabled(true);
                         wordleView.getWord5Line4().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     }
                 }
@@ -149,28 +149,28 @@ public class WordleController {
                 //line5
                 if (wordleView.getCurrentLine() == LineEnums.Line5) {
                     if (wordleView.getWord1Line5().getText().length() < 1) {
-                        wordleView.getWord1Line5().setEnabled(true);
                         wordleView.getWord1Line5().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord1Line5().getText().length() >= 1 &&
                             wordleView.getWord2Line5().getText().length() < 1) {
-                        wordleView.getWord2Line5().setEnabled(true);
                         wordleView.getWord2Line5().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord2Line5().getText().length() >= 1 &&
                             wordleView.getWord3Line5().getText().length() < 1) {
-                        wordleView.getWord3Line5().setEnabled(true);
                         wordleView.getWord3Line5().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord3Line5().getText().length() >= 1 &&
                             wordleView.getWord4Line5().getText().length() < 1) {
-                        wordleView.getWord4Line5().setEnabled(true);
                         wordleView.getWord4Line5().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord4Line5().getText().length() >= 1 &&
                             wordleView.getWord5Line5().getText().length() < 1) {
-                        wordleView.getWord5Line5().setEnabled(true);
                         wordleView.getWord5Line5().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     }
                 }
@@ -178,28 +178,28 @@ public class WordleController {
                 //line6
                 if (wordleView.getCurrentLine() == LineEnums.Line6) {
                     if (wordleView.getWord1Line6().getText().length() < 1) {
-                        wordleView.getWord1Line6().setEnabled(true);
                         wordleView.getWord1Line6().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord1Line6().getText().length() >= 1 &&
                             wordleView.getWord2Line6().getText().length() < 1) {
-                        wordleView.getWord2Line6().setEnabled(true);
                         wordleView.getWord2Line6().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord2Line6().getText().length() >= 1 &&
                             wordleView.getWord3Line6().getText().length() < 1) {
-                        wordleView.getWord3Line6().setEnabled(true);
                         wordleView.getWord3Line6().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord3Line6().getText().length() >= 1 &&
                             wordleView.getWord4Line6().getText().length() < 1) {
-                        wordleView.getWord4Line6().setEnabled(true);
                         wordleView.getWord4Line6().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     } else if (wordleView.getWord4Line6().getText().length() >= 1 &&
                             wordleView.getWord5Line6().getText().length() < 1) {
-                        wordleView.getWord5Line6().setEnabled(true);
                         wordleView.getWord5Line6().setText(String.valueOf(e.getActionCommand()));
+                        wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
                         wordleView.getWorldlePanel().requestFocus();
                     }
                 }
@@ -229,67 +229,57 @@ public class WordleController {
                 if (acceptableLetters.contains(String.valueOf(e.getKeyChar()))) {
                     //line1
                     if (wordleView.getCurrentLine() == LineEnums.Line1) {
-                        if (wordleView.getTextArray().get(0).getText().length() < 1) {
-//                            wordleView.getTextArray().get(0).setEnabled(true);
-                            wordleView.getTextArray().get(0).setBorder(BorderFactory.createLineBorder(Color.black));
-                            wordleView.getTextArray().get(0).setText(String.valueOf(e.getKeyChar()));
+                        if (wordleView.getTextFieldsArray().get(0).getText().length() < 1) {
+                            wordleView.getTextFieldsArray().get(0).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(0).setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
-                        } else if (wordleView.getTextArray().get(0).getText().length() >= 1 &&
-                                wordleView.getTextArray().get(1).getText().length() < 1) {
-//                            wordleView.getTextArray().get(1).setEnabled(true);
-                            wordleView.getTextArray().get(1).setBorder(BorderFactory.createLineBorder(Color.black));
-                            wordleView.getTextArray().get(1).setText(String.valueOf(e.getKeyChar()));
+                        } else if (wordleView.getTextFieldsArray().get(0).getText().length() >= 1 &&
+                                wordleView.getTextFieldsArray().get(1).getText().length() < 1) {
+                            wordleView.getTextFieldsArray().get(1).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(1).setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
-                        } else if (wordleView.getTextArray().get(1).getText().length() >= 1 &&
-                                wordleView.getTextArray().get(2).getText().length() < 1) {
-//                            wordleView.getTextArray().get(2).setEnabled(true);
-                            wordleView.getTextArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
-                            wordleView.getTextArray().get(2).setText(String.valueOf(e.getKeyChar()));
+                        } else if (wordleView.getTextFieldsArray().get(1).getText().length() >= 1 &&
+                                wordleView.getTextFieldsArray().get(2).getText().length() < 1) {
+                            wordleView.getTextFieldsArray().get(2).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(2).setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
-                        } else if (wordleView.getTextArray().get(2).getText().length() >= 1 &&
-                                wordleView.getTextArray().get(3).getText().length() < 1) {
-//                            wordleView.getTextArray().get(3).setEnabled(true);
-                            wordleView.getTextArray().get(3).setBorder(BorderFactory.createLineBorder(Color.black));
-                            wordleView.getTextArray().get(3).setText(String.valueOf(e.getKeyChar()));
+                        } else if (wordleView.getTextFieldsArray().get(2).getText().length() >= 1 &&
+                                wordleView.getTextFieldsArray().get(3).getText().length() < 1) {
+                            wordleView.getTextFieldsArray().get(3).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(3).setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
-                        } else if (wordleView.getTextArray().get(3).getText().length() >= 1 &&
-                                wordleView.getTextArray().get(4).getText().length() < 1) {
-//                            wordleView.getTextArray().get(4).setEnabled(true);
-                            wordleView.getTextArray().get(4).setBorder(BorderFactory.createLineBorder(Color.black));
-                            wordleView.getTextArray().get(4).setText(String.valueOf(e.getKeyChar()));
+                        } else if (wordleView.getTextFieldsArray().get(3).getText().length() >= 1 &&
+                                wordleView.getTextFieldsArray().get(4).getText().length() < 1) {
+                            wordleView.getTextFieldsArray().get(4).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(4).setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         }
                     }
 
                     //line2
                     if (wordleView.getCurrentLine() == LineEnums.Line2) {
-                        if (wordleView.getTextArray().get(5).getText().length() < 1) {
-//                            wordleView.getTextArray().get(5).setEnabled(true);
-                            wordleView.getTextArray().get(5).setBorder(BorderFactory.createLineBorder(Color.black));
-                            wordleView.getTextArray().get(5).setText(String.valueOf(e.getKeyChar()));
+                        if (wordleView.getTextFieldsArray().get(5).getText().length() < 1) {
+                            wordleView.getTextFieldsArray().get(5).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(5).setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord1Line2().getText().length() >= 1 &&
                                 wordleView.getWord2Line2().getText().length() < 1) {
-//                            wordleView.getWord2Line2().setEnabled(true);
-                            wordleView.getTextArray().get(6).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(6).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord2Line2().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord2Line2().getText().length() >= 1 &&
                                 wordleView.getWord3Line2().getText().length() < 1) {
-//                            wordleView.getWord3Line2().setEnabled(true);
-                            wordleView.getTextArray().get(7).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(7).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord3Line2().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord3Line2().getText().length() >= 1 &&
                                 wordleView.getWord4Line2().getText().length() < 1) {
-//                            wordleView.getWord4Line2().setEnabled(true);
-                            wordleView.getTextArray().get(8).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(8).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord4Line2().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord4Line2().getText().length() >= 1 &&
                                 wordleView.getWord5Line2().getText().length() < 1) {
-//                            wordleView.getWord5Line2().setEnabled(true);
-                            wordleView.getTextArray().get(9).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(9).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord5Line2().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         }
@@ -298,32 +288,27 @@ public class WordleController {
                     //line3
                     if (wordleView.getCurrentLine() == LineEnums.Line3) {
                         if (wordleView.getWord1Line3().getText().length() < 1) {
-//                            wordleView.getWord1Line3().setEnabled(true);
-                            wordleView.getTextArray().get(10).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(10).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord1Line3().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord1Line3().getText().length() >= 1 &&
                                 wordleView.getWord2Line3().getText().length() < 1) {
-//                            wordleView.getWord2Line3().setEnabled(true);
-                            wordleView.getTextArray().get(11).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(11).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord2Line3().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord2Line3().getText().length() >= 1 &&
                                 wordleView.getWord3Line3().getText().length() < 1) {
-//                            wordleView.getWord3Line3().setEnabled(true);
-                            wordleView.getTextArray().get(12).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(12).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord3Line3().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord3Line3().getText().length() >= 1 &&
                                 wordleView.getWord4Line3().getText().length() < 1) {
-//                            wordleView.getWord4Line3().setEnabled(true);
-                            wordleView.getTextArray().get(13).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(13).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord4Line3().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord4Line3().getText().length() >= 1 &&
                                 wordleView.getWord5Line3().getText().length() < 1) {
-//                            wordleView.getWord5Line3().setEnabled(true);
-                            wordleView.getTextArray().get(14).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(14).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord5Line3().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         }
@@ -332,32 +317,27 @@ public class WordleController {
                     //line4
                     if (wordleView.getCurrentLine() == LineEnums.Line4) {
                         if (wordleView.getWord1Line4().getText().length() < 1) {
-                            wordleView.getWord1Line4().setEnabled(true);
-                            wordleView.getTextArray().get(15).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(15).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord1Line4().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord1Line4().getText().length() >= 1 &&
                                 wordleView.getWord2Line4().getText().length() < 1) {
-                            wordleView.getWord2Line4().setEnabled(true);
-                            wordleView.getTextArray().get(15).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(15).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord2Line4().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord2Line4().getText().length() >= 1 &&
                                 wordleView.getWord3Line4().getText().length() < 1) {
-//                            wordleView.getWord3Line4().setEnabled(true);
-                            wordleView.getTextArray().get(16).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(16).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord3Line4().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord3Line4().getText().length() >= 1 &&
                                 wordleView.getWord4Line4().getText().length() < 1) {
-//                            wordleView.getWord4Line4().setEnabled(true);
-                            wordleView.getTextArray().get(17).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(17).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord4Line4().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord4Line4().getText().length() >= 1 &&
                                 wordleView.getWord5Line4().getText().length() < 1) {
-//                            wordleView.getWord5Line4().setEnabled(true);
-                            wordleView.getTextArray().get(18).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(18).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord5Line4().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         }
@@ -366,32 +346,27 @@ public class WordleController {
                     //line5
                     if (wordleView.getCurrentLine() == LineEnums.Line5) {
                         if (wordleView.getWord1Line5().getText().length() < 1) {
-//                            wordleView.getWord1Line5().setEnabled(true);
-                            wordleView.getTextArray().get(19).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(19).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord1Line5().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord1Line5().getText().length() >= 1 &&
                                 wordleView.getWord2Line5().getText().length() < 1) {
-//                            wordleView.getWord2Line5().setEnabled(true);
-                            wordleView.getTextArray().get(20).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(20).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord2Line5().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord2Line5().getText().length() >= 1 &&
                                 wordleView.getWord3Line5().getText().length() < 1) {
-//                            wordleView.getWord3Line5().setEnabled(true);
-                            wordleView.getTextArray().get(21).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(21).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord3Line5().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord3Line5().getText().length() >= 1 &&
                                 wordleView.getWord4Line5().getText().length() < 1) {
-//                            wordleView.getWord4Line5().setEnabled(true);
-                            wordleView.getTextArray().get(22).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(22).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord4Line5().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord4Line5().getText().length() >= 1 &&
                                 wordleView.getWord5Line5().getText().length() < 1) {
-//                            wordleView.getWord5Line5().setEnabled(true);
-                            wordleView.getTextArray().get(23).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(23).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord5Line5().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         }
@@ -400,32 +375,27 @@ public class WordleController {
                     //line6
                     if (wordleView.getCurrentLine() == LineEnums.Line6) {
                         if (wordleView.getWord1Line6().getText().length() < 1) {
-//                            wordleView.getWord1Line6().setEnabled(true);
-                            wordleView.getTextArray().get(24).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(24).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord1Line6().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord1Line6().getText().length() >= 1 &&
                                 wordleView.getWord2Line6().getText().length() < 1) {
-//                            wordleView.getWord2Line6().setEnabled(true);
-                            wordleView.getTextArray().get(25).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(25).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord2Line6().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord2Line6().getText().length() >= 1 &&
                                 wordleView.getWord3Line6().getText().length() < 1) {
-//                            wordleView.getWord3Line6().setEnabled(true);
-                            wordleView.getTextArray().get(26).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(26).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord3Line6().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord3Line6().getText().length() >= 1 &&
                                 wordleView.getWord4Line6().getText().length() < 1) {
-//                            wordleView.getWord4Line6().setEnabled(true);
-                            wordleView.getTextArray().get(27).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(27).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord4Line6().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         } else if (wordleView.getWord4Line6().getText().length() >= 1 &&
                                 wordleView.getWord5Line6().getText().length() < 1) {
-//                            wordleView.getWord5Line6().setEnabled(true);
-                            wordleView.getTextArray().get(28).setBorder(BorderFactory.createLineBorder(Color.black));
+                            wordleView.getTextFieldsArray().get(28).setBorder(BorderFactory.createLineBorder(Color.black));
                             wordleView.getWord5Line6().setText(String.valueOf(e.getKeyChar()));
                             wordleView.getWorldlePanel().requestFocus();
                         }
