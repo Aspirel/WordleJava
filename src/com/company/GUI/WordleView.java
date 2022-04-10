@@ -46,23 +46,18 @@ public class WordleView extends JFrame {
         }
     };
 
-    private final ArrayList<JButton> buttonsLine1 = new ArrayList<>(){
-            {
-                add(new JButton("Q"));
-                add(new JButton("W"));
-                add(new JButton("E"));
-                add(new JButton("R"));
-                add(new JButton("T"));
-                add(new JButton("Y"));
-                add(new JButton("U"));
-                add(new JButton("I"));
-                add(new JButton("O"));
-                add(new JButton("P"));
-            }
-    };
-
-    private final ArrayList<JButton> buttonsLine2 = new ArrayList<>(){
+    private final ArrayList<JButton> buttonsArray = new ArrayList<>() {
         {
+            add(new JButton("Q"));
+            add(new JButton("W"));
+            add(new JButton("E"));
+            add(new JButton("R"));
+            add(new JButton("T"));
+            add(new JButton("Y"));
+            add(new JButton("U"));
+            add(new JButton("I"));
+            add(new JButton("O"));
+            add(new JButton("P"));
             add(new JButton("A"));
             add(new JButton("S"));
             add(new JButton("D"));
@@ -72,11 +67,6 @@ public class WordleView extends JFrame {
             add(new JButton("J"));
             add(new JButton("K"));
             add(new JButton("L"));
-        }
-    };
-
-    private final ArrayList<JButton> buttonsLine3 = new ArrayList<>(){
-        {
             add(new JButton("ENTER"));
             add(new JButton("Z"));
             add(new JButton("X"));
@@ -104,11 +94,14 @@ public class WordleView extends JFrame {
         //centers the window (java 1.4 and newer)
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+
         worldlePanel.setBackground(Color.white);
 
         this.keyboardSetup();
         this.textFieldsSetup();
 
+        //This ensures the window with the text fields gets the focus as soon as it is opened.
+        //With this listener, the user doesn't have to click the window or the text field to start typing.
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowOpened(WindowEvent e) {
@@ -125,7 +118,9 @@ public class WordleView extends JFrame {
 
     public void keyboardListener(ActionListener actionListener) {
         startOverButton.addActionListener(e -> {
-            if (currentLine != LineEnums.Line1 || textFieldsArray.get(0).getText().length() > 0) {
+            //Only enabled if the current line is not the first one.
+            //Meaning a first guess was already made since it sets the next line once a line is checked.
+            if (currentLine != LineEnums.Line1) {
                 dispose();
                 WordleView wordleView = new WordleView();
                 WordleModel wordleModel = new WordleModel(wordleView);
@@ -136,9 +131,7 @@ public class WordleView extends JFrame {
             }
         });
         //Adds an action listener to every button in the array
-        buttonsLine1.forEach(button -> button.addActionListener(actionListener));
-        buttonsLine2.forEach(button -> button.addActionListener(actionListener));
-        buttonsLine3.forEach(button -> button.addActionListener(actionListener));
+        buttonsArray.forEach(button -> button.addActionListener(actionListener));
     }
 
     private void textFieldsSetup() {
@@ -149,11 +142,9 @@ public class WordleView extends JFrame {
         buttonPanel.setBounds(0, 0, 800, 30);
         buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonPanel.setBackground(Color.white);
-        startOverButton.setSize(new Dimension(200, 30));
-        startOverButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        startOverButton.setBackground(Color.white);
-        worldlePanel.add(buttonPanel);
+        startOverButton.setBackground(Color.decode("#edeff1"));
         buttonPanel.add(startOverButton);
+        worldlePanel.add(buttonPanel);
 
         textFieldsArray.forEach(field -> {
             field.setFont(new Font("SansSerif", Font.BOLD, 30));
@@ -190,38 +181,33 @@ public class WordleView extends JFrame {
         keyboardPanelLine3.setBackground(Color.white);
         keyboardPanelLine3.setLayout(new FlowLayout(FlowLayout.CENTER, 9, 2));
 
-        buttonsLine1.forEach(button -> {
+        int i = 1;
+        for(JButton button : buttonsArray){
             button.setFont(new Font("SansSerif", Font.BOLD, 13));
-            button.setPreferredSize(new Dimension(50, 55));
             button.setBorderPainted(false);
             button.setBackground(Color.decode("#edeff1"));
-            keyboardPanelLine1.add(button);
-        });
 
-        buttonsLine2.forEach(button -> {
-            button.setFont(new Font("SansSerif", Font.BOLD, 14));
-            button.setPreferredSize(new Dimension(50, 55));
-            button.setBorderPainted(false);
-            button.setBackground(Color.decode("#edeff1"));
-//            button.setBorder(new RoundedBorder(10));
-            keyboardPanelLine2.add(button);
-        });
-
-        buttonsLine3.forEach(button -> {
-            button.setFont(new Font("SansSerif", Font.BOLD, 13));
-            if (button.getText().equals("ENTER")){
+            if (button.getText().equals("ENTER")) {
                 button.setPreferredSize(new Dimension(90, 55));
-            }else if(button.getText().equals("DEL")){
-                button.setText(null);
+            } else if (button.getText().equals("DEL")) {
+                //unfortunately there is no good way to hide a button's text, so I set it empty instead.
+                //This is specific isolated case because I want an icon instead.
+                button.setText("");
                 button.setIcon(delIcon);
                 button.setPreferredSize(new Dimension(60, 55));
-            }else {
+            } else {
                 button.setPreferredSize(new Dimension(50, 55));
             }
-            button.setBorderPainted(false);
-            button.setBackground(Color.decode("#edeff1"));
-            keyboardPanelLine3.add(button);
-        });
+
+            if(i <= 10){
+                keyboardPanelLine1.add(button);
+            }else if (i <= 19){
+                keyboardPanelLine2.add(button);
+            }else if (i <= 28){
+                keyboardPanelLine3.add(button);
+            }
+            i++;
+        }
 
         bottomPanel.add(keyboardPanelLine1);
         bottomPanel.add(keyboardPanelLine2);
@@ -241,9 +227,12 @@ public class WordleView extends JFrame {
         this.currentLine = currentLine;
     }
 
-
     public JPanel getWorldlePanel() {
         return worldlePanel;
+    }
+
+    public ArrayList<JButton> getButtonsArray() {
+        return buttonsArray;
     }
 
 }
