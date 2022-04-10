@@ -3,7 +3,6 @@ package com.company.GUI;
 import com.company.Utils.LineEnums;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
@@ -12,11 +11,6 @@ import java.util.Objects;
 
 public class WordleView extends JFrame {
     private final ImageIcon delIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("delete.png")));
-    private JTextField  word4Line1, word5Line1, word1Line2, word2Line2, word3Line2,
-            word4Line2, word5Line2, word1Line3, word2Line3, word3Line3, word4Line3, word5Line3, word1Line4, word2Line4,
-            word3Line4, word4Line4, word5Line4, word1Line5, word2Line5, word3Line5, word4Line5, word5Line5, word1Line6,
-            word2Line6, word3Line6, word4Line6, word5Line6;
-
     private final ArrayList<JTextField> textFieldsArray = new ArrayList<>() {
         {
             add(new JTextField("word1Line1"));
@@ -109,11 +103,11 @@ public class WordleView extends JFrame {
         this.setLayout(null);
         //centers the window (java 1.4 and newer)
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         worldlePanel.setBackground(Color.white);
 
         this.keyboardSetup();
         this.textFieldsSetup();
-
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -135,7 +129,7 @@ public class WordleView extends JFrame {
                 dispose();
                 WordleView wordleView = new WordleView();
                 WordleModel wordleModel = new WordleModel(wordleView);
-                WordleController wordleController = new WordleController(wordleModel, wordleView);
+                new WordleController(wordleModel, wordleView);
                 wordleView.setVisible(true);
             } else {
                 worldlePanel.requestFocus();
@@ -247,141 +241,10 @@ public class WordleView extends JFrame {
         this.currentLine = currentLine;
     }
 
-    public JTextField getWord4Line1() {
-        return word4Line1;
-    }
-
-    public JTextField getWord5Line1() {
-        return word5Line1;
-    }
-
-    public JTextField getWord1Line2() {
-        return word1Line2;
-    }
-
-    public JTextField getWord2Line2() {
-        return word2Line2;
-    }
-
-    public JTextField getWord3Line2() {
-        return word3Line2;
-    }
-
-    public JTextField getWord4Line2() {
-        return word4Line2;
-    }
-
-    public JTextField getWord5Line2() {
-        return word5Line2;
-    }
-
-    public JTextField getWord1Line3() {
-        return word1Line3;
-    }
-
-    public JTextField getWord2Line3() {
-        return word2Line3;
-    }
-
-    public JTextField getWord3Line3() {
-        return word3Line3;
-    }
-
-    public JTextField getWord4Line3() {
-        return word4Line3;
-    }
-
-    public JTextField getWord5Line3() {
-        return word5Line3;
-    }
-
-    public JTextField getWord1Line4() {
-        return word1Line4;
-    }
-
-    public JTextField getWord2Line4() {
-        return word2Line4;
-    }
-
-    public JTextField getWord3Line4() {
-        return word3Line4;
-    }
-
-    public JTextField getWord4Line4() {
-        return word4Line4;
-    }
-
-    public JTextField getWord5Line4() {
-        return word5Line4;
-    }
-
-    public JTextField getWord1Line5() {
-        return word1Line5;
-    }
-
-    public JTextField getWord2Line5() {
-        return word2Line5;
-    }
-
-    public JTextField getWord3Line5() {
-        return word3Line5;
-    }
-
-    public JTextField getWord4Line5() {
-        return word4Line5;
-    }
-
-    public JTextField getWord5Line5() {
-        return word5Line5;
-    }
-
-    public JTextField getWord1Line6() {
-        return word1Line6;
-    }
-
-    public JTextField getWord2Line6() {
-        return word2Line6;
-    }
-
-    public JTextField getWord3Line6() {
-        return word3Line6;
-    }
-
-    public JTextField getWord4Line6() {
-        return word4Line6;
-    }
-
-    public JTextField getWord5Line6() {
-        return word5Line6;
-    }
 
     public JPanel getWorldlePanel() {
         return worldlePanel;
     }
 
-    private static class RoundedBorder implements Border {
-
-        private int radius;
-
-
-        RoundedBorder(int radius) {
-            this.radius = radius;
-        }
-
-
-        public Insets getBorderInsets(Component c) {
-            return new Insets(this.radius+1, this.radius+1, this.radius+2, this.radius);
-        }
-
-
-        public boolean isBorderOpaque() {
-            return true;
-        }
-
-
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            g.drawRoundRect(x, y, width-1, height-1, radius, radius);
-        }
-    }
 }
 
