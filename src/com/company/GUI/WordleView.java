@@ -1,6 +1,6 @@
 package com.company.GUI;
 
-import com.company.Utils.Enums;
+import com.company.Utils.LinesEnum;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -83,7 +83,7 @@ public class WordleView extends JFrame implements Observer {
 
     private final JPanel worldlePanel = new JPanel();
     private final JButton startOverButton = new JButton("Start Over");
-    private Enums.LinesEnum currentLine = Enums.LinesEnum.Line1;
+    private LinesEnum currentLine = LinesEnum.Line1;
     private final WordleModel wordleModel;
 
     public WordleView(WordleModel wordleModel) {
@@ -123,7 +123,7 @@ public class WordleView extends JFrame implements Observer {
         startOverButton.addActionListener(e -> {
             //Only enabled if the current line is not the first one.
             //Meaning a first guess was already made since it sets the next line once a line is checked.
-            if (currentLine != Enums.LinesEnum.Line1) {
+            if (currentLine != LinesEnum.Line1) {
                 dispose();
                 WordleModel wordleModel = new WordleModel();
                 WordleView wordleView = new WordleView(wordleModel);
@@ -225,9 +225,10 @@ public class WordleView extends JFrame implements Observer {
             textFieldsArray.get((Integer) arg).setBorder(wordleModel.getBorderColor());
             textFieldsArray.get((Integer) arg).setBackground(wordleModel.getBackgroundColor());
         }
-        if(arg instanceof Enums.LinesEnum){
-            currentLine = (Enums.LinesEnum) arg;
+        if(arg instanceof LinesEnum){
+            currentLine = (LinesEnum) arg;
         }
+        worldlePanel.repaint();
     }
 
     public ArrayList<JTextField> getTextFieldsArray() {

@@ -1,6 +1,7 @@
 package com.company.GUI;
 
-import com.company.Utils.Enums;
+import com.company.Utils.LinesEnum;
+import com.company.Utils.TextFieldsEnum;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -12,7 +13,7 @@ import java.util.Observable;
 
 public class WordleModel extends Observable {
 
-    private Enums.LinesEnum currentLine = Enums.LinesEnum.Line1;
+    private LinesEnum currentLine = LinesEnum.Line1;
     private LineBorder borderColor;
     private Color backgroundColor;
     private String letter;
@@ -20,39 +21,39 @@ public class WordleModel extends Observable {
     public void processWord(ArrayList<JTextField> arrayList, WordleView wordleView) {
         switch (currentLine) {
             case Line1 -> {
-                if (arrayList.get(4).getText().length() >= 1) {
-                    wordCheck(0, 4, wordleView);
-                    setCurrentLine(Enums.LinesEnum.Line2);
+                if (arrayList.get(TextFieldsEnum.word5Line1.ordinal()).getText().length() >= 1) {
+                    wordCheck(TextFieldsEnum.word1Line1.ordinal(), TextFieldsEnum.word5Line1.ordinal(), wordleView);
+                    setCurrentLine(LinesEnum.Line2);
                 }
             }
             case Line2 -> {
-                if (arrayList.get(9).getText().length() >= 1) {
-                    wordCheck(5, 9, wordleView);
-                    setCurrentLine(Enums.LinesEnum.Line3);
+                if (arrayList.get(TextFieldsEnum.word5Line2.ordinal()).getText().length() >= 1) {
+                    wordCheck(TextFieldsEnum.word1Line2.ordinal(), TextFieldsEnum.word5Line2.ordinal(), wordleView);
+                    setCurrentLine(LinesEnum.Line3);
                 }
             }
             case Line3 -> {
-                if (arrayList.get(14).getText().length() >= 1) {
-                    wordCheck(10, 14, wordleView);
-                    setCurrentLine(Enums.LinesEnum.Line4);
+                if (arrayList.get(TextFieldsEnum.word5Line3.ordinal()).getText().length() >= 1) {
+                    wordCheck(TextFieldsEnum.word1Line3.ordinal(), TextFieldsEnum.word5Line3.ordinal(), wordleView);
+                    setCurrentLine(LinesEnum.Line4);
                 }
             }
             case Line4 -> {
-                if (arrayList.get(19).getText().length() >= 1) {
-                    wordCheck(15, 19, wordleView);
-                    setCurrentLine(Enums.LinesEnum.Line5);
+                if (arrayList.get(TextFieldsEnum.word5Line4.ordinal()).getText().length() >= 1) {
+                    wordCheck(TextFieldsEnum.word1Line4.ordinal(), TextFieldsEnum.word5Line4.ordinal(), wordleView);
+                    setCurrentLine(LinesEnum.Line5);
                 }
             }
             case Line5 -> {
-                if (arrayList.get(24).getText().length() >= 1) {
-                    wordCheck(20, 24, wordleView);
-                    setCurrentLine(Enums.LinesEnum.Line6);
+                if (arrayList.get(TextFieldsEnum.word5Line5.ordinal()).getText().length() >= 1) {
+                    wordCheck(TextFieldsEnum.word1Line5.ordinal(), TextFieldsEnum.word5Line5.ordinal(), wordleView);
+                    setCurrentLine(LinesEnum.Line6);
                 }
             }
             case Line6 -> {
-                if (arrayList.get(29).getText().length() >= 1) {
-                    wordCheck(25, 29, wordleView);
-                    setCurrentLine(Enums.LinesEnum.Over);
+                if (arrayList.get(TextFieldsEnum.word5Line6.ordinal()).getText().length() >= 1) {
+                    wordCheck(TextFieldsEnum.word1Line6.ordinal(), TextFieldsEnum.word5Line6.ordinal(), wordleView);
+                    setCurrentLine(LinesEnum.Over);
                 }
             }
         }
@@ -100,135 +101,165 @@ public class WordleModel extends Observable {
     public void addLetter(ArrayList<JTextField> arrayList, ActionEvent a, KeyEvent k) {
         switch (currentLine) {
             case Line1 -> {
-                if (arrayList.get(0).getText().length() < 1) {
+                if (arrayList.get(TextFieldsEnum.word1Line1.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 0);
-                } else if (arrayList.get(0).getText().length() >= 1 &&
-                        arrayList.get(1).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word1Line1.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word1Line1.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word2Line1.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 1);
-                } else if (arrayList.get(1).getText().length() >= 1 &&
-                        arrayList.get(2).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word2Line1.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word2Line1.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word3Line1.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 2);
-                } else if (arrayList.get(2).getText().length() >= 1 &&
-                        arrayList.get(3).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word3Line1.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word3Line1.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word4Line1.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 3);
-                } else if (arrayList.get(3).getText().length() >= 1 &&
-                        arrayList.get(4).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word4Line1.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word4Line1.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word5Line1.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 4);
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word5Line1.ordinal());
                 }
             }
             case Line2 -> {
-                if (arrayList.get(5).getText().length() < 1) {
+                if (arrayList.get(TextFieldsEnum.word1Line2.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 5);
-                } else if (arrayList.get(5).getText().length() >= 1 &&
-                        arrayList.get(6).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word1Line2.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word1Line2.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word2Line2.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 6);
-                } else if (arrayList.get(6).getText().length() >= 1 &&
-                        arrayList.get(7).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word2Line2.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word2Line2.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word3Line2.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 7);
-                } else if (arrayList.get(7).getText().length() >= 1 &&
-                        arrayList.get(8).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word3Line2.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word3Line2.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word4Line2.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 8);
-                } else if (arrayList.get(8).getText().length() >= 1 &&
-                        arrayList.get(9).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word4Line2.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word4Line2.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word5Line2.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 9);
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word5Line2.ordinal());
                 }
             }
             case Line3 -> {
-                if (arrayList.get(10).getText().length() < 1) {
+                if (arrayList.get(TextFieldsEnum.word1Line3.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 10);
-                } else if (arrayList.get(10).getText().length() >= 1 &&
-                        arrayList.get(11).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word1Line3.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word1Line3.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word2Line3.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 11);
-                } else if (arrayList.get(11).getText().length() >= 1 &&
-                        arrayList.get(12).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word2Line3.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word2Line3.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word3Line3.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 12);
-                } else if (arrayList.get(12).getText().length() >= 1 &&
-                        arrayList.get(13).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word3Line3.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word3Line3.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word4Line3.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 13);
-                } else if (arrayList.get(13).getText().length() >= 1 &&
-                        arrayList.get(14).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word4Line3.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word4Line3.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word5Line3.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 14);
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word5Line3.ordinal());
                 }
             }
             case Line4 -> {
-                if (arrayList.get(15).getText().length() < 1) {
+                if (arrayList.get(TextFieldsEnum.word1Line4.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 15);
-                } else if (arrayList.get(15).getText().length() >= 1 &&
-                        arrayList.get(16).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word1Line4.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word1Line4.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word2Line4.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 16);
-                } else if (arrayList.get(16).getText().length() >= 1 &&
-                        arrayList.get(17).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word2Line4.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word2Line4.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word3Line4.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 17);
-                } else if (arrayList.get(17).getText().length() >= 1 &&
-                        arrayList.get(18).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word3Line4.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word3Line4.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word4Line4.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 18);
-                } else if (arrayList.get(18).getText().length() >= 1 &&
-                        arrayList.get(19).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word4Line4.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word4Line4.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word5Line4.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 19);
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word5Line4.ordinal());
                 }
             }
             case Line5 -> {
-                if (arrayList.get(20).getText().length() < 1) {
+                if (arrayList.get(TextFieldsEnum.word1Line5.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 20);
-                } else if (arrayList.get(20).getText().length() >= 1 &&
-                        arrayList.get(21).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word1Line5.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word1Line5.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word2Line5.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 21);
-                } else if (arrayList.get(21).getText().length() >= 1 &&
-                        arrayList.get(22).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word2Line5.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word2Line5.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word3Line5.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 22);
-                } else if (arrayList.get(22).getText().length() >= 1 &&
-                        arrayList.get(23).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word3Line5.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word3Line5.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word4Line5.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 23);
-                } else if (arrayList.get(23).getText().length() >= 1 &&
-                        arrayList.get(24).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word4Line5.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word4Line5.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word5Line5.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 24);
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word5Line5.ordinal());
                 }
             }
             case Line6 -> {
-                if (arrayList.get(25).getText().length() < 1) {
+                if (arrayList.get(TextFieldsEnum.word1Line6.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 25);
-                } else if (arrayList.get(25).getText().length() >= 1 &&
-                        arrayList.get(26).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word1Line6.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word1Line6.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word2Line6.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 26);
-                } else if (arrayList.get(26).getText().length() >= 1 &&
-                        arrayList.get(27).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word2Line6.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word2Line6.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word3Line6.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 27);
-                } else if (arrayList.get(27).getText().length() >= 1 &&
-                        arrayList.get(28).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word3Line6.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word3Line6.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word4Line6.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 28);
-                } else if (arrayList.get(28).getText().length() >= 1 &&
-                        arrayList.get(29).getText().length() < 1) {
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word4Line6.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word4Line6.ordinal()).getText().length() >= 1 &&
+                        arrayList.get(TextFieldsEnum.word5Line6.ordinal()).getText().length() < 1) {
                     processLetter(new LineBorder(Color.black),
-                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()), 29);
+                            String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()),
+                            TextFieldsEnum.word5Line6.ordinal());
                 }
             }
         }
@@ -237,137 +268,138 @@ public class WordleModel extends Observable {
     public void deleteLetter(ArrayList<JTextField> arrayList) {
         switch (currentLine) {
             case Line1 -> {
-                if (arrayList.get(4).getText().length() >= 1) {
+                if (arrayList.get(TextFieldsEnum.word5Line1.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 4);
-                } else if (arrayList.get(4).getText().length() == 0 &&
-                        arrayList.get(3).getText().length() >= 1) {
+                            null, TextFieldsEnum.word5Line1.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word5Line1.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word4Line1.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 3);
-                } else if (arrayList.get(3).getText().length() == 0 &&
-                        arrayList.get(2).getText().length() >= 1) {
+                            null, TextFieldsEnum.word4Line1.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word4Line1.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word3Line1.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 2);
-                } else if (arrayList.get(2).getText().length() == 0 &&
-                        arrayList.get(1).getText().length() >= 1) {
+                            null, TextFieldsEnum.word3Line1.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word3Line1.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word2Line1.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 1);
+                            null, TextFieldsEnum.word2Line1.ordinal());
                 } else {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 0);
+                            null, TextFieldsEnum.word1Line1.ordinal());
                 }
             }
             case Line2 -> {
-                if (arrayList.get(9).getText().length() >= 1) {
+                if (arrayList.get(TextFieldsEnum.word5Line2.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 9);
-                } else if (arrayList.get(9).getText().length() == 0 &&
-                        arrayList.get(8).getText().length() >= 1) {
+                            null, TextFieldsEnum.word5Line2.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word5Line2.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word4Line2.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 8);
-                } else if (arrayList.get(8).getText().length() == 0 &&
-                        arrayList.get(7).getText().length() >= 1) {
+                            null, TextFieldsEnum.word4Line2.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word4Line2.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word3Line2.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 7);
-                } else if (arrayList.get(7).getText().length() == 0 &&
-                        arrayList.get(6).getText().length() >= 1) {
+                            null, TextFieldsEnum.word3Line2.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word3Line2.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word2Line2.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 6);
+                            null, TextFieldsEnum.word2Line2.ordinal());
                 } else {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 5);
+                            null, TextFieldsEnum.word1Line2.ordinal());
                 }
             }
             case Line3 -> {
-                if (arrayList.get(14).getText().length() >= 1) {
+                if (arrayList.get(TextFieldsEnum.word5Line3.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 14);
-                } else if (arrayList.get(14).getText().length() == 0 &&
-                        arrayList.get(13).getText().length() >= 1) {
+                            null, TextFieldsEnum.word5Line3.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word5Line3.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word4Line3.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 13);
-                } else if (arrayList.get(13).getText().length() == 0 &&
-                        arrayList.get(12).getText().length() >= 1) {
+                            null, TextFieldsEnum.word4Line3.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word4Line3.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word3Line3.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 12);
-                } else if (arrayList.get(12).getText().length() == 0 &&
-                        arrayList.get(11).getText().length() >= 1) {
+                            null, TextFieldsEnum.word3Line3.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word3Line3.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word2Line3.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 11);
+                            null, TextFieldsEnum.word2Line3.ordinal());
                 } else {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 10);
+                            null, TextFieldsEnum.word1Line3.ordinal());
                 }
             }
             case Line4 -> {
-                if (arrayList.get(19).getText().length() >= 1) {
+                if (arrayList.get(TextFieldsEnum.word5Line4.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 19);
-                } else if (arrayList.get(19).getText().length() == 0 &&
-                        arrayList.get(18).getText().length() >= 1) {
+                            null, TextFieldsEnum.word5Line4.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word5Line4.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word4Line4.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 18);
-                } else if (arrayList.get(18).getText().length() == 0 &&
-                        arrayList.get(17).getText().length() >= 1) {
+                            null, TextFieldsEnum.word4Line4.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word4Line4.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word3Line4.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 17);
-                } else if (arrayList.get(17).getText().length() == 0 &&
-                        arrayList.get(16).getText().length() >= 1) {
+                            null, TextFieldsEnum.word3Line4.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word3Line4.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word2Line4.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 16);
+                            null, TextFieldsEnum.word2Line4.ordinal());
                 } else {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 15);
+                            null, TextFieldsEnum.word1Line4.ordinal());
                 }
             }
             case Line5 -> {
-                if (arrayList.get(24).getText().length() >= 1) {
+                if (arrayList.get(TextFieldsEnum.word5Line5.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 24);
-                } else if (arrayList.get(24).getText().length() == 0 &&
-                        arrayList.get(23).getText().length() >= 1) {
+                            null, TextFieldsEnum.word5Line5.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word5Line5.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word4Line5.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 23);
-                } else if (arrayList.get(23).getText().length() == 0 &&
-                        arrayList.get(22).getText().length() >= 1) {
+                            null, TextFieldsEnum.word4Line5.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word4Line5.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word3Line5.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 22);
-                } else if (arrayList.get(22).getText().length() == 0 &&
-                        arrayList.get(21).getText().length() >= 1) {
+                            null, TextFieldsEnum.word3Line5.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word3Line5.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word2Line5.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 21);
+                            null, TextFieldsEnum.word2Line5.ordinal());
                 } else {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 20);
+                            null, TextFieldsEnum.word1Line5.ordinal());
                 }
             }
             case Line6 -> {
-                if (arrayList.get(29).getText().length() >= 1) {
+                if (arrayList.get(TextFieldsEnum.word5Line6.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 29);
-                } else if (arrayList.get(29).getText().length() == 0 &&
-                        arrayList.get(28).getText().length() >= 1) {
+                            null, TextFieldsEnum.word5Line6.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word5Line6.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word4Line6.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 28);
-                } else if (arrayList.get(28).getText().length() == 0 &&
-                        arrayList.get(27).getText().length() >= 1) {
+                            null, TextFieldsEnum.word4Line6.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word4Line6.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word3Line6.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 27);
-                } else if (arrayList.get(27).getText().length() == 0 &&
-                        arrayList.get(26).getText().length() >= 1) {
+                            null, TextFieldsEnum.word3Line6.ordinal());
+                } else if (arrayList.get(TextFieldsEnum.word3Line6.ordinal()).getText().length() == 0 &&
+                        arrayList.get(TextFieldsEnum.word2Line6.ordinal()).getText().length() >= 1) {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 26);
+                            null, TextFieldsEnum.word2Line6.ordinal());
                 } else {
                     processLetter(new LineBorder(Color.decode("#edeff1"), 2),
-                            null, 25);
+                            null, TextFieldsEnum.word1Line6.ordinal());
                 }
             }
         }
     }
 
-    private void setCurrentLine(Enums.LinesEnum currentLine) {
+    private void setCurrentLine(LinesEnum line) {
+        currentLine = line;
         setChanged();
-        notifyObservers(currentLine);
+        notifyObservers(line);
     }
 
     public LineBorder getBorderColor() {

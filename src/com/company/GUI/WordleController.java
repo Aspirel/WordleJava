@@ -10,14 +10,14 @@ public class WordleController {
 
     public WordleController(WordleModel wordleModel, WordleView wordleView) {
         this.wordleModel = wordleModel;
-        wordleView.wordCheckListener(new WordCheckListener(wordleView));
-        wordleView.keyboardListener(new KeyboardActionListener(wordleView));
+        wordleView.wordCheckListener(new PhysicalKeyboardListener(wordleView));
+        wordleView.keyboardListener(new DigitalKeyboardActionListener(wordleView));
     }
 
-    class KeyboardActionListener implements ActionListener {
+    class DigitalKeyboardActionListener implements ActionListener {
         private final WordleView wordleView;
 
-        KeyboardActionListener(WordleView wordleView) {
+        DigitalKeyboardActionListener(WordleView wordleView) {
             this.wordleView = wordleView;
         }
 
@@ -39,10 +39,10 @@ public class WordleController {
         }
     }
 
-    class WordCheckListener implements KeyListener {
+    class PhysicalKeyboardListener implements KeyListener {
         private final WordleView wordleView;
 
-        WordCheckListener(WordleView wordleView) {
+        PhysicalKeyboardListener(WordleView wordleView) {
             this.wordleView = wordleView;
         }
 
