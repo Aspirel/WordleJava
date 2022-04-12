@@ -1,6 +1,6 @@
 package com.company.GUI;
 
-import com.company.Utils.LineEnums;
+import com.company.Utils.Enums;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -8,8 +8,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Observable;
+import java.util.Observer;
 
-public class WordleView extends JFrame {
+public class WordleView extends JFrame implements Observer {
     private final ImageIcon delIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("delete.png")));
     private final ArrayList<JTextField> textFieldsArray = new ArrayList<>() {
         {
@@ -81,10 +83,11 @@ public class WordleView extends JFrame {
 
     private final JPanel worldlePanel = new JPanel();
     private final JButton startOverButton = new JButton("Start Over");
-    private LineEnums currentLine = LineEnums.Line1;
+    private Enums.LinesEnum currentLine = Enums.LinesEnum.Line1;
+    private final WordleModel wordleModel;
 
-
-    public WordleView() {
+    public WordleView(WordleModel wordleModel) {
+        this.wordleModel = wordleModel;
         this.setTitle("Wordle");
         this.setSize(800, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -120,10 +123,10 @@ public class WordleView extends JFrame {
         startOverButton.addActionListener(e -> {
             //Only enabled if the current line is not the first one.
             //Meaning a first guess was already made since it sets the next line once a line is checked.
-            if (currentLine != LineEnums.Line1) {
+            if (currentLine != Enums.LinesEnum.Line1) {
                 dispose();
-                WordleView wordleView = new WordleView();
-                WordleModel wordleModel = new WordleModel(wordleView);
+                WordleModel wordleModel = new WordleModel();
+                WordleView wordleView = new WordleView(wordleModel);
                 new WordleController(wordleModel, wordleView);
                 wordleView.setVisible(true);
             } else {
@@ -182,7 +185,7 @@ public class WordleView extends JFrame {
         keyboardPanelLine3.setLayout(new FlowLayout(FlowLayout.CENTER, 9, 2));
 
         int i = 1;
-        for(JButton button : buttonsArray){
+        for (JButton button : buttonsArray) {
             button.setFont(new Font("SansSerif", Font.BOLD, 13));
             button.setBorderPainted(false);
             button.setBackground(Color.decode("#edeff1"));
@@ -199,11 +202,11 @@ public class WordleView extends JFrame {
                 button.setPreferredSize(new Dimension(50, 55));
             }
 
-            if(i <= 10){
+            if (i <= 10) {
                 keyboardPanelLine1.add(button);
-            }else if (i <= 19){
+            } else if (i <= 19) {
                 keyboardPanelLine2.add(button);
-            }else if (i <= 28){
+            } else if (i <= 28) {
                 keyboardPanelLine3.add(button);
             }
             i++;
@@ -215,16 +218,20 @@ public class WordleView extends JFrame {
         worldlePanel.add(bottomPanel);
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        if (arg instanceof Integer){
+            textFieldsArray.get((Integer) arg).setText(wordleModel.getLetter());
+            textFieldsArray.get((Integer) arg).setBorder(wordleModel.getBorderColor());
+            textFieldsArray.get((Integer) arg).setBackground(wordleModel.getBackgroundColor());
+        }
+        if(arg instanceof Enums.LinesEnum){
+            currentLine = (Enums.LinesEnum) arg;
+        }
+    }
+
     public ArrayList<JTextField> getTextFieldsArray() {
         return textFieldsArray;
-    }
-
-    public LineEnums getCurrentLine() {
-        return currentLine;
-    }
-
-    public void setCurrentLine(LineEnums currentLine) {
-        this.currentLine = currentLine;
     }
 
     public JPanel getWorldlePanel() {
@@ -234,6 +241,5 @@ public class WordleView extends JFrame {
     public ArrayList<JButton> getButtonsArray() {
         return buttonsArray;
     }
-
 }
 
