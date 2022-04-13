@@ -114,26 +114,17 @@ public class WordleView extends JFrame implements Observer {
         });
     }
 
-    public void wordCheckListener(KeyListener keyListener) {
+    public void physicalKeyboardListener(KeyListener keyListener) {
         assert worldlePanel != null;
         worldlePanel.addKeyListener(keyListener);
     }
 
-    public void keyboardListener(ActionListener actionListener) {
-        startOverButton.addActionListener(e -> {
-            //Only enabled if the current line is not the first one.
-            //Meaning a first guess was already made since it sets the next line once a line is checked.
-            if (currentLine != LinesEnum.Line1) {
-                dispose();
-                WordleModel wordleModel = new WordleModel();
-                WordleView wordleView = new WordleView(wordleModel);
-                new WordleController(wordleModel, wordleView);
-                wordleView.setVisible(true);
-            } else {
-                worldlePanel.requestFocus();
-            }
-        });
+    public void digitalKeyboardListener(ActionListener actionListener) {
+        assert worldlePanel != null;
+        assert startOverButton != null;
+        assert buttonsArray != null;
         //Adds an action listener to every button in the array
+        startOverButton.addActionListener(actionListener);
         buttonsArray.forEach(button -> button.addActionListener(actionListener));
     }
 
@@ -152,7 +143,7 @@ public class WordleView extends JFrame implements Observer {
         textFieldsArray.forEach(field -> {
             field.setFont(new Font("SansSerif", Font.BOLD, 30));
             field.setPreferredSize(new Dimension(70, 70));
-            field.setDocument(new UpperCaseTextFilter());
+            field.setDocument(new UpperCaseTextFilter()); //converts any input into uppercase
             field.setEditable(false);
             field.setEnabled(false);
             field.setBorder(new LineBorder(Color.decode("#edeff1"), 2));
@@ -220,12 +211,20 @@ public class WordleView extends JFrame implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg instanceof Integer){
-            textFieldsArray.get((Integer) arg).setText(wordleModel.getLetter());
-            textFieldsArray.get((Integer) arg).setBorder(wordleModel.getBorderColor());
-            textFieldsArray.get((Integer) arg).setBackground(wordleModel.getBackgroundColor());
+        String[][] letters = wordleModel.getLetters();
+        Color[][] colors = wordleModel.getBackgoundColors();
+        Color[][] borderColors = wordleModel.getBorderColors();
+        int i = 0;
+        for (int col = 0; col < 6; col++) {
+            for (int row = 0; row < 5; row++) {
+                textFieldsArray.get(i).setText(letters[col][row]);
+                textFieldsArray.get(i).setBackground(colors[col][row] != null ? colors[col][row] : Color.white);
+                textFieldsArray.get(i).setBorder(borderColors[col][row] != null ? new LineBorder(borderColors[col][row]) :
+                        new LineBorder(Color.decode("#edeff1"), 2));
+                i++;
+            }
         }
-        if(arg instanceof LinesEnum){
+        if (arg instanceof LinesEnum) {
             currentLine = (LinesEnum) arg;
         }
         worldlePanel.repaint();
