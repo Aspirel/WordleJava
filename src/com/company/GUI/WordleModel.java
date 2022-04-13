@@ -76,14 +76,22 @@ public class WordleModel extends Observable {
         String test = "hello";
 
         if (test.equals(word.toLowerCase())) {
-            for (int y = 0; y < 6; y++) {
-                for (int x = 0; x < 5; x++) {
-                    backgoundColors[currentLine.ordinal()][x] = Color.green;
-                    borderColors[currentLine.ordinal()][x] = Color.green;
-                }
+            for (int row = 0; row < 5; row++) {
+                backgoundColors[currentLine.ordinal()][row] = Color.green;
+                borderColors[currentLine.ordinal()][row] = Color.green;
             }
             setCurrentLine(LinesEnum.Over);
         } else {
+            for (int row = 0; row < 5; row++) {
+                System.out.println(letters[currentLine.ordinal()][row]);
+                    if (letters[currentLine.ordinal()][row].equals(String.valueOf(test.charAt(row)))){
+                        backgoundColors[currentLine.ordinal()][row] = Color.yellow;
+                        borderColors[currentLine.ordinal()][row] = Color.yellow;
+                    } else {
+                        backgoundColors[currentLine.ordinal()][row] = Color.gray;
+                        borderColors[currentLine.ordinal()][row] = Color.gray;
+                    }
+            }
             setCurrentLine(nextLine);
         }
 
@@ -414,6 +422,7 @@ public class WordleModel extends Observable {
     public void startOver() {
         letters = new String[6][5];
         backgoundColors = new Color[6][5];
+        borderColors = new Color[6][5];
         setCurrentLine(LinesEnum.Line1);
         setChanged();
         notifyObservers();
