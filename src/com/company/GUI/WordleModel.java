@@ -4,92 +4,101 @@ import com.company.Utils.LinesEnum;
 import com.company.Utils.TextFieldsEnum;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
 
 public class WordleModel extends Observable {
 
     private LinesEnum currentLine = LinesEnum.Line1;
     private String[][] letters = new String[6][5];
-    private Color[][] backgoundColors = new Color[6][5];
+    private Color[][] backgroundColors = new Color[6][5];
     private Color[][] borderColors = new Color[6][5];
+    private HashMap<Integer, Color> buttonColors =  new HashMap<>();
 
-    public void processWord(ArrayList<JTextField> arrayList, ArrayList<JButton> jButtonArrayList) {
+    public void processWord(ArrayList<JTextField> jTextFields, ArrayList<JButton> jButtons) {
         StringBuilder word = new StringBuilder("");
         switch (currentLine) {
             case Line1 -> {
-                if (arrayList.get(TextFieldsEnum.word5Line1.ordinal()).getText().length() >= 1) {
+                if (jTextFields.get(TextFieldsEnum.word5Line1.ordinal()).getText().length() >= 1) {
                     for (int i = 0; i <= TextFieldsEnum.word5Line1.ordinal(); i++) {
-                        word.append(arrayList.get(i).getText());
+                        word.append(jTextFields.get(i).getText());
                     }
-                    wordCheck(String.valueOf(word), LinesEnum.Line2);
+                    wordCheck(String.valueOf(word), LinesEnum.Line2, jButtons);
                 }
             }
             case Line2 -> {
-                if (arrayList.get(TextFieldsEnum.word5Line2.ordinal()).getText().length() >= 1) {
+                if (jTextFields.get(TextFieldsEnum.word5Line2.ordinal()).getText().length() >= 1) {
                     for (int i = TextFieldsEnum.word1Line2.ordinal(); i <= TextFieldsEnum.word5Line2.ordinal(); i++) {
-                        word.append(arrayList.get(i).getText());
+                        word.append(jTextFields.get(i).getText());
                     }
-                    wordCheck(String.valueOf(word), LinesEnum.Line3);
+                    wordCheck(String.valueOf(word), LinesEnum.Line3, jButtons);
                 }
             }
             case Line3 -> {
-                if (arrayList.get(TextFieldsEnum.word5Line3.ordinal()).getText().length() >= 1) {
+                if (jTextFields.get(TextFieldsEnum.word5Line3.ordinal()).getText().length() >= 1) {
                     for (int i = TextFieldsEnum.word1Line3.ordinal(); i <= TextFieldsEnum.word5Line3.ordinal(); i++) {
-                        word.append(arrayList.get(i).getText());
+                        word.append(jTextFields.get(i).getText());
                     }
-                    wordCheck(String.valueOf(word), LinesEnum.Line4);
+                    wordCheck(String.valueOf(word), LinesEnum.Line4, jButtons);
                 }
             }
             case Line4 -> {
-                if (arrayList.get(TextFieldsEnum.word5Line4.ordinal()).getText().length() >= 1) {
+                if (jTextFields.get(TextFieldsEnum.word5Line4.ordinal()).getText().length() >= 1) {
                     for (int i = TextFieldsEnum.word1Line4.ordinal(); i <= TextFieldsEnum.word5Line4.ordinal(); i++) {
-                        word.append(arrayList.get(i).getText());
+                        word.append(jTextFields.get(i).getText());
                     }
-                    wordCheck(String.valueOf(word), LinesEnum.Line5);
+                    wordCheck(String.valueOf(word), LinesEnum.Line5, jButtons);
                 }
             }
             case Line5 -> {
-                if (arrayList.get(TextFieldsEnum.word5Line5.ordinal()).getText().length() >= 1) {
+                if (jTextFields.get(TextFieldsEnum.word5Line5.ordinal()).getText().length() >= 1) {
                     for (int i = TextFieldsEnum.word1Line5.ordinal(); i <= TextFieldsEnum.word5Line5.ordinal(); i++) {
-                        word.append(arrayList.get(i).getText());
+                        word.append(jTextFields.get(i).getText());
                     }
-                    wordCheck(String.valueOf(word), LinesEnum.Line6);
+                    wordCheck(String.valueOf(word), LinesEnum.Line6, jButtons);
                 }
             }
             case Line6 -> {
-                if (arrayList.get(TextFieldsEnum.word5Line6.ordinal()).getText().length() >= 1) {
+                if (jTextFields.get(TextFieldsEnum.word5Line6.ordinal()).getText().length() >= 1) {
                     for (int i = TextFieldsEnum.word1Line6.ordinal(); i <= TextFieldsEnum.word5Line6.ordinal(); i++) {
-                        word.append(arrayList.get(i).getText());
+                        word.append(jTextFields.get(i).getText());
                     }
-                    wordCheck(String.valueOf(word), LinesEnum.Over);
+                    wordCheck(String.valueOf(word), LinesEnum.Over, jButtons);
                 }
             }
         }
     }
 
-    private void wordCheck(String word, LinesEnum nextLine) {
+    private void wordCheck(String word, LinesEnum nextLine, ArrayList<JButton> buttonsList) {
         String test = "hello";
 
         if (test.equals(word.toLowerCase())) {
             for (int row = 0; row < 5; row++) {
-                backgoundColors[currentLine.ordinal()][row] = Color.green;
+                backgroundColors[currentLine.ordinal()][row] = Color.green;
                 borderColors[currentLine.ordinal()][row] = Color.green;
+
+                paintButton(row, Color.green, buttonsList);
             }
             setCurrentLine(LinesEnum.Over);
         } else {
             for (int row = 0; row < 5; row++) {
-                System.out.println(letters[currentLine.ordinal()][row]);
                     if (letters[currentLine.ordinal()][row].equals(String.valueOf(test.charAt(row)))){
-                        backgoundColors[currentLine.ordinal()][row] = Color.yellow;
+                        backgroundColors[currentLine.ordinal()][row] = Color.green;
+                        borderColors[currentLine.ordinal()][row] = Color.green;
+                        paintButton(row, Color.green, buttonsList);
+                    } else if(!letters[currentLine.ordinal()][row].equals(String.valueOf(test.charAt(row))) &&
+                            test.contains(String.valueOf(word.charAt(row)).toLowerCase())) {
+                        backgroundColors[currentLine.ordinal()][row] = Color.yellow;
                         borderColors[currentLine.ordinal()][row] = Color.yellow;
-                    } else {
-                        backgoundColors[currentLine.ordinal()][row] = Color.gray;
+                        paintButton(row, Color.yellow, buttonsList);
+                    }else {
+                        backgroundColors[currentLine.ordinal()][row] = Color.gray;
                         borderColors[currentLine.ordinal()][row] = Color.gray;
+                        paintButton(row, Color.gray, buttonsList);
                     }
             }
             setCurrentLine(nextLine);
@@ -419,10 +428,19 @@ public class WordleModel extends Observable {
         }
     }
 
+    private void paintButton(int index, Color color, ArrayList<JButton> buttonsList){
+        for(int i=0; i < buttonsList.size(); i++ ){
+            if(buttonsList.get(i).getText().toLowerCase().equals(letters[currentLine.ordinal()][index])){
+                buttonColors.put(i, color);
+            }
+        }
+    }
+
     public void startOver() {
         letters = new String[6][5];
-        backgoundColors = new Color[6][5];
+        backgroundColors = new Color[6][5];
         borderColors = new Color[6][5];
+        buttonColors.forEach((i,b)-> buttonColors.put(i, null));
         setCurrentLine(LinesEnum.Line1);
         setChanged();
         notifyObservers();
@@ -438,12 +456,16 @@ public class WordleModel extends Observable {
         return letters;
     }
 
-    public Color[][] getBackgoundColors() {
-        return backgoundColors;
+    public Color[][] getBackgroundColors() {
+        return backgroundColors;
     }
 
     public Color[][] getBorderColors() {
         return borderColors;
+    }
+
+    public HashMap<Integer, Color> getButtonColors() {
+        return buttonColors;
     }
 
 }

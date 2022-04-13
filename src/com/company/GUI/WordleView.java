@@ -6,10 +6,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class WordleView extends JFrame implements Observer {
     private final ImageIcon delIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("delete.png")));
@@ -212,8 +209,10 @@ public class WordleView extends JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         String[][] letters = wordleModel.getLetters();
-        Color[][] colors = wordleModel.getBackgoundColors();
+        Color[][] colors = wordleModel.getBackgroundColors();
         Color[][] borderColors = wordleModel.getBorderColors();
+        HashMap<Integer, Color> buttonColors = wordleModel.getButtonColors();
+
         int i = 0;
         for (int col = 0; col < 6; col++) {
             for (int row = 0; row < 5; row++) {
@@ -224,6 +223,21 @@ public class WordleView extends JFrame implements Observer {
                 i++;
             }
         }
+        buttonColors.forEach((index, color) -> {
+            if (color != null) {
+                if (buttonsArray.get(index).getBackground().equals(Color.green) && (color.equals(Color.gray) ||
+                        color.equals(Color.yellow))) {
+                    buttonsArray.get(index).setBackground(Color.green);
+                } else if (buttonsArray.get(index).getBackground().equals(Color.yellow) && color.equals(Color.gray)) {
+                    buttonsArray.get(index).setBackground(Color.yellow);
+                } else {
+                    buttonsArray.get(index).setBackground(color);
+                }
+            } else {
+                buttonsArray.get(index).setBackground(Color.decode("#edeff1"));
+            }
+        });
+
         if (arg instanceof LinesEnum) {
             currentLine = (LinesEnum) arg;
         }
