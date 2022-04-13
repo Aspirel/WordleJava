@@ -77,28 +77,27 @@ public class WordleModel extends Observable {
         String test = "hello";
 
         if (test.equals(word.toLowerCase())) {
-            for (int row = 0; row < 5; row++) {
-                backgroundColors[currentLine.ordinal()][row] = Color.green;
-                borderColors[currentLine.ordinal()][row] = Color.green;
-
-                paintButton(row, Color.green, buttonsList);
+            for (int i = 0; i < 5; i++) {
+                backgroundColors[currentLine.ordinal()][i] = Color.green;
+                borderColors[currentLine.ordinal()][i] = Color.green;
+                paintButton(i, Color.green, buttonsList);
             }
             setCurrentLine(LinesEnum.Over);
         } else {
-            for (int row = 0; row < 5; row++) {
-                    if (letters[currentLine.ordinal()][row].equals(String.valueOf(test.charAt(row)))){
-                        backgroundColors[currentLine.ordinal()][row] = Color.green;
-                        borderColors[currentLine.ordinal()][row] = Color.green;
-                        paintButton(row, Color.green, buttonsList);
-                    } else if(!letters[currentLine.ordinal()][row].equals(String.valueOf(test.charAt(row))) &&
-                            test.contains(String.valueOf(word.charAt(row)).toLowerCase())) {
-                        backgroundColors[currentLine.ordinal()][row] = Color.yellow;
-                        borderColors[currentLine.ordinal()][row] = Color.yellow;
-                        paintButton(row, Color.yellow, buttonsList);
+            for (int i = 0; i < 5; i++) {
+                    if (letters[currentLine.ordinal()][i].equals(String.valueOf(test.charAt(i)))){
+                        backgroundColors[currentLine.ordinal()][i] = Color.green;
+                        borderColors[currentLine.ordinal()][i] = Color.green;
+                        paintButton(i, Color.green, buttonsList);
+                    } else if(!letters[currentLine.ordinal()][i].equals(String.valueOf(test.charAt(i))) &&
+                            test.contains(String.valueOf(word.charAt(i)).toLowerCase())) {
+                        backgroundColors[currentLine.ordinal()][i] = Color.yellow;
+                        borderColors[currentLine.ordinal()][i] = Color.yellow;
+                        paintButton(i, Color.yellow, buttonsList);
                     }else {
-                        backgroundColors[currentLine.ordinal()][row] = Color.gray;
-                        borderColors[currentLine.ordinal()][row] = Color.gray;
-                        paintButton(row, Color.gray, buttonsList);
+                        backgroundColors[currentLine.ordinal()][i] = Color.gray;
+                        borderColors[currentLine.ordinal()][i] = Color.gray;
+                        paintButton(i, Color.gray, buttonsList);
                     }
             }
             setCurrentLine(nextLine);
