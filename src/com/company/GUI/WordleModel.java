@@ -12,34 +12,59 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class WordleModel extends Observable {
-    private boolean noWordFlag = false;
-    private boolean displayWordFlag = false;
-    private boolean randomWordFlag = false;
-    private String targetWord = null;
-    private LinesEnum currentLine = LinesEnum.Line1;
-    private String[][] letters = new String[6][5];
-    private Color[][] backgroundColors = new Color[6][5];
-    private Color[][] borderColors = new Color[6][5];
-    private final HashMap<Integer, Color> buttonColors = new HashMap<>();
+    private boolean noWordFlag;
+    private boolean displayWordFlag;
+    private boolean randomWordFlag;
+    private String targetWord;
+    private LinesEnum currentLine;
+    private String[][] letters;
+    private Color[][] backgroundColors;
+    private Color[][] borderColors;
+    private HashMap<Integer, Color> buttonColors;
+    private ArrayList<String> allWords;
+    private ArrayList<String> allTargetWords;
 
     public WordleModel() {
-        setTargetWord();
+        init();
     }
 
-    private void setTargetWord() {
-        ArrayList<String> allWords = new ArrayList<>();
+    private void init() {
+        noWordFlag = false;
+        displayWordFlag = false;
+        randomWordFlag = false;
+        targetWord = null;
+        currentLine = LinesEnum.Line1;
+        letters = new String[6][5];
+        backgroundColors = new Color[6][5];
+        borderColors = new Color[6][5];
+        buttonColors = new HashMap<>();
+        allWords = new ArrayList<>();
+        allTargetWords = new ArrayList<>();
+
+        setCurrentLine(LinesEnum.Line1);
+
         try {
             Scanner scanner = new Scanner(new File("src/com/company/Resources/common.txt"));
+            Scanner scanner2 = new Scanner(new File("src/com/company/Resources/words.txt"));
             while (scanner.hasNextLine()) {
-                allWords.add(scanner.nextLine());
+                allTargetWords.add(scanner.nextLine());
             }
             scanner.close();
+            while (scanner2.hasNextLine()) {
+                allWords.add(scanner2.nextLine());
+            }
+            scanner2.close();
         } catch (FileNotFoundException e) {
             System.out.printf("File not found %s", e);
         }
+        assert !allTargetWords.isEmpty();
         Random random = new Random();
-        assert allWords.size() > 0;
-        targetWord = allWords.get(random.nextInt(allWords.size()));
+
+        //If the flag for random words is enabled, it gets a random one, otherwise, gets a fixed word(first one).
+        //How to choose the fixed word was not specified in the course work, only that it must be fixed, therefore
+        //the first of the list is the one.
+        targetWord = randomWordFlag ? allTargetWords.get(random.nextInt(allTargetWords.size())) :
+        allTargetWords.get(0);
         System.out.println(targetWord); //DELETE THIS AFTER
     }
 
@@ -98,18 +123,8 @@ public class WordleModel extends Observable {
     }
 
     private void wordCheck(String word, LinesEnum nextLine, ArrayList<JButton> buttonsList) {
-        ArrayList<String> allWords = new ArrayList<>();
-        try {
-            Scanner scanner = new Scanner(new File("src/com/company/Resources/words.txt"));
-            while (scanner.hasNextLine()) {
-                allWords.add(scanner.nextLine());
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            System.out.printf("File not found %s", e);
-        }
-
-        if (allWords.contains(word)) {
+        assert !allWords.isEmpty();
+        if (allWords.contains(word.toLowerCase()) || allTargetWords.contains(word.toLowerCase())) {
             if (targetWord.equals(word.toLowerCase())) {
                 for (int i = 0; i < 5; i++) {
                     backgroundColors[currentLine.ordinal()][i] = Color.green;
@@ -474,11 +489,7 @@ public class WordleModel extends Observable {
     }
 
     public void startOver() {
-        letters = new String[6][5];
-        backgroundColors = new Color[6][5];
-        borderColors = new Color[6][5];
-        buttonColors.forEach((i, b) -> buttonColors.put(i, null));
-        setCurrentLine(LinesEnum.Line1);
+        init();
         setChanged();
         notifyObservers();
     }

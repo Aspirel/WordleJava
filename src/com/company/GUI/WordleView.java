@@ -219,8 +219,10 @@ public class WordleView extends JFrame implements Observer {
                 i++;
             }
         }
-        buttonColors.forEach((index, color) -> {
-            if (color != null) {
+        if (buttonColors.isEmpty()) {
+            buttonsArray.forEach(b -> b.setBackground(Color.decode("#edeff1")));
+        } else {
+            buttonColors.forEach((index, color) -> {
                 if (buttonsArray.get(index).getBackground().equals(Color.green) && (color.equals(Color.gray) ||
                         color.equals(Color.yellow))) {
                     buttonsArray.get(index).setBackground(Color.green);
@@ -229,10 +231,8 @@ public class WordleView extends JFrame implements Observer {
                 } else {
                     buttonsArray.get(index).setBackground(color);
                 }
-            } else {
-                buttonsArray.get(index).setBackground(Color.decode("#edeff1"));
-            }
-        });
+            });
+        }
 
         if (arg instanceof LinesEnum) {
             currentLine = (LinesEnum) arg;
