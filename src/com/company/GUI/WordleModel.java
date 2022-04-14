@@ -29,9 +29,9 @@ public class WordleModel extends Observable {
     }
 
     private void init() {
-        noWordFlag = false;
-        displayWordFlag = false;
-        randomWordFlag = false;
+        noWordFlag = false; //word does not exist in the list of words
+        displayWordFlag = false; //enable to display the target word immediately in the GUI
+        randomWordFlag = true; //enable to pick random target words. Disable to always pick a fixed one.
         targetWord = null;
         currentLine = LinesEnum.Line1;
         letters = new String[6][5];
@@ -64,7 +64,15 @@ public class WordleModel extends Observable {
         //How to choose the fixed word was not specified in the course work, only that it must be fixed, therefore
         //the first of the list is the one.
         targetWord = randomWordFlag ? allTargetWords.get(random.nextInt(allTargetWords.size())) :
-        allTargetWords.get(0);
+                allTargetWords.get(0);
+
+        if (displayWordFlag) {
+            for (int i = 0; i < targetWord.length(); i++) {
+                letters[currentLine.ordinal()][i] = String.valueOf(targetWord.charAt(i));
+            }
+            setChanged();
+            notifyObservers();
+        }
         System.out.println(targetWord); //DELETE THIS AFTER
     }
 
@@ -126,27 +134,34 @@ public class WordleModel extends Observable {
         assert !allWords.isEmpty();
         if (allWords.contains(word.toLowerCase()) || allTargetWords.contains(word.toLowerCase())) {
             if (targetWord.equals(word.toLowerCase())) {
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < word.length(); i++) {
                     backgroundColors[currentLine.ordinal()][i] = Color.green;
                     borderColors[currentLine.ordinal()][i] = Color.green;
                     paintButton(i, Color.green, buttonsList);
                 }
                 setCurrentLine(LinesEnum.Over);
             } else {
+                ArrayList<String> found = new ArrayList<>();
                 for (int i = 0; i < 5; i++) {
                     if (letters[currentLine.ordinal()][i].equals(String.valueOf(targetWord.charAt(i)))) {
                         backgroundColors[currentLine.ordinal()][i] = Color.green;
                         borderColors[currentLine.ordinal()][i] = Color.green;
                         paintButton(i, Color.green, buttonsList);
-                    } else if (!letters[currentLine.ordinal()][i].equals(String.valueOf(targetWord.charAt(i))) &&
-                            targetWord.contains(String.valueOf(word.charAt(i)).toLowerCase())) {
-                        backgroundColors[currentLine.ordinal()][i] = Color.yellow;
-                        borderColors[currentLine.ordinal()][i] = Color.yellow;
-                        paintButton(i, Color.yellow, buttonsList);
+                        found.add(String.valueOf(targetWord.charAt(i)));
                     } else {
                         backgroundColors[currentLine.ordinal()][i] = Color.gray;
                         borderColors[currentLine.ordinal()][i] = Color.gray;
                         paintButton(i, Color.gray, buttonsList);
+                    }
+                }
+                //checks duplicate letters as well (expand)
+                for (int i = 0; i < 5; i++) {
+                    if (!letters[currentLine.ordinal()][i].equals(String.valueOf(targetWord.charAt(i))) &&
+                            targetWord.contains(String.valueOf(word.charAt(i)).toLowerCase()) &&
+                            !found.contains(letters[currentLine.ordinal()][i])) {
+                        backgroundColors[currentLine.ordinal()][i] = Color.yellow;
+                        borderColors[currentLine.ordinal()][i] = Color.yellow;
+                        paintButton(i, Color.yellow, buttonsList);
                     }
                 }
                 setCurrentLine(nextLine);
@@ -514,10 +529,6 @@ public class WordleModel extends Observable {
 
     public HashMap<Integer, Color> getButtonColors() {
         return buttonColors;
-    }
-
-    public boolean noWordFlag() {
-        return noWordFlag;
     }
 
 }

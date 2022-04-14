@@ -101,7 +101,7 @@ public class WordleView extends JFrame implements Observer {
         this.textFieldsSetup();
 
         //This ensures the window with the text fields gets the focus as soon as it is opened.
-        //With this listener, the user doesn't have to click the window or the text field to start typing.
+        //With this listener, the user never has to click the window or the text field to start typing.
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowOpened(WindowEvent e) {
@@ -109,6 +109,8 @@ public class WordleView extends JFrame implements Observer {
                 worldlePanel.requestFocus();
             }
         });
+
+        update(wordleModel, null);
     }
 
     public void physicalKeyboardListener(KeyListener keyListener) {
@@ -237,10 +239,11 @@ public class WordleView extends JFrame implements Observer {
         if (arg instanceof LinesEnum) {
             currentLine = (LinesEnum) arg;
         }
-        if (arg instanceof Boolean)
+        if (arg instanceof Boolean) {
             if ((Boolean) arg) {
                 JOptionPane.showMessageDialog(worldlePanel, "Not in word list!", "", JOptionPane.WARNING_MESSAGE);
             }
+        }
         worldlePanel.repaint();
     }
 
