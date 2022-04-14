@@ -7,17 +7,41 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Observable;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 public class WordleModel extends Observable {
-
+    private boolean noWordFlag = false;
+    private boolean displayWordFlag = false;
+    private boolean randomWordFlag = false;
+    private String targetWord = null;
     private LinesEnum currentLine = LinesEnum.Line1;
     private String[][] letters = new String[6][5];
     private Color[][] backgroundColors = new Color[6][5];
     private Color[][] borderColors = new Color[6][5];
-    private HashMap<Integer, Color> buttonColors =  new HashMap<>();
+    private final HashMap<Integer, Color> buttonColors = new HashMap<>();
+
+    public WordleModel() {
+        setTargetWord();
+    }
+
+    private void setTargetWord() {
+        ArrayList<String> allWords = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(new File("src/com/company/Resources/common.txt"));
+            while (scanner.hasNextLine()) {
+                allWords.add(scanner.nextLine());
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.printf("File not found %s", e);
+        }
+        Random random = new Random();
+        assert allWords.size() > 0;
+        targetWord = allWords.get(random.nextInt(allWords.size()));
+        System.out.println(targetWord); //DELETE THIS AFTER
+    }
 
     public void processWord(ArrayList<JTextField> jTextFields, ArrayList<JButton> jButtons) {
         StringBuilder word = new StringBuilder("");
@@ -74,35 +98,49 @@ public class WordleModel extends Observable {
     }
 
     private void wordCheck(String word, LinesEnum nextLine, ArrayList<JButton> buttonsList) {
-        String test = "hello";
-
-        if (test.equals(word.toLowerCase())) {
-            for (int i = 0; i < 5; i++) {
-                backgroundColors[currentLine.ordinal()][i] = Color.green;
-                borderColors[currentLine.ordinal()][i] = Color.green;
-                paintButton(i, Color.green, buttonsList);
+        ArrayList<String> allWords = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(new File("src/com/company/Resources/words.txt"));
+            while (scanner.hasNextLine()) {
+                allWords.add(scanner.nextLine());
             }
-            setCurrentLine(LinesEnum.Over);
-        } else {
-            for (int i = 0; i < 5; i++) {
-                    if (letters[currentLine.ordinal()][i].equals(String.valueOf(test.charAt(i)))){
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.printf("File not found %s", e);
+        }
+
+        if (allWords.contains(word)) {
+            if (targetWord.equals(word.toLowerCase())) {
+                for (int i = 0; i < 5; i++) {
+                    backgroundColors[currentLine.ordinal()][i] = Color.green;
+                    borderColors[currentLine.ordinal()][i] = Color.green;
+                    paintButton(i, Color.green, buttonsList);
+                }
+                setCurrentLine(LinesEnum.Over);
+            } else {
+                for (int i = 0; i < 5; i++) {
+                    if (letters[currentLine.ordinal()][i].equals(String.valueOf(targetWord.charAt(i)))) {
                         backgroundColors[currentLine.ordinal()][i] = Color.green;
                         borderColors[currentLine.ordinal()][i] = Color.green;
                         paintButton(i, Color.green, buttonsList);
-                    } else if(!letters[currentLine.ordinal()][i].equals(String.valueOf(test.charAt(i))) &&
-                            test.contains(String.valueOf(word.charAt(i)).toLowerCase())) {
+                    } else if (!letters[currentLine.ordinal()][i].equals(String.valueOf(targetWord.charAt(i))) &&
+                            targetWord.contains(String.valueOf(word.charAt(i)).toLowerCase())) {
                         backgroundColors[currentLine.ordinal()][i] = Color.yellow;
                         borderColors[currentLine.ordinal()][i] = Color.yellow;
                         paintButton(i, Color.yellow, buttonsList);
-                    }else {
+                    } else {
                         backgroundColors[currentLine.ordinal()][i] = Color.gray;
                         borderColors[currentLine.ordinal()][i] = Color.gray;
                         paintButton(i, Color.gray, buttonsList);
                     }
+                }
+                setCurrentLine(nextLine);
             }
-            setCurrentLine(nextLine);
+        } else {
+            noWordFlag = true;
+            setChanged();
+            notifyObservers(noWordFlag);
         }
-
     }
 
     public void addLetter(ArrayList<JTextField> arrayList, ActionEvent a, KeyEvent k) {
@@ -427,9 +465,9 @@ public class WordleModel extends Observable {
         }
     }
 
-    private void paintButton(int index, Color color, ArrayList<JButton> buttonsList){
-        for(int i=0; i < buttonsList.size(); i++ ){
-            if(buttonsList.get(i).getText().toLowerCase().equals(letters[currentLine.ordinal()][index])){
+    private void paintButton(int index, Color color, ArrayList<JButton> buttonsList) {
+        for (int i = 0; i < buttonsList.size(); i++) {
+            if (buttonsList.get(i).getText().toLowerCase().equals(letters[currentLine.ordinal()][index])) {
                 buttonColors.put(i, color);
             }
         }
@@ -439,7 +477,7 @@ public class WordleModel extends Observable {
         letters = new String[6][5];
         backgroundColors = new Color[6][5];
         borderColors = new Color[6][5];
-        buttonColors.forEach((i,b)-> buttonColors.put(i, null));
+        buttonColors.forEach((i, b) -> buttonColors.put(i, null));
         setCurrentLine(LinesEnum.Line1);
         setChanged();
         notifyObservers();
@@ -465,6 +503,10 @@ public class WordleModel extends Observable {
 
     public HashMap<Integer, Color> getButtonColors() {
         return buttonColors;
+    }
+
+    public boolean noWordFlag() {
+        return noWordFlag;
     }
 
 }

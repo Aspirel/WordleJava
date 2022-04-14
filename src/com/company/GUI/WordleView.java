@@ -9,7 +9,7 @@ import java.awt.event.*;
 import java.util.*;
 
 public class WordleView extends JFrame implements Observer {
-    private final ImageIcon delIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("delete.png")));
+    private final ImageIcon delIcon = new ImageIcon("src/com/company/Resources/delete.png");
     private final ArrayList<JTextField> textFieldsArray = new ArrayList<>() {
         {
             add(new JTextField("word1Line1"));
@@ -112,14 +112,10 @@ public class WordleView extends JFrame implements Observer {
     }
 
     public void physicalKeyboardListener(KeyListener keyListener) {
-        assert worldlePanel != null;
         worldlePanel.addKeyListener(keyListener);
     }
 
     public void digitalKeyboardListener(ActionListener actionListener) {
-        assert worldlePanel != null;
-        assert startOverButton != null;
-        assert buttonsArray != null;
         //Adds an action listener to every button in the array
         startOverButton.addActionListener(actionListener);
         buttonsArray.forEach(button -> button.addActionListener(actionListener));
@@ -209,7 +205,7 @@ public class WordleView extends JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         String[][] letters = wordleModel.getLetters();
-        Color[][] colors = wordleModel.getBackgroundColors();
+        Color[][] backgroundColors = wordleModel.getBackgroundColors();
         Color[][] borderColors = wordleModel.getBorderColors();
         HashMap<Integer, Color> buttonColors = wordleModel.getButtonColors();
 
@@ -217,7 +213,7 @@ public class WordleView extends JFrame implements Observer {
         for (int col = 0; col < 6; col++) {
             for (int row = 0; row < 5; row++) {
                 textFieldsArray.get(i).setText(letters[col][row]);
-                textFieldsArray.get(i).setBackground(colors[col][row] != null ? colors[col][row] : Color.white);
+                textFieldsArray.get(i).setBackground(backgroundColors[col][row] != null ? backgroundColors[col][row] : Color.white);
                 textFieldsArray.get(i).setBorder(borderColors[col][row] != null ? new LineBorder(borderColors[col][row]) :
                         new LineBorder(Color.decode("#edeff1"), 2));
                 i++;
@@ -241,6 +237,10 @@ public class WordleView extends JFrame implements Observer {
         if (arg instanceof LinesEnum) {
             currentLine = (LinesEnum) arg;
         }
+        if (arg instanceof Boolean)
+            if ((Boolean) arg) {
+                JOptionPane.showMessageDialog(worldlePanel, "Not in word list!", "", JOptionPane.WARNING_MESSAGE);
+            }
         worldlePanel.repaint();
     }
 
