@@ -91,55 +91,53 @@ public class WordleModel extends Observable {
             if (word.length() < 5) {
                 //Additional flag to display a message if the word does not have enough letters.
                 notEnoughLetters = true;
+            } else if (!allWords.contains(String.valueOf(word)) && !allTargetWords.contains(String.valueOf(word))) {
+                //If the word doesn't exist, the view is notified and a message is displayed to the user.
+                //Following the requirements. However, we could simply directly send a boolean or string
+                //to the observer as an arg, without any flag in the model.
+                noWordFoundFlag = true;
             } else {
                 assert !word.isEmpty();
                 assert !allWords.isEmpty();
                 //if the typed word exists in the words lists
-                if (allWords.contains(String.valueOf(word)) || allTargetWords.contains(String.valueOf(word))) {
-                    //if it equals the target word, its game over immediately
-                    if (targetWord.equals(String.valueOf(word))) {
-                        for (int i = 0; i < word.length(); i++) {
+                //if it equals the target word, its game over immediately
+                if (targetWord.equals(String.valueOf(word))) {
+                    for (int i = 0; i < word.length(); i++) {
+                        backgroundColors[row][i] = Color.green;
+                        borderColors[row][i] = Color.green;
+                        buttonColors.put(String.valueOf(word.charAt(i)), Color.green);
+                        gameOver = true;
+                    }
+                } else {
+                    for (int i = 0; i < word.length(); i++) {
+                        //checks typed word char by char
+                        String s = String.valueOf(word.charAt(i)).toLowerCase();
+                        //if it is the same char as the target word and is at the right index,
+                        //paints everything green. If it's in the word but not right position yellow,
+                        //and gray if not in the word at all.
+                        if (s.equals(String.valueOf(targetWord.charAt(i)))) {
                             backgroundColors[row][i] = Color.green;
                             borderColors[row][i] = Color.green;
-                            buttonColors.put(String.valueOf(word.charAt(i)), Color.green);
-                            gameOver = true;
-                        }
-                    } else {
-                        for (int i = 0; i < word.length(); i++) {
-                            //checks typed word char by char
-                            String s = String.valueOf(word.charAt(i)).toLowerCase();
-                            //if it is the same char as the target word and is at the right index,
-                            //paints everything green. If it's in the word but not right position yellow,
-                            //and gray if not in the word at all.
-                            if (s.equals(String.valueOf(targetWord.charAt(i)))) {
-                                backgroundColors[row][i] = Color.green;
-                                borderColors[row][i] = Color.green;
-                                buttonColors.put(s, Color.green);
-                            } else if (!s.equals(String.valueOf(targetWord.charAt(i))) &&
-                                    targetWord.contains(s)) {
-                                backgroundColors[row][i] = Color.yellow;
-                                borderColors[row][i] = Color.yellow;
-                                if (!buttonColors.containsKey(s) || (buttonColors.containsKey(s) &&
-                                        !buttonColors.get(s).equals(Color.green))) {
-                                    buttonColors.put(s, Color.yellow);
-                                }
-                            } else {
-                                backgroundColors[row][i] = Color.gray;
-                                borderColors[row][i] = Color.gray;
-                                buttonColors.put(s, Color.gray);
+                            buttonColors.put(s, Color.green);
+                        } else if (!s.equals(String.valueOf(targetWord.charAt(i))) &&
+                                targetWord.contains(s)) {
+                            backgroundColors[row][i] = Color.yellow;
+                            borderColors[row][i] = Color.yellow;
+                            if (!buttonColors.containsKey(s) || (buttonColors.containsKey(s) &&
+                                    !buttonColors.get(s).equals(Color.green))) {
+                                buttonColors.put(s, Color.yellow);
                             }
+                        } else {
+                            backgroundColors[row][i] = Color.gray;
+                            borderColors[row][i] = Color.gray;
+                            buttonColors.put(s, Color.gray);
                         }
                     }
-                    //Increases the row by one to go to second line and resets the column to 0 for the text
-                    //field to be the 1st one on the row.
-                    row++;
-                    col = 0;
-                } else {
-                    //If the word doesn't exist, the view is notified and a message is displayed to the user.
-                    //Following the requirements. However, we could simply directly send a boolean or string 
-                    //to the observer as an arg, without any flag in the model.
-                    noWordFoundFlag = true;
                 }
+                //Increases the row by one to go to second line and resets the column to 0 for the text
+                //field to be the 1st one on the row.
+                row++;
+                col = 0;
             }
         }
         setChanged();
