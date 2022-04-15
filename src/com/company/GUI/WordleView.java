@@ -206,7 +206,7 @@ public class WordleView extends JFrame implements Observer {
         String[][] letters = wordleModel.getLetters();
         Color[][] backgroundColors = wordleModel.getBackgroundColors();
         Color[][] borderColors = wordleModel.getBorderColors();
-        HashMap<Integer, Color> buttonColors = wordleModel.getButtonColors();
+        HashMap<String, Color> buttonColors = wordleModel.getButtonColors();
 
         int i = 0;
         for (int row = 0; row < 6; row++) {
@@ -218,18 +218,15 @@ public class WordleView extends JFrame implements Observer {
                 i++;
             }
         }
+
         if (buttonColors.isEmpty()) {
             buttonsArray.forEach(b -> b.setBackground(Color.decode("#edeff1")));
         } else {
-            buttonColors.forEach((index, color) -> {
-                if (buttonsArray.get(index).getBackground().equals(Color.green) && !color.equals(Color.green)) {
-                    buttonsArray.get(index).setBackground(Color.green);
-                } else if (buttonsArray.get(index).getBackground().equals(Color.yellow) && color.equals(Color.gray)) {
-                    buttonsArray.get(index).setBackground(Color.yellow);
-                } else {
-                    buttonsArray.get(index).setBackground(color);
+            for (JButton jButton : buttonsArray) {
+                if (buttonColors.containsKey(jButton.getText().toLowerCase())) {
+                    jButton.setBackground(buttonColors.get(jButton.getText().toLowerCase()));
                 }
-            });
+            }
         }
 
         if (arg instanceof Boolean) {
@@ -240,16 +237,7 @@ public class WordleView extends JFrame implements Observer {
         worldlePanel.repaint();
     }
 
-    public ArrayList<JTextField> getTextFieldsArray() {
-        return textFieldsArray;
-    }
-
     public JPanel getWorldlePanel() {
         return worldlePanel;
     }
-
-    public ArrayList<JButton> getButtonsArray() {
-        return buttonsArray;
-    }
 }
-

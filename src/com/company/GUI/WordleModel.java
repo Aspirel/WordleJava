@@ -1,6 +1,5 @@
 package com.company.GUI;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -17,7 +16,7 @@ public class WordleModel extends Observable {
     private String[][] letters;
     private Color[][] backgroundColors;
     private Color[][] borderColors;
-    private HashMap<Integer, Color> buttonColors;
+    private HashMap<String, Color> buttonColors;
     private ArrayList<String> allWords;
     private ArrayList<String> allTargetWords;
     private int row;
@@ -79,47 +78,52 @@ public class WordleModel extends Observable {
         if (!gameOver) {
             StringBuilder word = new StringBuilder();
             for (int i = 0; i < 5; i++) {
-                word.append(letters[row][i].toLowerCase());
+                if (letters[row][i] != null) {
+                    word.append(letters[row][i].toLowerCase());
+                }
             }
 
             assert !word.isEmpty();
             assert !allWords.isEmpty();
-//        if (allWords.contains(word.toLowerCase()) || allTargetWords.contains(word.toLowerCase())) {
-            if (targetWord.equals(String.valueOf(word))) {
-                for (int i = 0; i < word.length(); i++) {
-                    backgroundColors[row][i] = Color.green;
-                    borderColors[row][i] = Color.green;
-//                    paintButton(i, Color.green, buttonsList);
-                    gameOver = true;
-                }
-            } else {
-                for (int i = 0; i < 5; i++) {
-                    String s = String.valueOf(word.charAt(i)).toLowerCase();
-                    if (s.equals(String.valueOf(targetWord.charAt(i)))) {
+            if (allWords.contains(String.valueOf(word)) || allTargetWords.contains(String.valueOf(word))) {
+                if (targetWord.equals(String.valueOf(word))) {
+                    for (int i = 0; i < word.length(); i++) {
                         backgroundColors[row][i] = Color.green;
                         borderColors[row][i] = Color.green;
-//                    paintButton(i, Color.green, buttonsList);
-                    } else if (!s.equals(String.valueOf(targetWord.charAt(i))) &&
-                            targetWord.contains(s)) {
-                        backgroundColors[row][i] = Color.yellow;
-                        borderColors[row][i] = Color.yellow;
-//                    paintButton(i, Color.yellow, buttonsList);
-                    } else {
-                        backgroundColors[row][i] = Color.gray;
-                        borderColors[row][i] = Color.gray;
-//                    paintButton(i, Color.gray, buttonsList);
+                        buttonColors.put(String.valueOf(word.charAt(i)), Color.green);
+                        gameOver = true;
+                    }
+                } else {
+                    for (int i = 0; i < 5; i++) {
+                        String s = String.valueOf(word.charAt(i)).toLowerCase();
+                        if (s.equals(String.valueOf(targetWord.charAt(i)))) {
+                            backgroundColors[row][i] = Color.green;
+                            borderColors[row][i] = Color.green;
+                            buttonColors.put(s, Color.green);
+                        } else if (!s.equals(String.valueOf(targetWord.charAt(i))) &&
+                                targetWord.contains(s)) {
+                            backgroundColors[row][i] = Color.yellow;
+                            borderColors[row][i] = Color.yellow;
+                            if (!buttonColors.containsKey(s) || (buttonColors.containsKey(s) &&
+                                    !buttonColors.get(s).equals(Color.green))) {
+                                buttonColors.put(s, Color.yellow);
+                            }
+                        } else {
+                            backgroundColors[row][i] = Color.gray;
+                            borderColors[row][i] = Color.gray;
+                            buttonColors.put(s, Color.gray);
+                        }
                     }
                 }
+                setChanged();
+                notifyObservers();
+                row++;
+                col = 0;
+            } else {
+                noWordFlag = true;
+                setChanged();
+                notifyObservers(noWordFlag);
             }
-//        } else {
-//            noWordFlag = true;
-//            setChanged();
-//            notifyObservers(noWordFlag);
-//        }
-            setChanged();
-            notifyObservers();
-            row++;
-            col = 0;
         }
     }
 
@@ -155,14 +159,6 @@ public class WordleModel extends Observable {
         notifyObservers();
     }
 
-    private void paintButton(int index, Color color, ArrayList<JButton> buttonsList) {
-        for (int i = 0; i < buttonsList.size(); i++) {
-            if (buttonsList.get(i).getText().toLowerCase().equals(letters[row][index])) {
-                buttonColors.put(i, color);
-            }
-        }
-    }
-
     public void startOver() {
         init();
         setChanged();
@@ -181,8 +177,7 @@ public class WordleModel extends Observable {
         return borderColors;
     }
 
-    public HashMap<Integer, Color> getButtonColors() {
+    public HashMap<String, Color> getButtonColors() {
         return buttonColors;
     }
-
 }
