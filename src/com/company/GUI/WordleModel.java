@@ -74,7 +74,6 @@ public class WordleModel extends Observable {
             setChanged();
             notifyObservers();
         }
-        System.out.println(targetWord); //DELETE THIS AFTER
     }
 
     //This method checks if the typed word exists in the lists, if the letters are at the correct locations
