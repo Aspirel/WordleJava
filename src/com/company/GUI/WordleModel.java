@@ -154,11 +154,11 @@ public class WordleModel extends Observable {
     public void addLetter(ActionEvent a, KeyEvent k) {
         if (!gameOver && letters[row][4] == null) {
             if (letters[row][col] == null) {
-                letters[row][col] = String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar());
+                letters[row][col] = String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()).toUpperCase();
                 borderColors[row][col] = Color.black;
                 if (col < 4) col++;
             } else if (letters[row][col + 1] == null) {
-                letters[row][col + 1] = String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar());
+                letters[row][col + 1] = String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()).toUpperCase();
                 borderColors[row][col + 1] = Color.black;
                 if (col < 4) col++;
             }

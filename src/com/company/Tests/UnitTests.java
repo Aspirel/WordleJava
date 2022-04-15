@@ -6,6 +6,6 @@ public class UnitTests {
 
     @Test
     void testFileReading(){
-        System.out.println("Hi");
+
     }
 }

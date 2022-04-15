@@ -137,7 +137,6 @@ public class WordleView extends JFrame implements Observer {
         textFieldsArray.forEach(field -> {
             field.setFont(new Font("SansSerif", Font.BOLD, 30));
             field.setPreferredSize(new Dimension(70, 70));
-            field.setDocument(new UpperCaseTextFilter()); //converts any input into uppercase
             field.setEditable(false);
             field.setEnabled(false);
             field.setBorder(new LineBorder(Color.decode("#edeff1"), 2));
@@ -215,7 +214,7 @@ public class WordleView extends JFrame implements Observer {
         boolean noWordFoundFlag = wordleModel.getNoWordFlagFound();
 
         //Displays a popup dialog message when the word does not exist in the list and when there
-        // are not enough letters. Inspired by the original game.
+        //are not enough letters. Inspired by the original game.
         if (notEnoughLetters) {
             JOptionPane.showMessageDialog(worldlePanel, "Not enough letters!", "", JOptionPane.WARNING_MESSAGE);
         } else if (noWordFoundFlag) {
