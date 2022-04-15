@@ -8,10 +8,11 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class WordleModel extends Observable {
-    private boolean noWordFlag;
+    private boolean noWordFoundFlag;
     private boolean displayWordFlag;
     private boolean randomWordFlag;
     private boolean gameOver;
+    private boolean notEnoughLetters;
     private String targetWord;
     private String[][] letters;
     private Color[][] backgroundColors;
@@ -28,7 +29,8 @@ public class WordleModel extends Observable {
 
     private void init() {
         gameOver = false;
-        noWordFlag = false; //word does not exist in the list of words
+        notEnoughLetters = false;
+        noWordFoundFlag = false; //word does not exist in the list of words
         displayWordFlag = false; //enable to display the target word immediately in the GUI
         randomWordFlag = true; //enable to pick random target words. Disable to always pick a fixed one.
         targetWord = null;
@@ -64,6 +66,7 @@ public class WordleModel extends Observable {
         targetWord = randomWordFlag ? allTargetWords.get(random.nextInt(allTargetWords.size())) :
                 allTargetWords.get(0);
 
+        //Displays the word immediately if this flag is enabled.
         if (displayWordFlag) {
             for (int i = 0; i < targetWord.length(); i++) {
                 letters[row][i] = String.valueOf(targetWord.charAt(i));
@@ -74,6 +77,8 @@ public class WordleModel extends Observable {
         System.out.println(targetWord); //DELETE THIS AFTER
     }
 
+    //This method checks if the typed word exists in the lists, if the letters are at the correct locations
+    //and colors everything accordingly.
     public void processWord() {
         if (!gameOver) {
             StringBuilder word = new StringBuilder();
@@ -83,50 +88,71 @@ public class WordleModel extends Observable {
                 }
             }
 
-            assert !word.isEmpty();
-            assert !allWords.isEmpty();
-            if (allWords.contains(String.valueOf(word)) || allTargetWords.contains(String.valueOf(word))) {
-                if (targetWord.equals(String.valueOf(word))) {
-                    for (int i = 0; i < word.length(); i++) {
-                        backgroundColors[row][i] = Color.green;
-                        borderColors[row][i] = Color.green;
-                        buttonColors.put(String.valueOf(word.charAt(i)), Color.green);
-                        gameOver = true;
-                    }
-                } else {
-                    for (int i = 0; i < 5; i++) {
-                        String s = String.valueOf(word.charAt(i)).toLowerCase();
-                        if (s.equals(String.valueOf(targetWord.charAt(i)))) {
+            if (word.length() < 5) {
+                //Additional flag to display a message if the word does not have enough letters.
+                notEnoughLetters = true;
+            } else {
+                assert !word.isEmpty();
+                assert !allWords.isEmpty();
+                //if the typed word exists in the words lists
+                if (allWords.contains(String.valueOf(word)) || allTargetWords.contains(String.valueOf(word))) {
+                    //if it equals the target word, its game over immediately
+                    if (targetWord.equals(String.valueOf(word))) {
+                        for (int i = 0; i < word.length(); i++) {
                             backgroundColors[row][i] = Color.green;
                             borderColors[row][i] = Color.green;
-                            buttonColors.put(s, Color.green);
-                        } else if (!s.equals(String.valueOf(targetWord.charAt(i))) &&
-                                targetWord.contains(s)) {
-                            backgroundColors[row][i] = Color.yellow;
-                            borderColors[row][i] = Color.yellow;
-                            if (!buttonColors.containsKey(s) || (buttonColors.containsKey(s) &&
-                                    !buttonColors.get(s).equals(Color.green))) {
-                                buttonColors.put(s, Color.yellow);
+                            buttonColors.put(String.valueOf(word.charAt(i)), Color.green);
+                            gameOver = true;
+                        }
+                    } else {
+                        for (int i = 0; i < word.length(); i++) {
+                            //checks typed word char by char
+                            String s = String.valueOf(word.charAt(i)).toLowerCase();
+                            //if it is the same char as the target word and is at the right index,
+                            //paints everything green. If it's in the word but not right position yellow,
+                            //and gray if not in the word at all.
+                            if (s.equals(String.valueOf(targetWord.charAt(i)))) {
+                                backgroundColors[row][i] = Color.green;
+                                borderColors[row][i] = Color.green;
+                                buttonColors.put(s, Color.green);
+                            } else if (!s.equals(String.valueOf(targetWord.charAt(i))) &&
+                                    targetWord.contains(s)) {
+                                backgroundColors[row][i] = Color.yellow;
+                                borderColors[row][i] = Color.yellow;
+                                if (!buttonColors.containsKey(s) || (buttonColors.containsKey(s) &&
+                                        !buttonColors.get(s).equals(Color.green))) {
+                                    buttonColors.put(s, Color.yellow);
+                                }
+                            } else {
+                                backgroundColors[row][i] = Color.gray;
+                                borderColors[row][i] = Color.gray;
+                                buttonColors.put(s, Color.gray);
                             }
-                        } else {
-                            backgroundColors[row][i] = Color.gray;
-                            borderColors[row][i] = Color.gray;
-                            buttonColors.put(s, Color.gray);
                         }
                     }
+                    //Increases the row by one to go to second line and resets the column to 0 for the text
+                    //field to be the 1st one on the row.
+                    row++;
+                    col = 0;
+                } else {
+                    //If the word doesn't exist, the view is notified and a message is displayed to the user.
+                    //Following the requirements. However, we could simply directly send a boolean or string 
+                    //to the observer as an arg, without any flag in the model.
+                    noWordFoundFlag = true;
                 }
-                setChanged();
-                notifyObservers();
-                row++;
-                col = 0;
-            } else {
-                noWordFlag = true;
-                setChanged();
-                notifyObservers(noWordFlag);
             }
         }
+        setChanged();
+        notifyObservers();
+        noWordFoundFlag = false;
+        notEnoughLetters = false;
     }
 
+    //Method that adds the typed letter to the text boxes. With a 2d array, I simply add the letter
+    //column by column and row once the columns are full. It checks the game is not over and the row
+    //is not full, adds the letter to column and increases it by 1. Since when a column text is deleted
+    //the col is decrease by 1, when we try to increase again we check if the current index text is null,
+    //and it will never be. Therefore, we have the col + 1 portion checking for that.
     public void addLetter(ActionEvent a, KeyEvent k) {
         if (!gameOver && letters[row][4] == null) {
             if (letters[row][col] == null) {
@@ -143,6 +169,7 @@ public class WordleModel extends Observable {
         notifyObservers();
     }
 
+    //This delete method is an exact replica of the addLetter method, but backwards.
     public void deleteLetter() {
         if (!gameOver && letters[row][0] != null) {
             if (letters[row][col] != null) {
@@ -159,6 +186,7 @@ public class WordleModel extends Observable {
         notifyObservers();
     }
 
+    //Restarts the board by running the init method and resetting everything.
     public void startOver() {
         init();
         setChanged();
@@ -179,5 +207,13 @@ public class WordleModel extends Observable {
 
     public HashMap<String, Color> getButtonColors() {
         return buttonColors;
+    }
+
+    public boolean getNoWordFlagFound() {
+        return noWordFoundFlag;
+    }
+
+    public boolean getNotEnoughLetters() {
+        return notEnoughLetters;
     }
 }

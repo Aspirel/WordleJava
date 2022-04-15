@@ -123,15 +123,17 @@ public class WordleView extends JFrame implements Observer {
     private void textFieldsSetup() {
         JPanel textFieldsPanel = new JPanel();
         JPanel gridPanel = new JPanel();
-        JPanel buttonPanel = new JPanel();
+        JPanel startOverButtonPanel = new JPanel();
 
-        buttonPanel.setBounds(0, 0, 800, 30);
-        buttonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        buttonPanel.setBackground(Color.white);
+        //Create a panel for the start over button, so I can center it in the middle without adding margins.
+        startOverButtonPanel.setBounds(0, 0, 800, 30);
+        startOverButtonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        startOverButtonPanel.setBackground(Color.white);
         startOverButton.setBackground(Color.decode("#edeff1"));
-        buttonPanel.add(startOverButton);
-        worldlePanel.add(buttonPanel);
+        startOverButtonPanel.add(startOverButton);
+        worldlePanel.add(startOverButtonPanel);
 
+        //Text fields setup.
         textFieldsArray.forEach(field -> {
             field.setFont(new Font("SansSerif", Font.BOLD, 30));
             field.setPreferredSize(new Dimension(70, 70));
@@ -153,6 +155,8 @@ public class WordleView extends JFrame implements Observer {
         worldlePanel.add(gridPanel);
     }
 
+    //Digital keyboard setup. I use three separate lines with flow layouts to give them the look of the
+    //original game.
     private void keyboardSetup() {
         JPanel bottomPanel = new JPanel();
         bottomPanel.setBounds(0, 530, 800, 320);
@@ -207,31 +211,38 @@ public class WordleView extends JFrame implements Observer {
         Color[][] backgroundColors = wordleModel.getBackgroundColors();
         Color[][] borderColors = wordleModel.getBorderColors();
         HashMap<String, Color> buttonColors = wordleModel.getButtonColors();
+        boolean notEnoughLetters = wordleModel.getNotEnoughLetters();
+        boolean noWordFoundFlag = wordleModel.getNoWordFlagFound();
 
-        int i = 0;
-        for (int row = 0; row < 6; row++) {
-            for (int col = 0; col < 5; col++) {
-                textFieldsArray.get(i).setText(letters[row][col]);
-                textFieldsArray.get(i).setBackground(backgroundColors[row][col] != null ? backgroundColors[row][col] : Color.white);
-                textFieldsArray.get(i).setBorder(borderColors[row][col] != null ? new LineBorder(borderColors[row][col]) :
-                        new LineBorder(Color.decode("#edeff1"), 2));
-                i++;
-            }
-        }
-
-        if (buttonColors.isEmpty()) {
-            buttonsArray.forEach(b -> b.setBackground(Color.decode("#edeff1")));
+        //Displays a popup dialog message when the word does not exist in the list and when there
+        // are not enough letters. Inspired by the original game.
+        if (notEnoughLetters) {
+            JOptionPane.showMessageDialog(worldlePanel, "Not enough letters!", "", JOptionPane.WARNING_MESSAGE);
+        } else if (noWordFoundFlag) {
+            JOptionPane.showMessageDialog(worldlePanel, "Not in word list!", "", JOptionPane.WARNING_MESSAGE);
         } else {
-            for (JButton jButton : buttonsArray) {
-                if (buttonColors.containsKey(jButton.getText().toLowerCase())) {
-                    jButton.setBackground(buttonColors.get(jButton.getText().toLowerCase()));
+            //The size of the grid is known and does not need to be dynamic, so I simply loop through the
+            //rows and columns and add the values for text and colors.
+            int i = 0;
+            for (int row = 0; row < 6; row++) {
+                for (int col = 0; col < 5; col++) {
+                    textFieldsArray.get(i).setText(letters[row][col]);
+                    textFieldsArray.get(i).setBackground(backgroundColors[row][col] != null ? backgroundColors[row][col] : Color.white);
+                    textFieldsArray.get(i).setBorder(borderColors[row][col] != null ? new LineBorder(borderColors[row][col]) :
+                            new LineBorder(Color.decode("#edeff1"), 2));
+                    i++;
                 }
             }
-        }
 
-        if (arg instanceof Boolean) {
-            if ((Boolean) arg) {
-                JOptionPane.showMessageDialog(worldlePanel, "Not in word list!", "", JOptionPane.WARNING_MESSAGE);
+            //Colors the digital keyboard buttons.
+            if (buttonColors.isEmpty()) {
+                buttonsArray.forEach(b -> b.setBackground(Color.decode("#edeff1")));
+            } else {
+                for (JButton jButton : buttonsArray) {
+                    if (buttonColors.containsKey(jButton.getText().toLowerCase())) {
+                        jButton.setBackground(buttonColors.get(jButton.getText().toLowerCase()));
+                    }
+                }
             }
         }
         worldlePanel.repaint();

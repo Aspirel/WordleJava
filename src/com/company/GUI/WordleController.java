@@ -14,6 +14,11 @@ public class WordleController {
         wordleView.digitalKeyboardListener(new DigitalKeyboardActionListener(wordleView));
     }
 
+    //Both keyboard listeners include requestFocus(). Everytime a function from the model is called,
+    //a requestFocus function is called for the game panel. With the user not having to click anything
+    //on the board and just type directly physically or with the buttons, if these focus functions
+    //are not called and the user clicks somewhere on the board, the text fields will no longer be
+    // automatically focused and letters won't be added.
     class DigitalKeyboardActionListener implements ActionListener {
         private final WordleView wordleView;
 
