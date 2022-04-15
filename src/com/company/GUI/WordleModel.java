@@ -61,8 +61,8 @@ public class WordleModel extends Observable {
         Random random = new Random();
 
         //If the flag for random words is enabled, it gets a random one, otherwise, gets a fixed word(first one).
-        //How to choose the fixed word was not specified in the course work, only that it must be fixed, therefore
-        //the first of the list is the one.
+        //How to choose the fixed word was not specified on the course work, only that it must be fixed, therefore
+        //the first of the list is chosen.
         targetWord = randomWordFlag ? allTargetWords.get(random.nextInt(allTargetWords.size())) :
                 allTargetWords.get(0);
 
