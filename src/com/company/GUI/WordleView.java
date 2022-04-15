@@ -1,7 +1,5 @@
 package com.company.GUI;
 
-import com.company.Utils.LinesEnum;
-
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
@@ -80,7 +78,6 @@ public class WordleView extends JFrame implements Observer {
 
     private final JPanel worldlePanel = new JPanel();
     private final JButton startOverButton = new JButton("Start Over");
-    private LinesEnum currentLine = LinesEnum.Line1;
     private final WordleModel wordleModel;
 
     public WordleView(WordleModel wordleModel) {
@@ -212,11 +209,11 @@ public class WordleView extends JFrame implements Observer {
         HashMap<Integer, Color> buttonColors = wordleModel.getButtonColors();
 
         int i = 0;
-        for (int col = 0; col < 6; col++) {
-            for (int row = 0; row < 5; row++) {
-                textFieldsArray.get(i).setText(letters[col][row]);
-                textFieldsArray.get(i).setBackground(backgroundColors[col][row] != null ? backgroundColors[col][row] : Color.white);
-                textFieldsArray.get(i).setBorder(borderColors[col][row] != null ? new LineBorder(borderColors[col][row]) :
+        for (int row = 0; row < 6; row++) {
+            for (int col = 0; col < 5; col++) {
+                textFieldsArray.get(i).setText(letters[row][col]);
+                textFieldsArray.get(i).setBackground(backgroundColors[row][col] != null ? backgroundColors[row][col] : Color.white);
+                textFieldsArray.get(i).setBorder(borderColors[row][col] != null ? new LineBorder(borderColors[row][col]) :
                         new LineBorder(Color.decode("#edeff1"), 2));
                 i++;
             }
@@ -225,8 +222,7 @@ public class WordleView extends JFrame implements Observer {
             buttonsArray.forEach(b -> b.setBackground(Color.decode("#edeff1")));
         } else {
             buttonColors.forEach((index, color) -> {
-                if (buttonsArray.get(index).getBackground().equals(Color.green) && (color.equals(Color.gray) ||
-                        color.equals(Color.yellow))) {
+                if (buttonsArray.get(index).getBackground().equals(Color.green) && !color.equals(Color.green)) {
                     buttonsArray.get(index).setBackground(Color.green);
                 } else if (buttonsArray.get(index).getBackground().equals(Color.yellow) && color.equals(Color.gray)) {
                     buttonsArray.get(index).setBackground(Color.yellow);
@@ -236,9 +232,6 @@ public class WordleView extends JFrame implements Observer {
             });
         }
 
-        if (arg instanceof LinesEnum) {
-            currentLine = (LinesEnum) arg;
-        }
         if (arg instanceof Boolean) {
             if ((Boolean) arg) {
                 JOptionPane.showMessageDialog(worldlePanel, "Not in word list!", "", JOptionPane.WARNING_MESSAGE);

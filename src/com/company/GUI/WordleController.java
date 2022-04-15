@@ -24,19 +24,19 @@ public class WordleController {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getActionCommand().equals("ENTER")) {
-                wordleModel.processWord(wordleView.getTextFieldsArray(), wordleView.getButtonsArray());
+                wordleModel.processWord();
                 wordleView.getWorldlePanel().requestFocus();
             } else if (e.getActionCommand().equals("")) {
                 //Using an empty string for the delete button because there is no good way to hide the text,
                 //and I need to show the icon and not the text. It's being set empty where the icon is set
-                //but still need to find the button.
-                wordleModel.deleteLetter(wordleView.getTextFieldsArray());
+                //but still need to find the button. Nothing else is empty so there is no conflict.
+                wordleModel.deleteLetter();
                 wordleView.getWorldlePanel().requestFocus();
             } else if (e.getActionCommand().equals("Start Over")) {
                 wordleModel.startOver();
                 wordleView.getWorldlePanel().requestFocus();
             } else {
-                wordleModel.addLetter(wordleView.getTextFieldsArray(), e, null);
+                wordleModel.addLetter(e, null);
                 wordleView.getWorldlePanel().requestFocus();
             }
         }
@@ -57,14 +57,14 @@ public class WordleController {
         public void keyPressed(KeyEvent e) {
             String acceptableLetters = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                wordleModel.processWord(wordleView.getTextFieldsArray(), wordleView.getButtonsArray());
+                wordleModel.processWord();
                 wordleView.getWorldlePanel().requestFocus();
             } else if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-                wordleModel.deleteLetter(wordleView.getTextFieldsArray());
+                wordleModel.deleteLetter();
                 wordleView.getWorldlePanel().requestFocus();
             } else {
                 if (acceptableLetters.contains(String.valueOf(e.getKeyChar()))) {
-                    wordleModel.addLetter(wordleView.getTextFieldsArray(), null, e);
+                    wordleModel.addLetter(null, e);
                     wordleView.getWorldlePanel().requestFocus();
                 }
             }
