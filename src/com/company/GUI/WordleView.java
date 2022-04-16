@@ -243,6 +243,13 @@ public class WordleView extends JFrame implements Observer {
                     }
                 }
             }
+            //This is the only occasion an argument is passed to the view. It is used to display
+            //game over (only) messages. It's used in here because I want the blocks to be coloured
+            //before displaying the message and not the other way around.
+            if (arg != null) {
+                JOptionPane.showMessageDialog(worldlePanel, arg, "Game Over!",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
         }
         worldlePanel.repaint();
     }

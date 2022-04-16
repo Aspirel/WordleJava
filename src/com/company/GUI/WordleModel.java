@@ -79,6 +79,7 @@ public class WordleModel extends Observable {
     //This method checks if the typed word exists in the lists, if the letters are at the correct locations
     //and colors everything accordingly.
     public void processWord() {
+        String message = null;
         if (!gameOver) {
             StringBuilder word = new StringBuilder();
             for (int i = 0; i < 5; i++) {
@@ -107,6 +108,8 @@ public class WordleModel extends Observable {
                         buttonColors.put(String.valueOf(word.charAt(i)), Color.green);
                         gameOver = true;
                     }
+                    //Passes the message as an argument to the observer.
+                    message = "Congratulations! You've Won!";
                 } else {
                     for (int i = 0; i < word.length(); i++) {
                         //checks typed word char by char
@@ -139,8 +142,16 @@ public class WordleModel extends Observable {
                 col = 0;
             }
         }
+
+        //After the word checks and colouring, if the last text box of the last row is full,
+        //it means the game is over either way. It informs the user the game is over and displays the target word.
+        if (letters[5][4] != null) {
+            gameOver = true;
+            message = "The word was \"" + targetWord + "\"";
+        }
+
         setChanged();
-        notifyObservers();
+        notifyObservers(message);
         noWordFoundFlag = false;
         notEnoughLetters = false;
     }
@@ -185,7 +196,7 @@ public class WordleModel extends Observable {
 
     //Restarts the board by running the init method and resetting everything.
     public void startOver() {
-        init();
+        if (row > 0) init();
         setChanged();
         notifyObservers();
     }

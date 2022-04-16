@@ -28,7 +28,7 @@ public class WordleCLIModel {
         gameOver = false;
         notEnoughLetters = false;
         noWordFoundFlag = false; //word does not exist in the list of words
-        displayWordFlag = false; //enable to display the target word immediately in the GUI
+        displayWordFlag = true; //enable to display the target word immediately in the console.
         randomWordFlag = true; //enable to pick random target words. Disable to always pick a fixed one.
         targetWord = null;
         allWords = new ArrayList<>();
@@ -59,28 +59,21 @@ public class WordleCLIModel {
 
         //Displays the word immediately if this flag is enabled.
         if (displayWordFlag) {
-            for (int i = 0; i < targetWord.length(); i++) {
-            }
+            System.out.println(targetWord);
         }
-        System.out.println(targetWord); //DELETE THIS AFTER
     }
 
-    //This method checks if the typed word exists in the lists, if the letters are at the correct locations
-    //and colors everything accordingly.
+    //This method checks if the typed word exists in the lists and if the letters are at the correct locations.
+    //Game is over is all letters are correct
     public void processWord() {
 
     }
 
-    //Method that adds the typed letter to the text boxes. With a 2d array, I simply add the letter
-    //column by column and row once the columns are full. It checks the game is not over and the row
-    //is not full, adds the letter to column and increases it by 1. Since when a column text is deleted
-    //the col is decrease by 1, when we try to increase again we check if the current index text is null,
-    //and it will never be. Therefore, we have the col + 1 portion checking for that.
     public void addLetter() {
+        Scanner scanner = new Scanner(System.in);
 
     }
 
-    //This delete method is an exact replica of the addLetter method, but backwards.
     public void deleteLetter() {
 
     }
@@ -90,12 +83,4 @@ public class WordleCLIModel {
         init();
     }
 
-
-    public boolean getNoWordFlagFound() {
-        return noWordFoundFlag;
-    }
-
-    public boolean getNotEnoughLetters() {
-        return notEnoughLetters;
-    }
 }
