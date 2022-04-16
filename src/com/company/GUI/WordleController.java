@@ -41,7 +41,7 @@ public class WordleController {
                 wordleModel.startOver();
                 wordleView.getWorldlePanel().requestFocus();
             } else {
-                wordleModel.addLetter(e, null);
+                wordleModel.addLetter(String.valueOf(e.getActionCommand()));
                 wordleView.getWorldlePanel().requestFocus();
             }
         }
@@ -69,7 +69,7 @@ public class WordleController {
                 wordleView.getWorldlePanel().requestFocus();
             } else {
                 if (acceptableLetters.contains(String.valueOf(e.getKeyChar()))) {
-                    wordleModel.addLetter(null, e);
+                    wordleModel.addLetter(String.valueOf(e.getKeyChar()));
                     wordleView.getWorldlePanel().requestFocus();
                 }
             }

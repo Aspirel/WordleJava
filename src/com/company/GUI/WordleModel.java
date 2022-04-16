@@ -74,6 +74,7 @@ public class WordleModel extends Observable {
             setChanged();
             notifyObservers();
         }
+        System.out.println(targetWord);
     }
 
     //This method checks if the typed word exists in the lists, if the letters are at the correct locations
@@ -145,7 +146,7 @@ public class WordleModel extends Observable {
 
         //After the word checks and colouring, if the last text box of the last row is full,
         //it means the game is over either way. It informs the user the game is over and displays the target word.
-        if (letters[5][4] != null) {
+        if (letters[5][4] != null & !gameOver) {
             gameOver = true;
             message = "The word was \"" + targetWord + "\"";
         }
@@ -161,14 +162,14 @@ public class WordleModel extends Observable {
     //is not full, adds the letter to column and increases it by 1. Since when a column text is deleted
     //the col is decrease by 1, when we try to increase again we check if the current index text is null,
     //and it will never be. Therefore, we have the col + 1 portion checking for that.
-    public void addLetter(ActionEvent a, KeyEvent k) {
+    public void addLetter(String character) {
         if (!gameOver && letters[row][4] == null) {
             if (letters[row][col] == null) {
-                letters[row][col] = String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()).toUpperCase();
+                letters[row][col] = character.toUpperCase();
                 borderColors[row][col] = Color.black;
                 if (col < 4) col++;
             } else if (letters[row][col + 1] == null) {
-                letters[row][col + 1] = String.valueOf(a != null ? a.getActionCommand() : k.getKeyChar()).toUpperCase();
+                letters[row][col + 1] = character.toUpperCase();
                 borderColors[row][col + 1] = Color.black;
                 if (col < 4) col++;
             }
