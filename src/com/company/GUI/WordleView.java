@@ -210,14 +210,12 @@ public class WordleView extends JFrame implements Observer {
         Color[][] backgroundColors = wordleModel.getBackgroundColors();
         Color[][] borderColors = wordleModel.getBorderColors();
         HashMap<String, Color> buttonColors = wordleModel.getButtonColors();
-        boolean notEnoughLetters = wordleModel.getNotEnoughLetters();
-        boolean noWordFoundFlag = wordleModel.getNoWordFlagFound();
 
         //Displays a popup dialog message when the word does not exist in the list and when there
         //are not enough letters. Inspired by the original game.
-        if (notEnoughLetters) {
+        if (wordleModel.getNotEnoughLetters()) {
             JOptionPane.showMessageDialog(worldlePanel, "Not enough letters!", "", JOptionPane.WARNING_MESSAGE);
-        } else if (noWordFoundFlag) {
+        } else if (wordleModel.getNoWordFlagFound()) {
             JOptionPane.showMessageDialog(worldlePanel, "Not in word list!", "", JOptionPane.WARNING_MESSAGE);
         } else {
             //The size of the grid is known and does not need to be dynamic, so I simply loop through the
@@ -243,15 +241,18 @@ public class WordleView extends JFrame implements Observer {
                     }
                 }
             }
-            //This is the only occasion an argument is passed to the view. It is used to display
-            //game over (only) messages. It's used in here because I want the blocks to be coloured
-            //before displaying the message and not the other way around.
-            if (arg != null) {
-                JOptionPane.showMessageDialog(worldlePanel, arg, "Game Over!",
+
+            //An optional feature. It is used to display game over (only) messages. It's used in here because
+            //I want the blocks to be coloured before displaying the message and not the other way around.
+            if (wordleModel.getVictory()) {
+                JOptionPane.showMessageDialog(worldlePanel, "Congratulations! You've Won!", "Victory!",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else if (wordleModel.getGameOver()) {
+                JOptionPane.showMessageDialog(worldlePanel, "The word was \"" + wordleModel.getTargetWord() + "\"",
+                        "Game Over!",
                         JOptionPane.INFORMATION_MESSAGE);
             }
         }
-        worldlePanel.repaint();
     }
 
     public JPanel getWorldlePanel() {

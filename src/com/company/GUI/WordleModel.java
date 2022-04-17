@@ -12,6 +12,7 @@ public class WordleModel extends Observable {
     private boolean displayWordFlag;
     private boolean randomWordFlag;
     private boolean gameOver;
+    private boolean victory;
     private boolean notEnoughLetters;
     private String targetWord;
     private String[][] letters;
@@ -29,6 +30,7 @@ public class WordleModel extends Observable {
 
     private void init() {
         gameOver = false;
+        victory = false;
         notEnoughLetters = false;
         noWordFoundFlag = false; //word does not exist in the list of words
         displayWordFlag = false; //enable to display the target word immediately in the GUI
@@ -80,8 +82,7 @@ public class WordleModel extends Observable {
     //This method checks if the typed word exists in the lists, if the letters are at the correct locations
     //and colors everything accordingly.
     public void processWord() {
-        String message = null;
-        if (!gameOver) {
+        if (!gameOver && !victory) {
             StringBuilder word = new StringBuilder();
             for (int i = 0; i < 5; i++) {
                 if (letters[row][i] != null) {
@@ -107,10 +108,8 @@ public class WordleModel extends Observable {
                         backgroundColors[row][i] = Color.green;
                         borderColors[row][i] = Color.green;
                         buttonColors.put(String.valueOf(word.charAt(i)), Color.green);
-                        gameOver = true;
+                        victory = true;
                     }
-                    //Passes the message as an argument to the observer.
-                    message = "Congratulations! You've Won!";
                 } else {
                     for (int i = 0; i < word.length(); i++) {
                         //checks typed word char by char
@@ -145,14 +144,13 @@ public class WordleModel extends Observable {
         }
 
         //After the word checks and colouring, if the last text box of the last row is full,
-        //it means the game is over either way. It informs the user the game is over and displays the target word.
-        if (letters[5][4] != null & !gameOver) {
+        //it means the game is over. It informs the user the game is over and displays the target word.
+        if (letters[5][4] != null & !victory) {
             gameOver = true;
-            message = "The word was \"" + targetWord + "\"";
         }
 
         setChanged();
-        notifyObservers(message);
+        notifyObservers();
         noWordFoundFlag = false;
         notEnoughLetters = false;
     }
@@ -163,7 +161,7 @@ public class WordleModel extends Observable {
     //the col is decrease by 1, when we try to increase again we check if the current index text is null,
     //and it will never be. Therefore, we have the col + 1 portion checking for that.
     public void addLetter(String character) {
-        if (!gameOver && letters[row][4] == null) {
+        if (!gameOver && !victory && letters[row][4] == null) {
             if (letters[row][col] == null) {
                 letters[row][col] = character.toUpperCase();
                 borderColors[row][col] = Color.black;
@@ -180,7 +178,7 @@ public class WordleModel extends Observable {
 
     //This delete method is an exact replica of the addLetter method, but backwards.
     public void deleteLetter() {
-        if (!gameOver && letters[row][0] != null) {
+        if (!gameOver && !victory && letters[row][0] != null) {
             if (letters[row][col] != null) {
                 letters[row][col] = null;
                 borderColors[row][col] = null;
@@ -224,5 +222,17 @@ public class WordleModel extends Observable {
 
     public boolean getNotEnoughLetters() {
         return notEnoughLetters;
+    }
+
+    public boolean getGameOver() {
+        return gameOver;
+    }
+
+    public boolean getVictory() {
+        return victory;
+    }
+
+    public String getTargetWord() {
+        return targetWord;
     }
 }
