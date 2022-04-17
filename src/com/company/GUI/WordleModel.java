@@ -108,8 +108,8 @@ public class WordleModel extends Observable {
                         backgroundColors[row][i] = Color.green;
                         borderColors[row][i] = Color.green;
                         buttonColors.put(String.valueOf(word.charAt(i)), Color.green);
-                        victory = true;
                     }
+                    victory = true;
                 } else {
                     for (int i = 0; i < word.length(); i++) {
                         //checks typed word char by char
@@ -151,8 +151,6 @@ public class WordleModel extends Observable {
 
         setChanged();
         notifyObservers();
-        noWordFoundFlag = false;
-        notEnoughLetters = false;
     }
 
     //Method that adds the typed letter to the text boxes. With a 2d array, I simply add the letter
@@ -161,6 +159,8 @@ public class WordleModel extends Observable {
     //the col is decrease by 1, when we try to increase again we check if the current index text is null,
     //and it will never be. Therefore, we have the col + 1 portion checking for that.
     public void addLetter(String character) {
+        noWordFoundFlag = false;
+        notEnoughLetters = false;
         if (!gameOver && !victory && letters[row][4] == null) {
             if (letters[row][col] == null) {
                 letters[row][col] = character.toUpperCase();
@@ -178,6 +178,8 @@ public class WordleModel extends Observable {
 
     //This delete method is an exact replica of the addLetter method, but backwards.
     public void deleteLetter() {
+        noWordFoundFlag = false;
+        notEnoughLetters = false;
         if (!gameOver && !victory && letters[row][0] != null) {
             if (letters[row][col] != null) {
                 letters[row][col] = null;
