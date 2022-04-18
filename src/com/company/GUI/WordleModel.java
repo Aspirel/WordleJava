@@ -97,7 +97,7 @@ public class WordleModel extends Observable {
                 }
             }
 
-            Assertions.assertFalse(word.isEmpty());
+            Assertions.assertNotNull(word);
             Assertions.assertFalse(allWords.isEmpty());
             Assertions.assertFalse(targetWord.isEmpty());
             Assertions.assertFalse(allTargetWords.isEmpty());
@@ -231,9 +231,11 @@ public class WordleModel extends Observable {
      */
     public void startOver() {
         Assertions.assertTrue(row >= 0);
-        if (row > 0) init();
-        setChanged();
-        notifyObservers();
+        if (row > 0) {
+            init();
+            setChanged();
+            notifyObservers();
+        }
     }
 
     public String[][] getLetters() {

@@ -71,7 +71,9 @@ public class WordleCLI {
                                         correctLetters.add(letters[i][j]);
                                     }
                                 } else if (backgroundColors[i][j].equals(Color.yellow)) {
-                                    existingLetters.add(letters[i][j]);
+                                    if (!existingLetters.contains(letters[i][j])) {
+                                        existingLetters.add(letters[i][j]);
+                                    }
                                 } else {
                                     if (!nonExistingLetters.contains(letters[i][j])) {
                                         nonExistingLetters.add(letters[i][j]);
