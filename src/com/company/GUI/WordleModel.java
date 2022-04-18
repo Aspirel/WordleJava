@@ -159,6 +159,9 @@ public class WordleModel extends Observable {
     //the col is decrease by 1, when we try to increase again we check if the current index text is null,
     //and it will never be. Therefore, we have the col + 1 portion checking for that.
     public void addLetter(String character) {
+        //These flags reset here and in the deleteLetter().
+        //Could have been called at the end of process word, but since the CLI is not being notified directly,
+        //it must be reset everytime a new word is added or deleted.
         noWordFoundFlag = false;
         notEnoughLetters = false;
         if (!gameOver && !victory && letters[row][4] == null) {
