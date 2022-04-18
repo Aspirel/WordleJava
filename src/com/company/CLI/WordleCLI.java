@@ -38,7 +38,11 @@ public class WordleCLI {
             } else if (wordleModel.getGameOver()) {
                 playAgain(wordleModel, "Game Over! The word was \"" + wordleModel.getTargetWord() + "\"");
             } else if (wordleModel.getNoWordFlagFound()) {
-                System.out.println("Not in word list.");
+                System.out.println("Not in word list.\n");
+                //resets the row to empty. Row is being monitored in the model.
+                for (int i = 0; i < 5; i++) {
+                    wordleModel.deleteLetter();
+                }
             } else {
                 String[][] letters = wordleModel.getLetters();
                 Color[][] backgroundColors = wordleModel.getBackgroundColors();
