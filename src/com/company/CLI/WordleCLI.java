@@ -24,8 +24,8 @@ public class WordleCLI {
             ArrayList<String> nonExistingLetters = new ArrayList<>();
             int numberOfTries = 6;
             String guess;
-            System.out.println(wordleModel.getTargetWord()); //REMOVE AFTER
 
+            //while a correct word isn't found or the game is over due to being lost
             while (!wordleModel.getVictory() || !wordleModel.getGameOver()) {
                 System.out.printf("Usable letters: %s\n", availableLetters);
                 System.out.printf("Correctly positioned letters: %s\n", correctLetters);
@@ -33,6 +33,7 @@ public class WordleCLI {
                 System.out.printf("Letters not in the word: %s\n", nonExistingLetters);
                 System.out.printf("You have %d tries left.\n\n", numberOfTries);
 
+                //since only 5 letter words are accepted, this controls it in a loop
                 Scanner scanner = new Scanner(System.in);
                 do {
                     System.out.print("5 letter word guess: ");
@@ -44,6 +45,7 @@ public class WordleCLI {
                 }
 
                 wordleModel.processWord();
+
                 if (wordleModel.getVictory()) {
                     playAgain(wordleModel, "Congratulations! You've Won!");
                 } else if (wordleModel.getGameOver()) {
@@ -66,9 +68,7 @@ public class WordleCLI {
                                         correctLetters.add(letters[i][j]);
                                     }
                                 } else if (backgroundColors[i][j].equals(Color.yellow)) {
-                                    if (!existingLetters.contains(letters[i][j])) {
                                         existingLetters.add(letters[i][j]);
-                                    }
                                 } else {
                                     if (!nonExistingLetters.contains(letters[i][j])) {
                                         nonExistingLetters.add(letters[i][j]);
