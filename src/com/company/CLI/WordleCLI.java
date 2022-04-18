@@ -76,9 +76,10 @@ public class WordleCLI {
                                     if (!nonExistingLetters.contains(letters[i][j])) {
                                         nonExistingLetters.add(letters[i][j]);
                                     }
-                                    //This also removes the letters that are not part of the guess word from
-                                    //the all available letters list, similar to the graying out of letters on
-                                    //the digital keyboard.
+                                    /* This also removes the letters that are not part of the guess word from
+                                     * the all available letters list, similar to the graying out of letters on
+                                     * the digital keyboard.
+                                     */
                                     availableLetters.remove(String.valueOf(letters[i][j]));
                                 }
                             }
