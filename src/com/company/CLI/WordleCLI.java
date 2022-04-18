@@ -17,8 +17,8 @@ public class WordleCLI {
 
         private void play() {
             WordleModel wordleModel = new WordleModel();
-            ArrayList<String> availableLetters = new ArrayList<>(Arrays.asList("Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P",
-                    "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"));
+            ArrayList<String> availableLetters = new ArrayList<>(Arrays.asList("Q", "W", "E", "R", "T", "Y", "U",
+                    "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"));
             ArrayList<String> correctLetters = new ArrayList<>();
             ArrayList<String> existingLetters = new ArrayList<>();
             ArrayList<String> nonExistingLetters = new ArrayList<>();
@@ -33,7 +33,8 @@ public class WordleCLI {
                 System.out.printf("Letters not in the word: %s\n", nonExistingLetters);
                 System.out.printf("You have %d tries left.\n\n", numberOfTries);
 
-                //since only 5 letter words are accepted, this controls it in a loop
+                //since only 5 letter words are accepted, this controls it in a loop and there is no need
+                //to have a not enough and too many letters checks.
                 Scanner scanner = new Scanner(System.in);
                 do {
                     System.out.print("5 letter word guess: ");
@@ -44,6 +45,7 @@ public class WordleCLI {
                     wordleModel.addLetter(String.valueOf(guess.charAt(i)));
                 }
 
+                //checks the word
                 wordleModel.processWord();
 
                 if (wordleModel.getVictory()) {
@@ -58,6 +60,7 @@ public class WordleCLI {
                     }
                     numberOfTries += 1;
                 } else {
+                    //This represents the colouring of the letters by adding them to specific lists.
                     String[][] letters = wordleModel.getLetters();
                     Color[][] backgroundColors = wordleModel.getBackgroundColors();
                     for (int i = 0; i < 6; i++) {
@@ -68,11 +71,14 @@ public class WordleCLI {
                                         correctLetters.add(letters[i][j]);
                                     }
                                 } else if (backgroundColors[i][j].equals(Color.yellow)) {
-                                        existingLetters.add(letters[i][j]);
+                                    existingLetters.add(letters[i][j]);
                                 } else {
                                     if (!nonExistingLetters.contains(letters[i][j])) {
                                         nonExistingLetters.add(letters[i][j]);
                                     }
+                                    //This also removes the letters that are not part of the guess word from
+                                    //the all available letters list, similar to the graying out of letters on
+                                    //the digital keyboard.
                                     availableLetters.remove(String.valueOf(letters[i][j]));
                                 }
                             }
@@ -83,6 +89,13 @@ public class WordleCLI {
             }
         }
 
+        /**
+         * Function that displays a message of the previous outcome of the game and asks the user if he wants to
+         * play again.
+         *
+         * @param wordleModel the model
+         * @param message     Displays the outcome of the previous attempt to the user.
+         */
         private void playAgain(WordleModel wordleModel, String message) {
             System.out.println(message);
             System.out.print("Play again? Yes - No\n");
@@ -96,12 +109,7 @@ public class WordleCLI {
         }
     }
 
-
     public static void main(String[] args) {
         new WordleCLIDisplay();
-//        WordleModel wordleModel = new WordleModel();
-//        WordleCLIDisplays wordleCLIDisplays = new WordleCLIDisplays(wordleModel);
-//        wordleModel.addObserver(wordleCLIDisplays);
-//        wordleCLIDisplays.play();
     }
 }

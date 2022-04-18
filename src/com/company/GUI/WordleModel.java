@@ -45,6 +45,7 @@ public class WordleModel extends Observable {
         row = 0;
         col = 0;
 
+        //Reads both text files with all the words.
         try {
             Scanner scanner = new Scanner(new File("src/com/company/Resources/common.txt"));
             Scanner scanner2 = new Scanner(new File("src/com/company/Resources/words.txt"));
@@ -61,7 +62,6 @@ public class WordleModel extends Observable {
         }
 
         Assertions.assertFalse(allTargetWords.isEmpty());
-        Assertions.assertNotNull(letters);
 
         /*
          * If the flag for random words is enabled, it gets a random one, otherwise, gets a fixed word(first one).
@@ -90,7 +90,6 @@ public class WordleModel extends Observable {
     public void processWord() {
         if (!gameOver && !victory) {
             StringBuilder word = new StringBuilder();
-            Assertions.assertNotNull(letters);
 
             for (int i = 0; i < 5; i++) {
                 if (letters[row][i] != null) {
@@ -102,9 +101,6 @@ public class WordleModel extends Observable {
             Assertions.assertFalse(allWords.isEmpty());
             Assertions.assertFalse(targetWord.isEmpty());
             Assertions.assertFalse(allTargetWords.isEmpty());
-            Assertions.assertNotNull(backgroundColors);
-            Assertions.assertNotNull(borderColors);
-            Assertions.assertNotNull(buttonColors);
             Assertions.assertTrue(row >= 0);
             Assertions.assertTrue(col >= 0);
 
@@ -180,15 +176,13 @@ public class WordleModel extends Observable {
      * and it will never be. Therefore, we have the col + 1 portion checking for that.
      */
     public void addLetter(String character) {
-        /*These flags reset here and in the deleteLetter().
-         *Could have been called at the end of process word, but since the CLI is not being notified directly,
-         *it must be reset everytime a new word is added or deleted.
+        /* These flags reset here and in the deleteLetter().
+         * Could have been called at the end of process word, but since the CLI is not being notified directly,
+         * it must be reset everytime a new word is added or deleted.
          */
         noWordFoundFlag = false;
         notEnoughLetters = false;
 
-        Assertions.assertNotNull(letters);
-        Assertions.assertNotNull(borderColors);
         Assertions.assertTrue(row >= 0);
         Assertions.assertTrue(col >= 0);
 
@@ -214,8 +208,6 @@ public class WordleModel extends Observable {
         noWordFoundFlag = false;
         notEnoughLetters = false;
 
-        Assertions.assertNotNull(letters);
-        Assertions.assertNotNull(borderColors);
         Assertions.assertTrue(row >= 0);
         Assertions.assertTrue(col >= 0);
 
@@ -238,6 +230,7 @@ public class WordleModel extends Observable {
      * Restarts the board by running the init method and resetting everything, once the row is > 1 (after 1st guess).
      */
     public void startOver() {
+        Assertions.assertTrue(row >= 0);
         if (row > 0) init();
         setChanged();
         notifyObservers();
