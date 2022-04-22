@@ -108,6 +108,7 @@ public class WordleView extends JFrame implements Observer {
         });
 
         update(wordleModel, null);
+        this.setVisible(true);
     }
 
     public void physicalKeyboardListener(KeyListener keyListener) {
@@ -126,7 +127,7 @@ public class WordleView extends JFrame implements Observer {
         JPanel startOverButtonPanel = new JPanel();
 
         //Create a panel for the start over button, so I can center it in the middle without adding margins.
-        startOverButtonPanel.setBounds(0, 0, 800, 30);
+        startOverButtonPanel.setBounds(0, 0, 800, 35);
         startOverButtonPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         startOverButtonPanel.setBackground(Color.white);
         startOverButton.setBackground(Color.decode("#edeff1"));

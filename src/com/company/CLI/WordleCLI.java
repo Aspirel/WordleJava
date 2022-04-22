@@ -19,7 +19,7 @@ public class WordleCLI {
             WordleModel wordleModel = new WordleModel();
             ArrayList<String> availableLetters = new ArrayList<>(Arrays.asList("Q", "W", "E", "R", "T", "Y", "U",
                     "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"));
-            ArrayList<String> correctLetters = new ArrayList<>();
+            ArrayList<String> correctLetters = new ArrayList<>(Arrays.asList("-", "-", "-", "-", "-"));
             ArrayList<String> existingLetters = new ArrayList<>();
             ArrayList<String> nonExistingLetters = new ArrayList<>();
             int numberOfTries = 6;
@@ -28,10 +28,11 @@ public class WordleCLI {
             //while a correct word isn't found or the game is over due to being lost
             while (!wordleModel.getVictory() || !wordleModel.getGameOver()) {
                 System.out.printf("Usable letters: %s\n", availableLetters);
-                System.out.printf("Correctly positioned letters: %s\n", correctLetters);
-                System.out.printf("Correctly guessed letters: %s\n", existingLetters);
+                System.out.printf("Correctly positioned letters: %s\n", correctLetters.toString().replace(",", ""));
+                System.out.printf("Letters present in the word: %s\n", existingLetters);
                 System.out.printf("Letters not in the word: %s\n", nonExistingLetters);
                 System.out.printf("You have %d tries left.\n\n", numberOfTries);
+                System.out.println(wordleModel.getTargetWord());
 
                 //since only 5 letter words are accepted, this controls it in a loop and there is no need
                 //to have a not enough and too many letters checks.
@@ -67,9 +68,7 @@ public class WordleCLI {
                         for (int j = 0; j < 5; j++) {
                             if (backgroundColors[i][j] != null) {
                                 if (backgroundColors[i][j].equals(Color.green)) {
-                                    if (!correctLetters.contains(letters[i][j])) {
-                                        correctLetters.add(letters[i][j]);
-                                    }
+                                    correctLetters.set(j, letters[i][j]);
                                 } else if (backgroundColors[i][j].equals(Color.yellow)) {
                                     if (!existingLetters.contains(letters[i][j])) {
                                         existingLetters.add(letters[i][j]);

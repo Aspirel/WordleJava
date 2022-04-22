@@ -5,7 +5,6 @@ public class WordleGUI {
         WordleModel wordleModel = new WordleModel();
         WordleView wordleView = new WordleView(wordleModel);
         wordleModel.addObserver(wordleView);
-        WordleController wordleController = new WordleController(wordleModel, wordleView);
-        wordleView.setVisible(true);
+        new WordleController(wordleModel, wordleView);
     }
 }

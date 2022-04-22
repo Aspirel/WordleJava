@@ -154,14 +154,14 @@ public class WordleModel extends Observable {
                  */
                 row++;
                 col = 0;
-            }
-        }
 
-        /*After the word checks and colouring, if the last text box of the last row is full,
-         *it means the game is over. It informs the user the game is over and displays the target word.
-         */
-        if (letters[5][4] != null & !victory) {
-            gameOver = true;
+                /*After the word checks and colouring, if the last text box of the last row is full,
+                 *it means the game is over. It informs the user the game is over and displays the target word.
+                 */
+                if (letters[5][4] != null & !victory) {
+                    gameOver = true;
+                }
+            }
         }
 
         setChanged();
@@ -196,9 +196,9 @@ public class WordleModel extends Observable {
                 borderColors[row][col + 1] = Color.black;
                 if (col < 4) col++;
             }
+            setChanged();
+            notifyObservers();
         }
-        setChanged();
-        notifyObservers();
     }
 
     /**
@@ -221,9 +221,9 @@ public class WordleModel extends Observable {
                 borderColors[row][col - 1] = null;
                 col--;
             }
+            setChanged();
+            notifyObservers();
         }
-        setChanged();
-        notifyObservers();
     }
 
     /**
