@@ -32,7 +32,6 @@ public class WordleCLI {
                 System.out.printf("Letters present in the word: %s\n", existingLetters);
                 System.out.printf("Letters not in the word: %s\n", nonExistingLetters);
                 System.out.printf("You have %d tries left.\n\n", numberOfTries);
-                System.out.println(wordleModel.getTargetWord());
 
                 //since only 5 letter words are accepted, this controls it in a loop and there is no need
                 //to have a not enough and too many letters checks.
