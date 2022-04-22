@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WordleGUI.iml" filepath="$PROJECT_DIR$/WordleGUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Wordle.iml" filepath="$PROJECT_DIR$/Wordle.iml" />
     </modules>
   </component>
 </project>
