@@ -8,21 +8,14 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class WordleModel extends Observable {
-    private boolean noWordFoundFlag;
-    private boolean displayWordFlag;
-    private boolean randomWordFlag;
-    private boolean gameOver;
-    private boolean victory;
-    private boolean notEnoughLetters;
+    private boolean noWordFoundFlag, gameOver, victory, notEnoughLetters,
+            displayWordFlag, randomWordFlag;
     private String targetWord;
     private String[][] letters;
-    private Color[][] backgroundColors;
-    private Color[][] borderColors;
+    private Color[][] backgroundColors, borderColors;
     private HashMap<String, Color> buttonColors;
-    private ArrayList<String> allWords;
-    private ArrayList<String> allTargetWords;
-    private int row;
-    private int col;
+    private ArrayList<String> allWords, allTargetWords;
+    private int row, col;
 
     public WordleModel() {
         init();
@@ -73,7 +66,9 @@ public class WordleModel extends Observable {
                 allTargetWords.get(0);
 
         Assertions.assertFalse(targetWord.isEmpty());
-        //Displays the word immediately if this flag is enabled.
+        //Displays the word immediately if this flag is enabled. There is no information on how to display it
+        //or what should happen after displaying, so it simply displays the word on the GUI with no
+        //actual gameplay.
         if (displayWordFlag) {
             for (int i = 0; i < targetWord.length(); i++) {
                 letters[row][i] = String.valueOf(targetWord.charAt(i));
@@ -270,6 +265,8 @@ public class WordleModel extends Observable {
         return victory;
     }
 
+    //Target words has a getter simply to display a message to the user informing him of what the
+    //wanted word was when the game is over (loss). Otherwise, could be private.
     public String getTargetWord() {
         return targetWord;
     }
