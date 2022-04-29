@@ -216,7 +216,7 @@ public class WordleView extends JFrame implements Observer {
         //are not enough letters. Inspired by the original game.
         if (wordleModel.getNotEnoughLetters()) {
             JOptionPane.showMessageDialog(worldlePanel, "Not enough letters!", "", JOptionPane.WARNING_MESSAGE);
-        } else if (wordleModel.getNoWordFlagFound()) {
+        } else if (wordleModel.getNoWordFound()) {
             JOptionPane.showMessageDialog(worldlePanel, "Not in word list!", "", JOptionPane.WARNING_MESSAGE);
         } else {
             //The size of the grid is known and does not need to be dynamic, so I simply loop through the

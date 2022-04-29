@@ -149,13 +149,13 @@ public class UnitTests {
             }
             wordleModel.processWord();
             System.out.printf("-----Word \"%s\"-----\n", exampleWord);
-            System.out.printf("Not in word? %s\n", wordleModel.getNoWordFlagFound());
+            System.out.printf("Not in word? %s\n", wordleModel.getNoWordFound());
             System.out.printf("Not enough letters? %s\n", wordleModel.getNotEnoughLetters());
             System.out.printf("Victory? %s\n", wordleModel.getVictory());
             System.out.printf("Game Over? %s\n", wordleModel.getGameOver());
             System.out.println(Arrays.deepToString(wordleModel.getLetters()));
             System.out.println("\n");
-            if (wordleModel.getNoWordFlagFound() || wordleModel.getNotEnoughLetters()) {
+            if (wordleModel.getNoWordFound() || wordleModel.getNotEnoughLetters()) {
                 for (int ii = 0; ii < 5; ii++) {
                     wordleModel.deleteLetter();
                 }

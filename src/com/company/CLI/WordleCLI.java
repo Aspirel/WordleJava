@@ -60,7 +60,7 @@ public class WordleCLI {
                         playAgain(wordleModel, "Congratulations! You've Won!");
                     } else if (wordleModel.getGameOver()) {
                         playAgain(wordleModel, "Game Over! The word was \"" + wordleModel.getTargetWord() + "\"");
-                    } else if (wordleModel.getNoWordFlagFound()) {
+                    } else if (wordleModel.getNoWordFound()) {
                         System.out.println("\n--- Not in word list. ---\n");
                         //resets the row to empty. Row is being monitored in the model.
                         for (int i = 0; i < 5; i++) {

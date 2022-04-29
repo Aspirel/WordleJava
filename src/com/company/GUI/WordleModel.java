@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class WordleModel extends Observable {
-    private boolean noWordFoundFlag, gameOver, victory, notEnoughLetters,
+    private boolean checkWordFoundFlag, gameOver, victory, notEnoughLetters, noWordFound,
             displayWordFlag, randomWordFlag;
     private String targetWord;
     private String[][] letters;
@@ -25,7 +25,8 @@ public class WordleModel extends Observable {
         gameOver = false;
         victory = false;
         notEnoughLetters = false;
-        noWordFoundFlag = false; //word does not exist in the list of words
+        noWordFound = false;
+        checkWordFoundFlag = true; //allows or not words that are not on the list
         displayWordFlag = false; //enable to display the target word immediately in the GUI
         randomWordFlag = true; //enable to pick random target words. Disable to always pick a fixed one.
         targetWord = null;
@@ -102,12 +103,10 @@ public class WordleModel extends Observable {
             if (word.length() < 5) {
                 //Additional flag to display a message if the word does not have enough letters.
                 notEnoughLetters = true;
-            } else if (!allWords.contains(String.valueOf(word)) && !allTargetWords.contains(String.valueOf(word))) {
-                /* If the word doesn't exist, the view is notified and a message is displayed to the user.
-                 * Following the requirements. However, we could simply directly send a boolean or string
-                 * to the observer as an arg, without any flag in the model.
-                 */
-                noWordFoundFlag = true;
+            } else if (checkWordFoundFlag && (!allWords.contains(String.valueOf(word)) &&
+                    !allTargetWords.contains(String.valueOf(word)))) {
+                //If the word doesn't exist, the view is notified and a message is displayed to the user.
+                noWordFound = true;
             } else {
                 //If it equals the target word, its game over immediately
                 if (targetWord.equals(String.valueOf(word))) {
@@ -158,7 +157,6 @@ public class WordleModel extends Observable {
                 }
             }
         }
-
         setChanged();
         notifyObservers();
     }
@@ -175,7 +173,7 @@ public class WordleModel extends Observable {
          * Could have been called at the end of process word, but since the CLI is not being notified directly,
          * it must be reset everytime a new word is added or deleted.
          */
-        noWordFoundFlag = false;
+        noWordFound = false;
         notEnoughLetters = false;
 
         Assertions.assertTrue(row >= 0);
@@ -200,7 +198,7 @@ public class WordleModel extends Observable {
      * This delete method is an exact replica of the addLetter method, but backwards.
      */
     public void deleteLetter() {
-        noWordFoundFlag = false;
+        noWordFound = false;
         notEnoughLetters = false;
 
         Assertions.assertTrue(row >= 0);
@@ -249,8 +247,8 @@ public class WordleModel extends Observable {
         return buttonColors;
     }
 
-    public boolean getNoWordFlagFound() {
-        return noWordFoundFlag;
+    public boolean getNoWordFound() {
+        return noWordFound;
     }
 
     public boolean getNotEnoughLetters() {
