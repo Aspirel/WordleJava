@@ -2,9 +2,9 @@ package com.company.GUI;
 
 public class WordleGUI {
     public static void main(String[] args) {
-        WordleView wordleView = new WordleView();
-        WordleModel wordleModel = new WordleModel(wordleView);
-        WordleController wordleController = new WordleController(wordleModel, wordleView);
-        wordleView.setVisible(true);
+        WordleModel wordleModel = new WordleModel();
+        WordleView wordleView = new WordleView(wordleModel);
+        wordleModel.addObserver(wordleView);
+        new WordleController(wordleModel, wordleView);
     }
 }
